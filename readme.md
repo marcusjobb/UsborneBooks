@@ -16,7 +16,8 @@ By converting the games into contemporary languages like C#, Python, Java, and m
 
 The project includes adaptations from the following books:
 
-1. [**Computer Battlegames**](./computer_battlegames/readme.md)
+1. [**Computer Battlegames**](./computer_battlegames/readme.md)  
+(more to follow)
 
 Each game is provided with:
 
