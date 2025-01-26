@@ -1,6 +1,6 @@
 # Desert Tank Battle
 
-**Book**: *Computer Battlegames*  
+**Book**: _Computer Battlegames_  
 **Author**: Usborne Publishing
 
 ## Story
@@ -69,7 +69,6 @@ graph TD
 ![Page 2](./img/Usborne-Computer_Battlegames11.png)
 
 </details>
-
 
 <details>
 <summary>ZX-81</summary>
@@ -418,4 +417,3 @@ In "Desert Tank Battle," the player commands a tank with five missiles to destro
 These programs are adaptations of the original Usborne Computer Guides published in the 1980s. The books are free to download for personal or educational use from [Usborne's Computer and Coding Books](https://usborne.com/row/books/computer-and-coding-books). Programs and adaptations may not be used for commercial purposes.
 
 Return to [Computer Battlegames](./readme.md).
-
