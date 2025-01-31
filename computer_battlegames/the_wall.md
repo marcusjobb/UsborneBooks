@@ -1,7 +1,10 @@
 # The Wizard's Wall
 
-**Book**: Computer Battlegames\
-**Author**: Usborne Publishing
+**Book**: _[Computer Battlegames](https://drive.google.com/file/d/0Bxv0SsvibDMTVUExUjFhTURCSU0/view?usp=sharing&resourcekey=0-v2liG0G60g8b7DXjJtDBXg)_  
+**Author**: [Usborne Publishing](https://usborne.com/)  
+**Translator**: [Marcus Medina](https://github.com/marcusjobb/UsborneBooks)
++
+
 
 ## Story
 
@@ -1200,4 +1203,3 @@ The Wizard's Wall game requires the player to destroy an enchanted wall by firin
 These programs are adaptations of the original Usborne Computer Guides published in the 1980s. The books are free to download for personal or educational use from [Usborne's Computer and Coding Books](https://usborne.com/row/books/computer-and-coding-books). Programs and adaptations may not be used for commercial purposes.
 
 Return to [Computer Battlegames](./readme.md).
-

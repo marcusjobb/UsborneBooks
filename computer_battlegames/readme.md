@@ -24,8 +24,6 @@ The book contains the following games:
 12. [**The Wall**](./the_wall.md) - Break through the enemy’s defenses to win.
 13. [**Missile!**](./missile.md) - Destroy moving targets with precision.
 
-![Index](./img/Usborne-Computer_Battlegames01.png)
-
 ## Why Adapt This Book?
 
 The games in _Computer Battlegames_ are timeless examples of how coding can be fun, educational, and creative. By adapting these games into modern programming languages, we:

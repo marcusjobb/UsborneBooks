@@ -16,7 +16,10 @@ By converting the games into contemporary languages like C#, Python, Java, and m
 
 The project includes adaptations from the following books:
 
-1. [**Computer Battlegames**](./computer_battlegames/readme.md)  
+1. [**Computer Battlegames**](./computer_battlegames/readme.md)
+2. [**Computer Spacegames**](./computer_spacegames/readme.md)
+3. [**Weird Computer Games**](./weird_computer_games/readme.md)
+
 (more to follow)
 
 Each game is provided with:
@@ -92,6 +95,8 @@ This project is licensed by same rules as the original Usborne books. It is free
 
 ## Acknowledgements
 
-Special thanks to Usborne Publishing for creating the original Computer Guides and inspiring generations of programmers. Also, thanks to my students that are a constant inspiration for creating new content.
+I don't take any credit for the code or the original content. All the glory goes to the original authors of the Usborne books.
 
-I love them so much for releasing these books for free. I hope they don't mind me adapting them.
+Special thanks to Usborne Publishing for creating the original Computer Guides and inspiring generations of programmers. I love them so much for releasing these books for free. I hope they don't mind me adapting them to modern languages.
+
+Also, thanks to my students that are a constant inspiration for creating new content.

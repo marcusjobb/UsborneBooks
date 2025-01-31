@@ -1,7 +1,8 @@
 # Secret Weapon
 
-**Book**: Computer Battlegames  
-**Author**: Usborne Publishing
+**Book**: _[Computer Battlegames](https://drive.google.com/file/d/0Bxv0SsvibDMTVUExUjFhTURCSU0/view?usp=sharing&resourcekey=0-v2liG0G60g8b7DXjJtDBXg)_  
+**Author**:  [Usborne Publishing](https://usborne.com/)    
+**Translator**: [Marcus Medina](https://github.com/marcusjobb/UsborneBooks)
 
 ## Story
 
