@@ -142,8 +142,11 @@ class Escape
 
         for (int attempts = 1; attempts <= 5; attempts++)
         {
-            Console.Write("GUESS? ");
-            int playerGuess = int.Parse(Console.ReadLine());
+            int playerGuess;
+            do
+            {
+                Console.Write("GUESS? ");
+            } while (!int.TryParse(Console.ReadLine(), out playerGuess));
 
             if (Math.Abs(targetFrequency - playerGuess) < 5)
             {

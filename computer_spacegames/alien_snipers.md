@@ -119,8 +119,7 @@ class AlienSnipers
         do
         {
             Console.Write("Difficulty (1-10): ");
-            difficulty = int.Parse(Console.ReadLine());
-        } while (difficulty < 1 || difficulty > 10);
+        } while (!int.TryParse(Console.ReadLine(), out difficulty) || difficulty < 1 || difficulty > 10);
 
         int score = 0;
         Random random = new Random();

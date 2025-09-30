@@ -146,8 +146,11 @@ class Program
         int steps = 0;
         const int maxSteps = 200;
 
-        Console.Write("Width? ");
-        int width = int.Parse(Console.ReadLine());
+        int width;
+        do
+        {
+            Console.Write("Width? ");
+        } while (!int.TryParse(Console.ReadLine(), out width) || width <= 0);
         int left = width / 2;
         int middle = width;
         int right = width;

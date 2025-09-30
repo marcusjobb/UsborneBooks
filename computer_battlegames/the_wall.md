@@ -445,8 +445,11 @@ class WizardsWall
         if (Console.ReadLine().Trim().ToUpper().StartsWith("Y"))
             ShowHelp();
 
-        Console.Write("Select difficulty (1-5): ");
-        int difficulty = int.Parse(Console.ReadLine());
+        int difficulty;
+        do
+        {
+            Console.Write("Select difficulty (1-5): ");
+        } while (!int.TryParse(Console.ReadLine(), out difficulty) || difficulty < 1 || difficulty > 5);
         int scaleFactor = 6 - difficulty;
 
         for (int y = 0; y < 8; y++)

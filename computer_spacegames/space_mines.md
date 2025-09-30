@@ -189,8 +189,11 @@ class SpaceMines
             // Ore selling
             int orePrice = random.Next(2000, 4001);
             Console.WriteLine($"Ore Selling Price: ${orePrice}");
-            Console.Write("How much ore to sell? ");
-            int oreToSell = int.Parse(Console.ReadLine());
+            int oreToSell;
+            do
+            {
+                Console.Write("How much ore to sell? ");
+            } while (!int.TryParse(Console.ReadLine(), out oreToSell) || oreToSell < 0);
             if (oreToSell > oreStorage)
             {
                 Console.WriteLine("Not enough ore. Try again.");
@@ -200,8 +203,11 @@ class SpaceMines
             money += oreToSell * orePrice;
 
             // Mine selling
-            Console.Write("How many mines to sell? ");
-            int minesToSell = int.Parse(Console.ReadLine());
+            int minesToSell;
+            do
+            {
+                Console.Write("How many mines to sell? ");
+            } while (!int.TryParse(Console.ReadLine(), out minesToSell) || minesToSell < 0);
             if (minesToSell > mines)
             {
                 Console.WriteLine("Not enough mines. Try again.");
@@ -211,8 +217,11 @@ class SpaceMines
             money += minesToSell * orePrice;
 
             // Food purchasing
-            Console.Write("How much money to spend on food? ");
-            int foodBudget = int.Parse(Console.ReadLine());
+            int foodBudget;
+            do
+            {
+                Console.Write("How much money to spend on food? ");
+            } while (!int.TryParse(Console.ReadLine(), out foodBudget) || foodBudget < 0);
             if (foodBudget > money)
             {
                 Console.WriteLine("Not enough money. Try again.");
@@ -222,8 +231,11 @@ class SpaceMines
             satisfaction += (foodBudget / (double)people) > 120 ? 0.1 : -0.2;
 
             // Mine buying
-            Console.Write("How many mines to buy? ");
-            int minesToBuy = int.Parse(Console.ReadLine());
+            int minesToBuy;
+            do
+            {
+                Console.Write("How many mines to buy? ");
+            } while (!int.TryParse(Console.ReadLine(), out minesToBuy) || minesToBuy < 0);
             int mineCost = random.Next(2000, 4001);
             if (minesToBuy * mineCost > money)
             {

@@ -104,8 +104,12 @@ class Moonlander
         while (fuel > 0 && height > 0)
         {
             Console.WriteLine($"TIME: {time} HEIGHT: {height} VEL.: {velocity} FUEL: {fuel}");
-            Console.Write("BURN? (0-30): ");
-            int burn = int.Parse(Console.ReadLine());
+            
+            int burn;
+            do
+            {
+                Console.Write("BURN? (0-30): ");
+            } while (!int.TryParse(Console.ReadLine(), out burn));
 
             if (burn < 0) burn = 0;
             if (burn > 30) burn = 30;

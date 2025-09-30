@@ -135,8 +135,12 @@ class SupersonicBomber
             for (int i = 0; i < 5; i++)
                 Console.WriteLine($"Target {i + 1}: {populations[i]}");
 
-            Console.Write("Select a target (1-5): ");
-            int choice = int.Parse(Console.ReadLine()) - 1;
+            int choice;
+            do
+            {
+                Console.Write("Select a target (1-5): ");
+            } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 5);
+            choice--; // Convert to 0-based index
 
             if (choice == maxIndex)
             {

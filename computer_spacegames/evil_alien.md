@@ -108,14 +108,23 @@ class EvilAlien
 
         for (int i = 0; i < attempts; i++)
         {
-            Console.Write("X POSITION (0 TO 9)? ");
-            int playerX = int.Parse(Console.ReadLine());
+            int playerX;
+            do
+            {
+                Console.Write("X POSITION (0 TO 9)? ");
+            } while (!int.TryParse(Console.ReadLine(), out playerX) || playerX < 0 || playerX > 9);
 
-            Console.Write("Y POSITION (0 TO 9)? ");
-            int playerY = int.Parse(Console.ReadLine());
+            int playerY;
+            do
+            {
+                Console.Write("Y POSITION (0 TO 9)? ");
+            } while (!int.TryParse(Console.ReadLine(), out playerY) || playerY < 0 || playerY > 9);
 
-            Console.Write("DISTANCE (0 TO 9)? ");
-            int playerD = int.Parse(Console.ReadLine());
+            int playerD;
+            do
+            {
+                Console.Write("DISTANCE (0 TO 9)? ");
+            } while (!int.TryParse(Console.ReadLine(), out playerD) || playerD < 0 || playerD > 9);
 
             if (playerX == alienX && playerY == alienY && playerD == alienD)
             {

@@ -120,11 +120,19 @@ class DesertTankBattle
 
         for (int attempt = 1; attempt <= 5; attempt++)
         {
-            Console.Write("DIRECTION (-90 TO 90) ? ");
-            int playerDirection = int.Parse(Console.ReadLine());
+            int playerDirection;
+            do
+            {
+                Console.Write("DIRECTION (-90 TO 90) ? ");
+            } while (!int.TryParse(Console.ReadLine(), out playerDirection) || 
+                     playerDirection < -90 || playerDirection > 90);
 
-            Console.Write("ELEVATION (0 TO 90) ? ");
-            int playerElevation = int.Parse(Console.ReadLine());
+            int playerElevation;
+            do
+            {
+                Console.Write("ELEVATION (0 TO 90) ? ");
+            } while (!int.TryParse(Console.ReadLine(), out playerElevation) || 
+                     playerElevation < 0 || playerElevation > 90);
 
             double missileDistance = Math.Sin(2 * playerElevation * Math.PI / 180);
 

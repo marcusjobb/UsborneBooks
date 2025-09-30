@@ -338,11 +338,17 @@ class Program
 
         for (int g = 1; g <= difficulty + 5; g++)
         {
-            Console.WriteLine("GUESS X:");
-            int guessX = int.Parse(Console.ReadLine());
+            int guessX;
+            do
+            {
+                Console.WriteLine("GUESS X:");
+            } while (!int.TryParse(Console.ReadLine(), out guessX));
 
-            Console.WriteLine("GUESS Y:");
-            int guessY = int.Parse(Console.ReadLine());
+            int guessY;
+            do
+            {
+                Console.WriteLine("GUESS Y:");
+            } while (!int.TryParse(Console.ReadLine(), out guessY));
 
             double distance = Math.Sqrt(Math.Pow(targetX - guessX, 2) + Math.Pow(targetY - guessY, 2));
 

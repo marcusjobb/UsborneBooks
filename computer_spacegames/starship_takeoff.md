@@ -73,7 +73,6 @@ flowchart TD
 
 <details>
 <summary>ZX-81</summary>
-<summary>Code</summary>
 
 ```basic
 10 CLS
@@ -101,7 +100,6 @@ flowchart TD
 
 <details>
 <summary>C#</summary>
-<summary>Code</summary>
 
 ```csharp
 using System;
@@ -122,8 +120,11 @@ class StarshipTakeoff
 
         for (int attempt = 1; attempt <= 10; attempt++)
         {
-            Console.Write("TYPE IN FORCE: ");
-            int userForce = int.Parse(Console.ReadLine());
+            int userForce;
+            do
+            {
+                Console.Write("TYPE IN FORCE: ");
+            } while (!int.TryParse(Console.ReadLine(), out userForce) || userForce < 0);
 
             if (userForce > requiredForce)
             {
@@ -155,7 +156,6 @@ class StarshipTakeoff
 
 <details>
 <summary>Python</summary>
-<summary>Code</summary>
 
 ```python
 import random
@@ -189,7 +189,6 @@ else:
 
 <details>
 <summary>Java</summary>
-<summary>Code</summary>
 
 ```java
 import java.util.Scanner;
@@ -235,7 +234,6 @@ public class StarshipTakeoff {
 
 <details>
 <summary>GoLang</summary>
-<summary>Code</summary>
 
 ```go
 package main
@@ -283,7 +281,6 @@ func main() {
 
 <details>
 <summary>C++</summary>
-<summary>Code</summary>
 
 ```cpp
 #include <iostream>
@@ -332,7 +329,6 @@ int main() {
 
 <details>
 <summary>Rust</summary>
-<summary>Code</summary>
 
 ```rust
 use rand::Rng;
