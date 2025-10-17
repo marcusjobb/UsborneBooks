@@ -11,7 +11,7 @@ The book emphasizes hands-on coding, encouraging readers to type out, debug, and
 The book contains the following games:
 
 1. [**Tower of Terror**](./tower_of_terror.md) - A spooky adventure where you must navigate a haunted tower.
-2. [**Skulls of The Pyramid**](./skulls_of_the_pyramid.md) - A treasure-hunting challenge in a mysterious pyramid.
+2. [**Skulls of the Pyramid**](./skulls_of_the_pyramid.md) - A treasure-hunting challenge in a mysterious pyramid.
 3. [**Monster Wrestling**](./monster_wrestling.md) - Compete in a bizarre wrestling match against monstrous opponents.
 4. [**Jaws**](./jaws.md) - A high-stakes encounter with a fearsome shark.
 5. [**Flying Witches**](./flying_witches.md) - Dodge obstacles while flying on a broomstick.
@@ -22,7 +22,7 @@ The book contains the following games:
 The games in **Weird Computer Games** are timeless examples of how coding can be creative, educational, and fun. By adapting these games into modern programming languages, we:
 
 - Preserve the charm and educational value of the original book for new generations.
-- Provide a hands-on way to learn coding concepts in languages like C#, Python, and Rust.
+- Provide a hands-on way to learn coding concepts with ZX-81 BASIC, C#, and Python.
 - Honor the ingenuity and creativity of early computing.
 
 ## Organization
@@ -30,7 +30,7 @@ The games in **Weird Computer Games** are timeless examples of how coding can be
 Each game from the book is presented in its own Markdown file. These files include:
 
 - **The story** behind the game.
-- **Code translations** in modern languages, starting with ZX-81 BASIC and progressing to C#, Python, Java, Go, C++, and Rust.
+- **Code translations** in ZX-81 BASIC, C#, and Python.
 - **Beginner-friendly comments** to help new coders understand key concepts.
 - **Challenges** to extend the games or add new features.
 
@@ -41,4 +41,4 @@ These programs are adaptations of the original Usborne Computer Guides published
 ## Links
 
 - [Download the original book from Usborne](https://drive.google.com/file/d/0Bxv0SsvibDMTb2VxczM3WGNBLUE/view?usp=sharing&resourcekey=0-j1yS0V3ZGPVB-DbKtMQw8Q)
-- Return to [main README](./readme.md).
+- Return to [main README](../readme.md).

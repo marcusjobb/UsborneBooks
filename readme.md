@@ -60,8 +60,9 @@ Amazingly enough, what took most time was using ChatGPT to convert the code prop
 
 - [NotebookLM](https://notebook.lm.goo.gle/) works well for extracting code and text from images.
 - [Claude](https://claude.gg/) is good for converting code to other languages.
-- [ChatGPT](https://app.inferkit.com/demo) is good for commenting code and writing text.
+- [ChatGPT](https://ChatGPT.com) is good for commenting code and writing text.
 - [CoPilot](https://copilot.github.com/) is good for commenting code and writing text.
+- [Codex](https://openai.com/blog/openai-codex/) is good for transcribing and converting code to other languages.
 
 ### Why I chose these languages
 
