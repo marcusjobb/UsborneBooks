@@ -42,7 +42,7 @@ LOOP until score is <= 0 or >= 500
 END LOOP
 
 IF score <= 0 THEN
-    PRINT "YOU’RE NOW MY SLAVE"
+    PRINT "YOU ARE NOW MY SLAVE"
 ELSE
     PRINT "OK. YOU WIN (THIS TIME)"
 END IF
@@ -57,7 +57,7 @@ flowchart TD
     A[Start Game] --> B[Set Score = 300]
     B --> C[Store insult messages]
     C --> D[Loop Start]
-    D --> E[Pick random number 1–9]
+    D --> E[Pick random number 1-9]
     E --> F[Display number and score]
     F --> G[Maybe print insult]
     G --> H[Wait for keypress]
@@ -65,10 +65,10 @@ flowchart TD
     I --> J[Was key correct?]
     J -->|Yes| K[Increase score by 10 + N*2]
     J -->|No| L[Decrease score again]
-    K --> M[Check win (>=500)]
-    L --> N[Check lose (<=0)]
-    M -->|Win| O[Print "OK. YOU WIN"]
-    N -->|Lose| P[Print "YOU’RE NOW MY SLAVE"]
+    K --> M[Check win (score >= 500)]
+    L --> N[Check lose (score <= 0)]
+    M -->|Win| O[Show OK. YOU WIN]
+    N -->|Lose| P[Show YOU ARE NOW MY SLAVE]
     O --> Q[End]
     P --> Q[End]
 ```
@@ -160,7 +160,7 @@ class ComputerNightmare
             }
 
             if (score <= 0)
-                Console.WriteLine("\nYOU’RE NOW MY SLAVE!");
+                Console.WriteLine("\nYOU ARE NOW MY SLAVE!");
             else if (score >= 500)
                 Console.WriteLine("\nOK. YOU WIN (THIS TIME)");
         }
@@ -219,7 +219,7 @@ if __name__ == "__main__":
 
 ## Explanation
 
-The game randomly displays a number (1–9).
+The game randomly displays a number (1-9).
 You must quickly press the same number to increase your score.
 Miss or press the wrong key, and the score drops.
 As your score changes, the computer throws out random taunts.

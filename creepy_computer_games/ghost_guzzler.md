@@ -13,7 +13,7 @@ Numbers rush across your screen — each one a **ghostly apparition** trying to 
 Your only defense is the **Ghost Guzzler**, a strange contraption that devours numbers — but only when you match the right one!
 
 Press **X** to activate your guzzler when the number matches the attacking ghost.
-Press **M** to increase your guzzler’s setting (0–9, looping back to 0).
+Press **M** to increase your guzzler’s setting (0-9, looping back to 0).
 If you fail to catch the ghost, it steals one of your lives.
 Lose them all and the ghosts will **haunt your machine forever**...
 
@@ -53,10 +53,10 @@ ASK "ANOTHER GO?"
 ```mermaid
 flowchart TD
     A[Start Game] --> B[Set Score=0, Y=0, Lives=3]
-    B --> C[Generate Ghost Number 0–9]
+    B --> C[Generate Ghost Number 0-9]
     C --> D[Display Ghost Number and Player Number]
     D --> E[Check for Key Input]
-    E -->|M Pressed| F[Increase Player Number (0–9)]
+    E -->|M Pressed| F[Increase player number (0-9)]
     E -->|X Pressed| G[Compare Numbers]
     G -->|Match| H[Increase Score]
     G -->|No Match| I[Decrease Lives]
@@ -234,7 +234,7 @@ if __name__ == "__main__":
 
 ## Explanation
 
-Each ghost is represented by a number (0–9) moving across the screen.
+Each ghost is represented by a number (0-9) moving across the screen.
 You must press **X** when your number matches the ghost’s.
 Press **M** to change your guzzler’s number.
 If you miss, you lose a life.

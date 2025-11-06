@@ -8,7 +8,7 @@
 
 ## Story
 
-**Eek! It’s Spiderwoman!**
+**Eek! It's Spiderwoman!**
 You’ve stumbled into her web, and she’s in a teasing mood.
 She has chosen a secret **letter**, and if you can guess it quickly enough, she might set you free.
 
@@ -23,7 +23,7 @@ Take too many turns and you’ll **transform into a fly**, forever trapped in he
 ```plaintext
 SET number_of_goes = 0
 CLEAR screen
-CHOOSE a random letter (A–Z)
+CHOOSE a random letter (A-Z)
 PRINT "SPIDERWOMAN HAS CHOSEN"
 
 REPEAT UNTIL guessed OR 15 tries used
@@ -57,22 +57,22 @@ IF 15 tries used THEN PRINT "YOU ARE NOW A FLY"
 
 ```mermaid
 flowchart TD
-    A[Start Game] --> B[Choose random letter A–Z]
+    A[Start Game] --> B[Choose random letter A-Z]
     B --> C[Ask for a word]
     C --> D[Increase guess counter]
-    D --> E[Check word length 4–8]
+    D --> E[Check word length 4-8]
     E -->|Invalid| C
     E --> F[Does word contain the letter?]
-    F -->|No| G[Print "It's not in that word"]
+    F -->|No| G[Show not in that word]
     G --> H[Delay and repeat]
-    F -->|Yes| I[Print "Yes – it's one of those"]
+    F -->|Yes| I[Show yes, it is one of those]
     I --> J[Ask if player wants to guess]
     J -->|No| H
     J -->|Yes| K[Ask for guess]
     K --> L[Correct?]
-    L -->|Yes| M[Print "OK – You can go" → End]
-    L -->|No| N[Print "You are too late" → End]
-    H --> O[If >15 tries → "You are now a fly"]
+    L -->|Yes| M[Player escapes and game ends]
+    L -->|No| N[Player is too late and game ends]
+    H --> O[If >15 tries -> "You are now a fly"]
 ```
 
 ---
@@ -148,7 +148,7 @@ class Spiderwoman
 
         while (tries < 15)
         {
-            Console.Write("\nEnter a word (4–8 letters): ");
+            Console.Write("\nEnter a word (4-8 letters): ");
             string word = Console.ReadLine()?.ToUpper() ?? "";
             tries++;
 
@@ -157,7 +157,7 @@ class Spiderwoman
 
             if (word.Contains(target))
             {
-                Console.WriteLine("Yes – it’s one of those!");
+                Console.WriteLine("Yes - it’s one of those!");
                 Console.Write("Do you want to guess the letter? (Y/N): ");
                 var answer = Console.ReadKey(true).KeyChar;
                 if (char.ToUpper(answer) == 'Y')
@@ -178,7 +178,7 @@ class Spiderwoman
             }
             else
             {
-                Console.WriteLine("It’s not in that word.");
+                Console.WriteLine("It's not in that word.");
             }
         }
 
@@ -198,19 +198,19 @@ class Spiderwoman
 import random
 
 def spiderwoman():
-    target = chr(random.randint(65, 90))  # A–Z
+    target = chr(random.randint(65, 90))  # A-Z
     tries = 0
     print("SPIDERWOMAN HAS CHOSEN...")
     print("Try to find her letter!")
 
     while tries < 15:
-        word = input("\nEnter a word (4–8 letters): ").upper()
+        word = input("\nEnter a word (4-8 letters): ").upper()
         tries += 1
         if len(word) < 4 or len(word) > 8:
             continue
 
         if target in word:
-            print("Yes – it's one of those!")
+            print("Yes - it's one of those!")
             choice = input("Do you want to guess the letter? (Y/N): ").upper()
             if choice == "Y":
                 guess = input("What’s your guess? ").upper()
@@ -221,7 +221,7 @@ def spiderwoman():
                     print("You are too late... You are now a fly!")
                     return
         else:
-            print("It’s not in that word.")
+            print("It's not in that word.")
 
     print("\nYou’ve taken too long... You are now a fly!")
 
@@ -235,7 +235,7 @@ if __name__ == "__main__":
 
 ## Explanation
 
-Spiderwoman secretly picks a random letter from **A–Z**.
+Spiderwoman secretly picks a random letter from **A-Z**.
 Each turn, you type in a word — if her letter appears within it, she’ll admit it.
 You can then decide to make a final guess.
 Get it right, and she lets you go.

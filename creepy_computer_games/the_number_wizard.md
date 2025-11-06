@@ -57,19 +57,19 @@ ELSE PRINT "YOU WON"
 
 ```mermaid
 flowchart TD
-    A[Start Game] --> B[Initialize numbers 1–9]
+    A[Start Game] --> B[Initialize numbers 1-9]
     B --> C[Set turns = 8]
     C --> D[Display remaining numbers]
     D --> E[Roll two dice]
     E --> F[If double, add 2 turns]
     F --> G[Ask player for two numbers M and N]
     G --> H[Valid? Sum == dice total and unused]
-    H -->|No| I[Print "TRY AGAIN" and repeat]
+    H -->|No| I[Show TRY AGAIN and repeat]
     H -->|Yes| J[Mark M and N as used]
     J --> K[Subtract 1 turn]
     K --> L[Check win/lose conditions]
-    L -->|All numbers used| M[Print "THE WIZARD WON"]
-    L -->|No turns left| N[Print "YOU WON"]
+    L -->|All numbers used| M[Show THE WIZARD WON]
+    L -->|No turns left| N[Show YOU WON]
     M --> O[End]
     N --> O[End]
 ```
@@ -262,7 +262,7 @@ if __name__ == "__main__":
 
 ## Explanation
 
-The wizard rolls two dice and challenges you to match their sum using two of the remaining numbers (1–9).
+The wizard rolls two dice and challenges you to match their sum using two of the remaining numbers (1-9).
 When you use numbers, they disappear. Doubles grant bonus turns.
 You must clear all numbers before your turns run out.
 
