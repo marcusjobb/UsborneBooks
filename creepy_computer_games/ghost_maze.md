@@ -83,7 +83,17 @@ flowchart TD
 ## Code
 
 <details>
-<summary>ZX-81</summary>
+<summary>Pages</summary>
+
+![Page 1](./img/Usborne-Creepy_Computer_Games14.png)  
+![Page 2](./img/Usborne-Creepy_Computer_Games15.png)
+
+</details>
+
+---
+
+<details>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 DIM E(70)
@@ -373,6 +383,329 @@ def ghost_maze():
 
 if __name__ == "__main__":
     ghost_maze()
+```
+
+</details>
+
+---
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Random;
+import java.util.Scanner;
+
+public class GhostMaze {
+    static int[][] maze = {
+        {0,0,0,0,0,0,0},
+        {0,1,1,1,1,0,0},
+        {0,0,1,0,1,1,0},
+        {0,1,1,1,0,1,0},
+        {0,0,1,1,1,1,0},
+        {0,0,0,0,0,9,0},
+        {0,0,0,0,0,0,0},
+    };
+    static int px = 1, py = 1;
+    static int gx = 4, gy = 3;
+    static int direction;
+    static int steps = 0;
+    static Random rnd = new Random();
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        direction = rnd.nextInt(4);
+        int[][] moves = {{-1,0},{0,1},{1,0},{0,-1}};
+
+        while (true) {
+            draw();
+            System.out.println("\nMove: X=Forward, N=Left, M=Right");
+            System.out.println("Steps: " + steps);
+
+            if (maze[px][py] == 9) {
+                System.out.println("\nYOU HAVE ESCAPED!");
+                return;
+            }
+            if (px == gx && py == gy) {
+                System.out.println("\nA ghost caught you! Teleporting...");
+                do {
+                    px = 1 + rnd.nextInt(5);
+                    py = 1 + rnd.nextInt(5);
+                } while (maze[px][py] == 0);
+            }
+
+            System.out.print("Your move: ");
+            if (!scanner.hasNextLine()) return;
+            String key = scanner.nextLine().trim().toUpperCase();
+            if (key.equals("N")) direction = (direction + 3) % 4;
+            else if (key.equals("M")) direction = (direction + 1) % 4;
+            else if (key.equals("X")) {
+                int nx = px + moves[direction][0];
+                int ny = py + moves[direction][1];
+                if (maze[nx][ny] != 0) {
+                    px = nx;
+                    py = ny;
+                }
+            }
+
+            if (steps % 5 == 0) moveGhost();
+            steps++;
+        }
+    }
+
+    static void moveGhost() {
+        int dx = Integer.signum(px - gx);
+        int dy = Integer.signum(py - gy);
+        if (maze[gx + dx][gy + dy] != 0) {
+            gx += dx;
+            gy += dy;
+        }
+    }
+
+    static void draw() {
+        for (int i = 1; i < 6; i++) {
+            StringBuilder line = new StringBuilder();
+            for (int j = 1; j < 6; j++) {
+                char c;
+                if (maze[i][j] == 0) c = '#';
+                else if (maze[i][j] == 9) c = '+';
+                else c = ' ';
+                if (i == px && j == py) c = 'Y';
+                if (i == gx && j == gy) c = 'G';
+                line.append(c);
+            }
+            System.out.println(line);
+        }
+    }
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>Go</summary>
+
+```go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math/rand"
+	"os"
+	"strings"
+	"time"
+)
+
+var maze = [7][7]int{
+	{0, 0, 0, 0, 0, 0, 0},
+	{0, 1, 1, 1, 1, 0, 0},
+	{0, 0, 1, 0, 1, 1, 0},
+	{0, 1, 1, 1, 0, 1, 0},
+	{0, 0, 1, 1, 1, 1, 0},
+	{0, 0, 0, 0, 0, 9, 0},
+	{0, 0, 0, 0, 0, 0, 0},
+}
+
+func sign(x int) int {
+	if x > 0 {
+		return 1
+	}
+	if x < 0 {
+		return -1
+	}
+	return 0
+}
+
+func draw(px, py, gx, gy int) {
+	for i := 1; i < 6; i++ {
+		line := make([]byte, 0, 5)
+		for j := 1; j < 6; j++ {
+			var c byte
+			switch maze[i][j] {
+			case 0:
+				c = '#'
+			case 9:
+				c = '+'
+			default:
+				c = ' '
+			}
+			if i == px && j == py {
+				c = 'Y'
+			}
+			if i == gx && j == gy {
+				c = 'G'
+			}
+			line = append(line, c)
+		}
+		fmt.Println(string(line))
+	}
+}
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	reader := bufio.NewReader(os.Stdin)
+
+	px, py := 1, 1
+	gx, gy := 4, 3
+	direction := rand.Intn(4)
+	steps := 0
+
+	moves := [4][2]int{{-1, 0}, {0, 1}, {1, 0}, {0, -1}}
+
+	for {
+		draw(px, py, gx, gy)
+		fmt.Println("\nMove: X=Forward, N=Left, M=Right")
+		fmt.Printf("Steps: %d\n", steps)
+
+		if maze[px][py] == 9 {
+			fmt.Println("\nYOU HAVE ESCAPED!")
+			return
+		}
+		if px == gx && py == gy {
+			fmt.Println("\nA ghost caught you! Teleporting...")
+			for {
+				px = 1 + rand.Intn(5)
+				py = 1 + rand.Intn(5)
+				if maze[px][py] != 0 {
+					break
+				}
+			}
+		}
+
+		fmt.Print("Your move: ")
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			return
+		}
+		key := strings.ToUpper(strings.TrimSpace(line))
+		switch key {
+		case "N":
+			direction = (direction + 3) % 4
+		case "M":
+			direction = (direction + 1) % 4
+		case "X":
+			nx := px + moves[direction][0]
+			ny := py + moves[direction][1]
+			if maze[nx][ny] != 0 {
+				px, py = nx, ny
+			}
+		}
+
+		if steps%5 == 0 {
+			dx := sign(px - gx)
+			dy := sign(py - gy)
+			if maze[gx+dx][gy+dy] != 0 {
+				gx += dx
+				gy += dy
+			}
+		}
+		steps++
+	}
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
+int maze[7][7] = {
+    {0,0,0,0,0,0,0},
+    {0,1,1,1,1,0,0},
+    {0,0,1,0,1,1,0},
+    {0,1,1,1,0,1,0},
+    {0,0,1,1,1,1,0},
+    {0,0,0,0,0,9,0},
+    {0,0,0,0,0,0,0},
+};
+
+int sign(int x) {
+    if (x > 0) return 1;
+    if (x < 0) return -1;
+    return 0;
+}
+
+void draw(int px, int py, int gx, int gy) {
+    for (int i = 1; i < 6; i++) {
+        std::string line;
+        for (int j = 1; j < 6; j++) {
+            char c;
+            if (maze[i][j] == 0) c = '#';
+            else if (maze[i][j] == 9) c = '+';
+            else c = ' ';
+            if (i == px && j == py) c = 'Y';
+            if (i == gx && j == gy) c = 'G';
+            line += c;
+        }
+        std::cout << line << std::endl;
+    }
+}
+
+int main() {
+    srand(time(0));
+    int px = 1, py = 1;
+    int gx = 4, gy = 3;
+    int direction = rand() % 4;
+    int steps = 0;
+    int moves[4][2] = {{-1,0},{0,1},{1,0},{0,-1}};
+
+    while (true) {
+        draw(px, py, gx, gy);
+        std::cout << "\nMove: X=Forward, N=Left, M=Right" << std::endl;
+        std::cout << "Steps: " << steps << std::endl;
+
+        if (maze[px][py] == 9) {
+            std::cout << "\nYOU HAVE ESCAPED!" << std::endl;
+            return 0;
+        }
+        if (px == gx && py == gy) {
+            std::cout << "\nA ghost caught you! Teleporting..." << std::endl;
+            do {
+                px = 1 + rand() % 5;
+                py = 1 + rand() % 5;
+            } while (maze[px][py] == 0);
+        }
+
+        std::cout << "Your move: ";
+        std::string key;
+        if (!std::getline(std::cin, key)) return 0;
+        std::transform(key.begin(), key.end(), key.begin(), ::toupper);
+        if (key == "N") direction = (direction + 3) % 4;
+        else if (key == "M") direction = (direction + 1) % 4;
+        else if (key == "X") {
+            int nx = px + moves[direction][0];
+            int ny = py + moves[direction][1];
+            if (maze[nx][ny] != 0) {
+                px = nx;
+                py = ny;
+            }
+        }
+
+        if (steps % 5 == 0) {
+            int dx = sign(px - gx);
+            int dy = sign(py - gy);
+            if (maze[gx + dx][gy + dy] != 0) {
+                gx += dx;
+                gy += dy;
+            }
+        }
+        steps++;
+    }
+
+    return 0;
+}
 ```
 
 </details>

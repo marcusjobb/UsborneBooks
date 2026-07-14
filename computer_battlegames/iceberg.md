@@ -56,7 +56,7 @@ graph TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "ICEBERG"

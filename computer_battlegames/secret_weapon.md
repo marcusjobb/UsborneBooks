@@ -72,7 +72,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX81 BASIC</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 CLS
@@ -98,214 +98,6 @@ flowchart TD
 210 PRINT G; " GOES"
 220 STOP
 ```
-
-</details>
-
-<details>
-<summary>Java</summary>
-
-```java
-import java.util.Scanner;
-import java.util.Random;
-
-public class SecretWeapon {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-
-        System.out.println("SECRET WEAPON");
-        int difficulty = 0;
-
-        while (difficulty < 4) {
-            System.out.print("ENTER DIFFICULTY (minimum 4): ");
-            difficulty = scanner.nextInt();
-        }
-
-        int targetX = random.nextInt(difficulty) + 1;
-        int targetY = random.nextInt(difficulty) + 1;
-
-        for (int g = 1; g <= difficulty + 5; g++) {
-            System.out.print("GUESS X: ");
-            int guessX = scanner.nextInt();
-
-            System.out.print("GUESS Y: ");
-            int guessY = scanner.nextInt();
-
-            double distance = Math.sqrt(Math.pow(targetX - guessX, 2) + Math.pow(targetY - guessY, 2));
-
-            if (distance == 0) {
-                System.out.println("YOU DESTROYED IT IN " + g + " GOES!");
-                return;
-            } else if (distance < 3) {
-                System.out.println("CLOSE");
-            } else {
-                System.out.println("NOT EVEN CLOSE");
-            }
-        }
-
-        System.out.println("THE ROBOTS HAVE SEEN YOU - AGGHHHH.....");
-    }
-}
-```
-
-</details>
-
-<details>
-<summary>Go</summary>
-
-```go
-package main
-
-import (
-	"fmt"
-	"math"
-	"math/rand"
-	"time"
-)
-
-func main() {
-	rand.Seed(time.Now().UnixNano())
-	fmt.Println("SECRET WEAPON")
-
-	var difficulty int
-	for difficulty < 4 {
-		fmt.Print("ENTER DIFFICULTY (minimum 4): ")
-		fmt.Scan(&difficulty)
-	}
-
-	targetX := rand.Intn(difficulty) + 1
-	targetY := rand.Intn(difficulty) + 1
-
-	for g := 1; g <= difficulty+5; g++ {
-		var guessX, guessY int
-		fmt.Print("GUESS X: ")
-		fmt.Scan(&guessX)
-		fmt.Print("GUESS Y: ")
-		fmt.Scan(&guessY)
-
-		distance := math.Sqrt(math.Pow(float64(targetX-guessX), 2) + math.Pow(float64(targetY-guessY), 2))
-
-		if distance == 0 {
-			fmt.Printf("YOU DESTROYED IT IN %d GOES!
-", g)
-			return
-		} else if distance < 3 {
-			fmt.Println("CLOSE")
-		} else {
-			fmt.Println("NOT EVEN CLOSE")
-		}
-	}
-
-	fmt.Println("THE ROBOTS HAVE SEEN YOU - AGGHHHH.....")
-}
-```
-
-</details>
-
-<details>
-<summary>C++</summary>
-
-```cpp
-#include <iostream>
-#include <cmath>
-#include <cstdlib>
-#include <ctime>
-
-int main() {
-    std::cout << "SECRET WEAPON" << std::endl;
-
-    int difficulty = 0;
-    while (difficulty < 4) {
-        std::cout << "ENTER DIFFICULTY (minimum 4): ";
-        std::cin >> difficulty;
-    }
-
-    srand(time(0));
-    int targetX = rand() % difficulty + 1;
-    int targetY = rand() % difficulty + 1;
-
-    for (int g = 1; g <= difficulty + 5; g++) {
-        int guessX, guessY;
-        std::cout << "GUESS X: ";
-        std::cin >> guessX;
-        std::cout << "GUESS Y: ";
-        std::cin >> guessY;
-
-        double distance = std::sqrt(std::pow(targetX - guessX, 2) + std::pow(targetY - guessY, 2));
-
-        if (distance == 0) {
-            std::cout << "YOU DESTROYED IT IN " << g << " GOES!" << std::endl;
-            return 0;
-        } else if (distance < 3) {
-            std::cout << "CLOSE" << std::endl;
-        } else {
-            std::cout << "NOT EVEN CLOSE" << std::endl;
-        }
-    }
-
-    std::cout << "THE ROBOTS HAVE SEEN YOU - AGGHHHH....." << std::endl;
-    return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use std::io;
-use rand::Rng;
-use std::f64;
-
-fn main() {
-    println!("SECRET WEAPON");
-
-    let mut difficulty = 0;
-    while difficulty < 4 {
-        println!("ENTER DIFFICULTY (minimum 4): ");
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        difficulty = input.trim().parse().unwrap_or(0);
-    }
-
-    let target_x = rand::thread_rng().gen_range(1..=difficulty);
-    let target_y = rand::thread_rng().gen_range(1..=difficulty);
-
-    for g in 1..=difficulty + 5 {
-        println!("GUESS X: ");
-        let mut input_x = String::new();
-        io::stdin().read_line(&mut input_x).unwrap();
-        let guess_x: i32 = input_x.trim().parse().unwrap();
-
-        println!("GUESS Y: ");
-        let mut input_y = String::new();
-        io::stdin().read_line(&mut input_y).unwrap();
-        let guess_y: i32 = input_y.trim().parse().unwrap();
-
-        let distance = ((target_x - guess_x).pow(2) + (target_y - guess_y).pow(2)) as f64;
-
-        if distance == 0.0 {
-            println!("YOU DESTROYED IT IN {} GOES!", g);
-            return;
-        } else if distance < 9.0 {
-            println!("CLOSE");
-        } else {
-            println!("NOT EVEN CLOSE");
-        }
-    }
-
-    println!("THE ROBOTS HAVE SEEN YOU - AGGHHHH.....");
-}
-```
-
-</details>
-
-<details>
-<summary>Pages</summary>
-
-![Secret Weapon - Page 1](./img/Usborne-Computer_Battlegames16.png)  
-![Secret Weapon - Page 2](./img/Usborne-Computer_Battlegames17.png)
 
 </details>
 
@@ -412,6 +204,154 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Scanner;
+import java.util.Random;
+
+public class SecretWeapon {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        System.out.println("SECRET WEAPON");
+        int difficulty = 0;
+
+        while (difficulty < 4) {
+            System.out.print("ENTER DIFFICULTY (minimum 4): ");
+            difficulty = scanner.nextInt();
+        }
+
+        int targetX = random.nextInt(difficulty) + 1;
+        int targetY = random.nextInt(difficulty) + 1;
+
+        for (int g = 1; g <= difficulty + 5; g++) {
+            System.out.print("GUESS X: ");
+            int guessX = scanner.nextInt();
+
+            System.out.print("GUESS Y: ");
+            int guessY = scanner.nextInt();
+
+            double distance = Math.sqrt(Math.pow(targetX - guessX, 2) + Math.pow(targetY - guessY, 2));
+
+            if (distance == 0) {
+                System.out.println("YOU DESTROYED IT IN " + g + " GOES!");
+                return;
+            } else if (distance < 3) {
+                System.out.println("CLOSE");
+            } else {
+                System.out.println("NOT EVEN CLOSE");
+            }
+        }
+
+        System.out.println("THE ROBOTS HAVE SEEN YOU - AGGHHHH.....");
+    }
+}
+```
+
+</details>
+
+<details>
+<summary>Go</summary>
+
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+	"math/rand"
+	"time"
+)
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	fmt.Println("SECRET WEAPON")
+
+	var difficulty int
+	for difficulty < 4 {
+		fmt.Print("ENTER DIFFICULTY (minimum 4): ")
+		fmt.Scan(&difficulty)
+	}
+
+	targetX := rand.Intn(difficulty) + 1
+	targetY := rand.Intn(difficulty) + 1
+
+	for g := 1; g <= difficulty+5; g++ {
+		var guessX, guessY int
+		fmt.Print("GUESS X: ")
+		fmt.Scan(&guessX)
+		fmt.Print("GUESS Y: ")
+		fmt.Scan(&guessY)
+
+		distance := math.Sqrt(math.Pow(float64(targetX-guessX), 2) + math.Pow(float64(targetY-guessY), 2))
+
+		if distance == 0 {
+			fmt.Printf("YOU DESTROYED IT IN %d GOES!\n", g)
+			return
+		} else if distance < 3 {
+			fmt.Println("CLOSE")
+		} else {
+			fmt.Println("NOT EVEN CLOSE")
+		}
+	}
+
+	fmt.Println("THE ROBOTS HAVE SEEN YOU - AGGHHHH.....")
+}
+```
+
+</details>
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+int main() {
+    std::cout << "SECRET WEAPON" << std::endl;
+
+    int difficulty = 0;
+    while (difficulty < 4) {
+        std::cout << "ENTER DIFFICULTY (minimum 4): ";
+        std::cin >> difficulty;
+    }
+
+    srand(time(0));
+    int targetX = rand() % difficulty + 1;
+    int targetY = rand() % difficulty + 1;
+
+    for (int g = 1; g <= difficulty + 5; g++) {
+        int guessX, guessY;
+        std::cout << "GUESS X: ";
+        std::cin >> guessX;
+        std::cout << "GUESS Y: ";
+        std::cin >> guessY;
+
+        double distance = std::sqrt(std::pow(targetX - guessX, 2) + std::pow(targetY - guessY, 2));
+
+        if (distance == 0) {
+            std::cout << "YOU DESTROYED IT IN " << g << " GOES!" << std::endl;
+            return 0;
+        } else if (distance < 3) {
+            std::cout << "CLOSE" << std::endl;
+        } else {
+            std::cout << "NOT EVEN CLOSE" << std::endl;
+        }
+    }
+
+    std::cout << "THE ROBOTS HAVE SEEN YOU - AGGHHHH....." << std::endl;
+    return 0;
+}
 ```
 
 </details>

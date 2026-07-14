@@ -61,7 +61,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "INTERGALACTIC GAMES"
@@ -254,7 +254,7 @@ public class IntergalacticGames {
 </details>
 
 <details>
-<summary>GoLang</summary>
+<summary>Go</summary>
 
 ```go
 package main
@@ -368,64 +368,6 @@ int main() {
     cout << "YOU'RE FIRED" << endl;
 
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use std::io;
-use rand::Rng;
-use std::f64::consts::PI;
-
-fn main() {
-    let height: f64 = rand::thread_rng().gen_range(1.0..101.0); // Random height between 1 and 100
-
-    println!("INTERGALACTIC GAMES");
-    println!("YOU MUST LAUNCH A SATELLITE");
-    println!("TO A HEIGHT OF {:.0}", height);
-
-    for _ in 0..8 {
-        let angle: f64 = read_input("ENTER ANGLE (0-90): ");
-        let speed: f64 = read_input("ENTER SPEED (0-40000): ");
-
-        let correct_angle = (height / 3.0).atan() * (180.0 / PI);
-        let correct_speed = 3000.0 * (height + (1.0 / height)).sqrt();
-
-        let angle_deviation = angle - correct_angle;
-        let speed_deviation = speed - correct_speed;
-
-        if angle_deviation.abs() < 2.0 && speed_deviation.abs() < 100.0 {
-            println!("YOU'VE DONE IT");
-            println!("NCTV WINS-THANKS TO YOU");
-            return;
-        }
-
-        if angle_deviation < -2.0 {
-            println!("TOO SHALLOW");
-        } else if angle_deviation > 2.0 {
-            println!("TOO STEEP");
-        }
-
-        if speed_deviation < -100.0 {
-            println!("TOO SLOW");
-        } else if speed_deviation > 100.0 {
-            println!("TOO FAST");
-        }
-    }
-
-    println!("YOU'VE FAILED");
-    println!("YOU'RE FIRED");
-}
-
-fn read_input(prompt: &str) -> f64 {
-    println!("{}", prompt);
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-    input.trim().parse().unwrap()
 }
 ```
 

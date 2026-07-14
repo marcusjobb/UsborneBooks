@@ -69,7 +69,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX81 BASIC</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 CLS
@@ -129,7 +129,10 @@ class SupersonicBomber
             for (int i = 0; i < 5; i++)
                 populations[i] = random.Next(1, 11);
 
-            int maxIndex = Array.IndexOf(populations, Math.Max(populations));
+            int maxIndex = 0;
+            for (int i = 1; i < populations.Length; i++)
+                if (populations[i] > populations[maxIndex])
+                    maxIndex = i;
 
             Console.WriteLine("Targets:");
             for (int i = 0; i < 5; i++)
@@ -291,6 +294,58 @@ func main() {
 	}
 
 	fmt.Printf("Final Score: %d out of 10\n", score)
+}
+```
+
+</details>
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+int main() {
+    std::cout << "Supersonic Bomber" << std::endl;
+    int score = 0;
+
+    srand(time(0));
+
+    for (int round = 1; round <= 10; round++) {
+        int populations[5];
+        for (int i = 0; i < 5; i++) {
+            populations[i] = rand() % 10 + 1;
+        }
+
+        int maxIndex = 0;
+        for (int i = 1; i < 5; i++) {
+            if (populations[i] > populations[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+
+        std::cout << "Targets:" << std::endl;
+        for (int i = 0; i < 5; i++) {
+            std::cout << "Target " << (i + 1) << ": " << populations[i] << std::endl;
+        }
+
+        int choice;
+        std::cout << "Select a target (1-5): ";
+        std::cin >> choice;
+        choice--;
+
+        if (choice == maxIndex) {
+            std::cout << "Correct! Highest population hit." << std::endl;
+            score++;
+        } else {
+            std::cout << "Incorrect. You missed the highest population." << std::endl;
+        }
+    }
+
+    std::cout << "Final Score: " << score << " out of 10" << std::endl;
+    return 0;
 }
 ```
 

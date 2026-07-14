@@ -51,6 +51,14 @@ flowchart TD
 ## Code
 
 <details>
+<summary>Pages</summary>
+
+![Page 1](./img/weird-computer-games_page-0011.jpg)  
+![Page 2](./img/weird-computer-games_page-0012.jpg)
+
+</details>
+
+<details>
 <summary>ZX-81 BASIC</summary>
 
 ```basic
@@ -376,59 +384,6 @@ int main() {
         std::cout << "You reach Mount Screech triumphant!\n";
     else
         std::cout << "You tumble from your broom. Maybe next time...\n";
-}
-```
-
-</details>
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::seq::SliceRandom;
-use rand::thread_rng;
-use std::io::{self, Write};
-
-struct Obstacle {
-    prompt: &'static str,
-    safe: char,
-}
-
-fn main() {
-    let obstacles = [
-        Obstacle { prompt: "Low branch ahead!", safe: 'U' },
-        Obstacle { prompt: "Chimney stack incoming!", safe: 'D' },
-        Obstacle { prompt: "Storm gust!", safe: 'F' },
-    ];
-
-    let mut rng = thread_rng();
-    let mut lives = 3;
-    let mut segments = 6;
-    let mut input = String::new();
-
-    while lives > 0 && segments > 0 {
-        let obstacle = obstacles.choose(&mut rng).unwrap();
-        println!("\nLives: {lives} | Segments left: {segments}");
-        println!("{}", obstacle.prompt);
-        print!("React (U/D/F): ");
-        io::stdout().flush().unwrap();
-        input.clear();
-        io::stdin().read_line(&mut input).unwrap();
-        let ch = input.trim().to_uppercase().chars().next();
-
-        if ch == Some(obstacle.safe) {
-            segments -= 1;
-            println!("Elegant manoeuvre! You glide ahead.");
-        } else {
-            lives -= 1;
-            println!("Catnip screeches as you wobble!");
-        }
-    }
-
-    if segments == 0 {
-        println!("You land on Mount Screech to great acclaim!");
-    } else {
-        println!("You tumble from the broom. Better luck next Walpurgis Night.");
-    }
 }
 ```
 

@@ -44,6 +44,45 @@ graph TD
 ## Code
 
 <details>
+<summary>Pages</summary>
+
+![Page 1](./img/Usborne-Computer_Battlegames04.png)  
+![Page 2](./img/Usborne-Computer_Battlegames05.png)
+
+</details>
+
+<details>
+<summary>ZX-81 BASIC</summary>
+
+```basic
+10 PRINT "ROBOT MISSILE"
+20 PRINT
+30 PRINT "TYPE THE CORRECT CODE"
+40 PRINT "LETTER (A-Z) TO"
+50 PRINT "DEFUSE THE MISSILE."
+60 PRINT "YOU HAVE 4 CHANCES"
+70 PRINT
+80 LET C$=CHR$(37+INT(RND*26+1))
+90 FOR G=1 TO 4
+100 INPUT G$
+110 IF G$=C$ THEN GOTO 210
+120 IF G$<C$ THEN PRINT "LATER";
+130 IF G$>C$ THEN PRINT "EARLIER";
+140 PRINT " THAN ";G$
+150 NEXT G
+160 PRINT
+170 PRINT "BOOOOOOOOMMM..."
+180 PRINT "YOU BLEW IT."
+190 PRINT "THE CORRECT CODE WAS";C$
+200 STOP
+210 PRINT "TICK...FZZZZ...CLICK..."
+220 PRINT "YOU DID IT"
+230 STOP
+```
+
+</details>
+
+<details>
 <summary>C#</summary>
 
 ```csharp
@@ -271,52 +310,6 @@ int main() {
 
     cout << "Boom... You blew it! The correct code was " << secretCode << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io;
-
-fn main() {
-    println!("Robot Missile\n");
-    println!("Type the correct code letter (A-Z) to defuse the missile.");
-    println!("You have 4 chances.\n");
-
-    let secret_code = (rand::thread_rng().gen_range(0..26) + 65) as u8 as char;
-
-    for _ in 0..4 {
-        println!("Enter your guess: ");
-
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        let input = input.trim().to_uppercase();
-
-        if input.len() != 1 || !input.chars().all(|c| c.is_ascii_alphabetic()) {
-            println!("Invalid input. Please enter a single letter A-Z.");
-            continue;
-        }
-
-        let guess = input.chars().next().unwrap();
-
-        if guess == secret_code {
-            println!("Tick... Fzzzz... Click... You did it!");
-            return;
-        }
-
-        if guess < secret_code {
-            println!("Later than {}", guess);
-        } else {
-            println!("Earlier than {}", guess);
-        }
-    }
-
-    println!("Boom... You blew it! The correct code was {}", secret_code);
 }
 ```
 

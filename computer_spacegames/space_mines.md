@@ -77,7 +77,7 @@ graph TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 LET L=INT(RND*3+5)
@@ -1083,116 +1083,6 @@ int main() {
     }
 
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io;
-
-fn main() {
-    // Initialize variables
-    let mut rng = rand::thread_rng();
-    let mut mines = rng.gen_range(3..=7); // 3 to 7 mines
-    let mut population = rng.gen_range(40..=80); // 40 to 80 people
-    let mut money = rng.gen_range(50..=60); // 50 to 60 money
-    let mut ore_storage = 0; // Stored ore
-    let mut satisfaction = 1.0; // Satisfaction factor
-    let mut year = 1;
-
-    while year <= 10 {
-        println!("\nYear {}", year);
-        println!("Population: {}, Mines: {}, Money: ${}", population, mines, money);
-        println!("Satisfaction Factor: {:.1}", satisfaction);
-
-        // Ore production
-        let ore_production = rng.gen_range(40..=120) * mines;
-        ore_storage += ore_production;
-        println!(
-            "Ore Produced: {} tons, Total Ore: {} tons",
-            ore_production, ore_storage
-        );
-
-        // Sell ore
-        let ore_price = rng.gen_range(2000..=4000);
-        println!("Ore Selling Price: ${}", ore_price);
-        println!("How much ore to sell?");
-        let ore_to_sell = get_input();
-        if ore_to_sell > ore_storage {
-            println!("Not enough ore. Try again.");
-            continue;
-        }
-        ore_storage -= ore_to_sell;
-        money += ore_to_sell * ore_price;
-
-        // Sell mines
-        println!("How many mines to sell?");
-        let mines_to_sell = get_input();
-        if mines_to_sell > mines {
-            println!("Not enough mines. Try again.");
-            continue;
-        }
-        mines -= mines_to_sell;
-        money += mines_to_sell * ore_price;
-
-        // Buy food
-        println!("How much money to spend on food?");
-        let food_budget = get_input();
-        if food_budget > money {
-            println!("Not enough money. Try again.");
-            continue;
-        }
-        money -= food_budget;
-        satisfaction += if food_budget as f64 / population as f64 > 120.0 {
-            0.1
-        } else {
-            -0.2
-        };
-
-        // Buy mines
-        let mine_cost = rng.gen_range(2000..=4000);
-        println!("How many mines to buy?");
-        let mines_to_buy = get_input();
-        if mines_to_buy * mine_cost > money {
-            println!("Not enough money. Try again.");
-            continue;
-        }
-        mines += mines_to_buy;
-        money -= mines_to_buy * mine_cost;
-
-        // Check satisfaction
-        if satisfaction < 0.6 {
-            println!("The people revolted. Game Over.");
-            break;
-        }
-
-        // Random events
-        if rng.gen_bool(0.01) {
-            println!("Radioactive leak! Half the population died.");
-            population /= 2;
-        }
-
-        // Increment year
-        year += 1;
-    }
-
-    if year > 10 {
-        println!("You survived your term of office. Congratulations!");
-    }
-}
-
-// Helper function to get user input
-fn get_input() -> i32 {
-    let mut input = String::new();
-    io::stdin()
-        .read_line(&mut input)
-        .expect("Failed to read input");
-    input.trim().parse::<i32>().expect("Please enter a valid number")
 }
 ```
 

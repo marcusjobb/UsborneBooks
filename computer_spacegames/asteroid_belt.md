@@ -60,7 +60,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "ASTEROID BELT"
@@ -243,7 +243,7 @@ public class AsteroidBelt {
 </details>
 
 <details>
-<summary>GoLang</summary>
+<summary>Go</summary>
 
 ```go
 package main
@@ -349,56 +349,6 @@ int main() {
 
     cout << "You hit " << score << " out of 10" << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use std::io;
-use rand::Rng;
-
-fn main() {
-    let mut score = 0;
-    let mut rng = rand::thread_rng();
-
-    println!("Asteroid Belt");
-
-    for _ in 0..10 {
-        println!("");
-        let position: usize = rng.gen_range(1..=18);
-        let rows_down: usize = rng.gen_range(1..=12);
-        let num_stars: usize = rng.gen_range(1..=9);
-
-        for _ in 0..rows_down {
-            println!("");
-        }
-
-        print!("{}", " ".repeat(position));
-        println!("{}", "*".repeat(num_stars));
-
-        println!("Enter number of stars: ");
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-
-        if let Ok(guess) = input.trim().parse::<usize>() {
-            if guess == num_stars {
-                println!("You destroyed it!");
-                score += 1;
-            } else {
-                println!("Crashed into asteroid");
-                break;
-            }
-        } else {
-            println!("Invalid input. Crashed into asteroid.");
-            break;
-        }
-    }
-
-    println!("You hit {} out of 10", score);
 }
 ```
 

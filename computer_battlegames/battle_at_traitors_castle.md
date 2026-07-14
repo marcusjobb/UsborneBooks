@@ -67,7 +67,7 @@ graph TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "TRAITOR'S CASTLE"
@@ -356,57 +356,6 @@ int main() {
 
     cout << "YOU HIT " << score << " OUT OF 10" << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io;
-
-fn main() {
-    println!("TRAITOR'S CASTLE");
-    let mut score = 0;
-
-    for _ in 0..10 {
-        let mut row = String::new();
-        let target_position = rand::thread_rng().gen_range(1..=9);
-
-        for position in 1..=9 {
-            if position == target_position {
-                row.push('0');
-            } else {
-                row.push('.');
-            }
-        }
-
-        println!("{}", row);
-
-        let mut hit = false;
-        for _ in 0..12 {
-            let mut input = String::new();
-            io::stdin().read_line(&mut input).unwrap();
-
-            if let Ok(user_guess) = input.trim().parse::<u32>() {
-                if user_guess == target_position {
-                    println!("GOOD SHOT");
-                    score += 1;
-                    hit = true;
-                    break;
-                }
-            }
-        }
-
-        if !hit {
-            println!("MISSED");
-        }
-    }
-
-    println!("YOU HIT {} OUT OF 10", score);
 }
 ```
 

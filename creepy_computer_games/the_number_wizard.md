@@ -79,7 +79,17 @@ flowchart TD
 ## Code
 
 <details>
-<summary>ZX-81</summary>
+<summary>Pages</summary>
+
+![Page 1](./img/Usborne-Creepy_Computer_Games04.png)  
+![Page 2](./img/Usborne-Creepy_Computer_Games05.png)
+
+</details>
+
+---
+
+<details>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "THE NUMBER WIZARD"
@@ -254,6 +264,274 @@ def number_wizard():
 
 if __name__ == "__main__":
     number_wizard()
+```
+
+</details>
+
+---
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Random;
+import java.util.Scanner;
+
+public class NumberWizard {
+    public static void main(String[] args) {
+        int[] numbers = new int[10];
+        for (int i = 0; i < numbers.length; i++) numbers[i] = 1;
+
+        int turns = 8;
+        Random rnd = new Random();
+        Scanner scanner = new Scanner(System.in);
+
+        while (turns > 0 && !allUsed(numbers)) {
+            System.out.print("\nNumbers left:");
+            for (int i = 1; i <= 9; i++)
+                if (numbers[i] > 0) System.out.print(" " + i);
+            System.out.println();
+            System.out.println("Turns left: " + turns);
+
+            int dice1 = rnd.nextInt(6) + 1;
+            int dice2 = rnd.nextInt(6) + 1;
+            System.out.println("The dice throw is " + dice1 + " + " + dice2 + " = " + (dice1 + dice2));
+
+            if (dice1 == dice2) {
+                turns += 2;
+                System.out.println("Double! You get 2 extra turns!");
+            }
+
+            System.out.print("Enter two numbers separated by space: ");
+            if (!scanner.hasNextLine()) break;
+            String line = scanner.nextLine();
+            String[] parts = line.trim().split("\\s+");
+            if (parts.length < 2) {
+                System.out.println("Invalid input.");
+                continue;
+            }
+
+            int m, n;
+            try {
+                m = Integer.parseInt(parts[0]);
+                n = Integer.parseInt(parts[1]);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input.");
+                continue;
+            }
+
+            if (m < 0 || n < 0 || m > 9 || n > 9) {
+                System.out.println("Numbers must be between 0 and 9.");
+                continue;
+            }
+            if (numbers[m] == 0 || numbers[n] == 0) {
+                System.out.println("One of those has already been used!");
+                continue;
+            }
+            if (m + n != dice1 + dice2) {
+                System.out.println("They don't add up! Try again.");
+                continue;
+            }
+
+            numbers[m] = 0;
+            numbers[n] = 0;
+            turns--;
+        }
+
+        if (allUsed(numbers)) {
+            System.out.println("\nTHE WIZARD WON!");
+        } else {
+            System.out.println("\nYOU WON!");
+        }
+    }
+
+    static boolean allUsed(int[] arr) {
+        for (int i = 1; i <= 9; i++)
+            if (arr[i] != 0) return false;
+        return true;
+    }
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>Go</summary>
+
+```go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math/rand"
+	"os"
+	"strconv"
+	"strings"
+	"time"
+)
+
+func allUsed(numbers [10]int) bool {
+	for i := 1; i <= 9; i++ {
+		if numbers[i] != 0 {
+			return false
+		}
+	}
+	return true
+}
+
+func main() {
+	var numbers [10]int
+	for i := range numbers {
+		numbers[i] = 1
+	}
+
+	turns := 8
+	rand.Seed(time.Now().UnixNano())
+	reader := bufio.NewReader(os.Stdin)
+
+	for turns > 0 && !allUsed(numbers) {
+		fmt.Print("\nNumbers left:")
+		for i := 1; i <= 9; i++ {
+			if numbers[i] > 0 {
+				fmt.Printf(" %d", i)
+			}
+		}
+		fmt.Println()
+		fmt.Printf("Turns left: %d\n", turns)
+
+		dice1 := rand.Intn(6) + 1
+		dice2 := rand.Intn(6) + 1
+		fmt.Printf("The dice throw is %d + %d = %d\n", dice1, dice2, dice1+dice2)
+
+		if dice1 == dice2 {
+			turns += 2
+			fmt.Println("Double! You get 2 extra turns!")
+		}
+
+		fmt.Print("Enter two numbers separated by space: ")
+		line, err := reader.ReadString('\n')
+		parts := strings.Fields(line)
+		if len(parts) < 2 {
+			if err != nil {
+				break
+			}
+			fmt.Println("Invalid input.")
+			continue
+		}
+
+		m, err1 := strconv.Atoi(parts[0])
+		n, err2 := strconv.Atoi(parts[1])
+		if err1 != nil || err2 != nil {
+			fmt.Println("Invalid input.")
+			continue
+		}
+
+		if m < 0 || n < 0 || m > 9 || n > 9 {
+			fmt.Println("Numbers must be between 0 and 9.")
+			continue
+		}
+		if numbers[m] == 0 || numbers[n] == 0 {
+			fmt.Println("One of those has already been used!")
+			continue
+		}
+		if m+n != dice1+dice2 {
+			fmt.Println("They don't add up! Try again.")
+			continue
+		}
+
+		numbers[m] = 0
+		numbers[n] = 0
+		turns--
+	}
+
+	if allUsed(numbers) {
+		fmt.Println("\nTHE WIZARD WON!")
+	} else {
+		fmt.Println("\nYOU WON!")
+	}
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+bool allUsed(int numbers[10]) {
+    for (int i = 1; i <= 9; i++)
+        if (numbers[i] != 0) return false;
+    return true;
+}
+
+int main() {
+    int numbers[10];
+    for (int i = 0; i < 10; i++) numbers[i] = 1;
+
+    int turns = 8;
+    srand(time(0));
+
+    while (turns > 0 && !allUsed(numbers)) {
+        std::cout << "\nNumbers left:";
+        for (int i = 1; i <= 9; i++)
+            if (numbers[i] > 0) std::cout << " " << i;
+        std::cout << std::endl;
+        std::cout << "Turns left: " << turns << std::endl;
+
+        int dice1 = rand() % 6 + 1;
+        int dice2 = rand() % 6 + 1;
+        std::cout << "The dice throw is " << dice1 << " + " << dice2 << " = " << (dice1 + dice2) << std::endl;
+
+        if (dice1 == dice2) {
+            turns += 2;
+            std::cout << "Double! You get 2 extra turns!" << std::endl;
+        }
+
+        std::cout << "Enter two numbers separated by space: ";
+        int m, n;
+        if (!(std::cin >> m >> n)) {
+            if (std::cin.eof()) break;
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            std::cout << "Invalid input." << std::endl;
+            continue;
+        }
+
+        if (m < 0 || n < 0 || m > 9 || n > 9) {
+            std::cout << "Numbers must be between 0 and 9." << std::endl;
+            continue;
+        }
+        if (numbers[m] == 0 || numbers[n] == 0) {
+            std::cout << "One of those has already been used!" << std::endl;
+            continue;
+        }
+        if (m + n != dice1 + dice2) {
+            std::cout << "They don't add up! Try again." << std::endl;
+            continue;
+        }
+
+        numbers[m] = 0;
+        numbers[n] = 0;
+        turns--;
+    }
+
+    if (allUsed(numbers)) {
+        std::cout << "\nTHE WIZARD WON!" << std::endl;
+    } else {
+        std::cout << "\nYOU WON!" << std::endl;
+    }
+
+    return 0;
+}
 ```
 
 </details>

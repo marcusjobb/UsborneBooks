@@ -57,6 +57,13 @@ flowchart TD
 ## Code
 
 <details>
+<summary>Pages</summary>
+
+![Page 1](./img/weird-computer-games_page-0004.jpg)
+
+</details>
+
+<details>
 <summary>ZX-81 BASIC</summary>
 
 ```basic
@@ -443,68 +450,6 @@ int main() {
         }
 
         hour++;
-    }
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io::{self, Write};
-
-const ROOMS_PER_FLOOR: i32 = 5;
-const MAX_PULSE: i32 = 150;
-
-fn main() {
-    let mut rng = rand::thread_rng();
-    let mut room = 0;
-    let mut pulse = 50;
-    let mut hour = rng.gen_range(9..=18);
-
-    loop {
-        let floor = room / ROOMS_PER_FLOOR;
-        let room_number = room % ROOMS_PER_FLOOR + 1;
-
-        println!("\nFloor {floor}, Room {room_number}");
-        println!("Time: {hour}:00 pm");
-        println!("Pulse: {pulse}");
-        print!("(G)o or (R)est? ");
-        io::stdout().flush().unwrap();
-
-        let mut line = String::new();
-        io::stdin().read_line(&mut line).unwrap();
-        let choice = line.trim().to_uppercase();
-
-        if choice == "G" {
-            room += 1;
-            pulse += rng.gen_range(1..=5) + floor;
-        } else if choice == "R" {
-            room = (room - 1).max(0);
-            pulse = (pulse - 10).max(50);
-            println!("You take a deep breath.");
-        } else {
-            println!("Choose G or R.");
-            continue;
-        }
-
-        if room_number >= ROOMS_PER_FLOOR {
-            println!("You reach the treasure chamber at the top!");
-            break;
-        }
-        if hour >= 12 {
-            println!("Midnight strikes! Terror drives you from the tower.");
-            break;
-        }
-        if pulse >= MAX_PULSE {
-            println!("Your heart explodes—you leap from the window!");
-            break;
-        }
-
-        hour += 1;
     }
 }
 ```

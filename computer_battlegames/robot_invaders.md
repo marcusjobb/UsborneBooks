@@ -64,7 +64,7 @@ graph TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "ROBOT INVADERS"
@@ -321,51 +321,6 @@ int main() {
 
     cout << "You scored " << score << " / 25" << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::{thread, time, io};
-
-fn main() {
-    println!("Robot Invaders");
-    let mut score = 0;
-    let mut rng = rand::thread_rng();
-
-    for _ in 0..25 {
-        let delay = rng.gen_range(200..500);
-        thread::sleep(time::Duration::from_millis(delay));
-
-        let x = rng.gen_range(0..20);
-        let y = rng.gen_range(0..15);
-        let robot_symbol = (rng.gen_range(33..87) as u8) as char;
-
-        print!("\x1B[2J\x1B[H"); // Clear screen
-        for _ in 0..y {
-            println!();
-        }
-        println!("{: >width$}", robot_symbol, width = x + 1);
-
-        println!("Type the character: ");
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        let input = input.trim();
-
-        if input == robot_symbol.to_string() {
-            println!("A hit!");
-            score += 1;
-        } else {
-            println!("Missed");
-        }
-    }
-
-    println!("You scored {} / 25", score);
 }
 ```
 

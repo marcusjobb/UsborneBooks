@@ -69,6 +69,14 @@ flowchart TD
 ## Code
 
 <details>
+<summary>Pages</summary>
+
+![Page 1](./img/weird-computer-games_page-0007.jpg)  
+![Page 2](./img/weird-computer-games_page-0008.jpg)
+
+</details>
+
+<details>
 <summary>ZX-81 BASIC</summary>
 
 ```basic
@@ -495,91 +503,6 @@ int main() {
 
     std::cout << "Phew! Twelve rounds later the monster slinks away.\n";
     return 0;
-}
-```
-
-</details>
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::f64;
-use std::io::{self, Write};
-
-const ROUNDS_TO_WIN: i32 = 12;
-const MAX_PANICS: i32 = 3;
-
-fn main() {
-    let mut rng = rand::thread_rng();
-    let mut panics = 0;
-    let mut round = 1;
-
-    loop {
-        if round > ROUNDS_TO_WIN {
-            println!("Phew! The monster finally retreats.");
-            break;
-        }
-
-        let size = rng.gen_range(8..=15);
-        let distance = rng.gen_range(3..=8);
-        println!("\nRound {round}");
-        println!("Size of monster: {size}");
-        println!("Distance away: {distance}");
-        print!("Muscular effort? (or P to panic): ");
-        io::stdout().flush().unwrap();
-
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        let cmd = input.trim().to_uppercase();
-
-        if cmd == "P" {
-            panics += 1;
-            if panics > MAX_PANICS {
-                println!("You black out! The monster crushes you.");
-                break;
-            }
-
-            let heartbeat = rng.gen_range(10..=40);
-            let oxygen = rng.gen_range(5..=12);
-            println!("PANIC ON!!");
-            println!("Heartbeat increase: {heartbeat}");
-            println!("Oxygen supply: {oxygen}");
-            print!("Amount of adrenalin? ");
-            io::stdout().flush().unwrap();
-
-            let mut ans_line = String::new();
-            io::stdin().read_line(&mut ans_line).unwrap();
-            let parsed = ans_line.trim().parse::<f64>();
-            match parsed {
-                Ok(value) if (value - heartbeat as f64 / oxygen as f64).abs() <= 0.01 => {
-                    // round stays the same
-                }
-                _ => {
-                    println!("Wrong dose! The monster crushes you.");
-                    break;
-                }
-            }
-
-            continue;
-        }
-
-        let effort = match cmd.parse::<i32>() {
-            Ok(val) => val,
-            Err(_) => {
-                println!("You hesitate and the monster flattens you!");
-                break;
-            }
-        };
-
-        if effort != size * distance {
-            println!("Wrong calculation! You are crushed.");
-            break;
-        }
-
-        println!("You hold the monster back!");
-        round += 1;
-    }
 }
 ```
 

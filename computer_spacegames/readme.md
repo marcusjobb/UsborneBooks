@@ -38,7 +38,7 @@ Each game from the book is presented in its own Markdown file. These files inclu
 - **The story** behind the game.
 - **Pseudocode** to outline the game's logic.
 - **Flowchart** to visualize the game's structure.
-- **Code translations** in modern languages (C#, Python, Java, Go, C++, and Rust).
+- **Code translations** in modern languages (C#, Python, Java, Go, and C++).
 - **Beginner-friendly comments** to help new coders understand key concepts.
 - **Challenges** to make the games harder or expand their functionality.
 

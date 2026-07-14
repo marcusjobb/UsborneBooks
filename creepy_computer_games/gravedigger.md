@@ -79,7 +79,17 @@ flowchart TD
 ## Code
 
 <details>
-<summary>ZX-81</summary>
+<summary>Pages</summary>
+
+![Page 1](./img/Usborne-Creepy_Computer_Games10.png)  
+![Page 2](./img/Usborne-Creepy_Computer_Games11.png)
+
+</details>
+
+---
+
+<details>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 CLS
@@ -451,6 +461,476 @@ def gravedigger():
 
 if __name__ == "__main__":
     gravedigger()
+```
+
+</details>
+
+---
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Random;
+import java.util.Scanner;
+
+public class Gravedigger {
+    static final int ROWS = 10, COLS = 20;
+    static char[][] grid = new char[ROWS][COLS];
+    static Random rnd = new Random();
+    static int playerRow = 2, playerCol = 2;
+    static int holesLeft = 5;
+    static int turns = 0;
+    static int[][] skeletons = {{4, 4}, {3, 18}, {7, 15}};
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        initGrid();
+        placeSkeletons();
+        play();
+    }
+
+    static void initGrid() {
+        for (int r = 0; r < ROWS; r++)
+            for (int c = 0; c < COLS; c++)
+                grid[r][c] = ' ';
+
+        for (int r = 0; r < ROWS; r++) {
+            grid[r][0] = ':';
+            grid[r][COLS - 1] = ':';
+        }
+        for (int c = 0; c < COLS; c++) {
+            grid[0][c] = ':';
+            grid[ROWS - 1][c] = ':';
+        }
+
+        for (int i = 0; i < 25; i++)
+            grid[1 + rnd.nextInt(ROWS - 2)][1 + rnd.nextInt(COLS - 2)] = '+';
+        grid[ROWS - 2][COLS - 1] = ' ';
+    }
+
+    static void placeSkeletons() {
+        for (int[] s : skeletons)
+            grid[s[0]][s[1]] = 'X';
+        grid[playerRow][playerCol] = '*';
+    }
+
+    static void play() {
+        while (true) {
+            draw();
+            System.out.println("\nHoles left: " + holesLeft);
+            System.out.print("Move (N,S,E,W): ");
+            if (!scanner.hasNextLine()) return;
+            String moveLine = scanner.nextLine().trim().toUpperCase();
+            if (moveLine.isEmpty()) continue;
+            char move = moveLine.charAt(0);
+
+            int newR = playerRow, newC = playerCol;
+            if (move == 'N') newR--;
+            else if (move == 'S') newR++;
+            else if (move == 'W') newC--;
+            else if (move == 'E') newC++;
+            else continue;
+
+            if (grid[newR][newC] == ':' || grid[newR][newC] == '+') {
+                System.out.println("\nThat way's blocked!");
+                continue;
+            }
+            if (grid[newR][newC] == '0') {
+                System.out.println("\nYou've fallen into your own hole!");
+                return;
+            }
+            if (grid[newR][newC] == 'X') {
+                System.out.println("\nURK! You've been scared to death by a skeleton!");
+                return;
+            }
+
+            grid[playerRow][playerCol] = ' ';
+            playerRow = newR;
+            playerCol = newC;
+            grid[playerRow][playerCol] = '*';
+
+            if (playerCol == COLS - 1) {
+                System.out.println("\nYou're free! Congratulations!");
+                return;
+            }
+
+            if (holesLeft > 0) {
+                System.out.print("\nDo you want to dig a hole? (Y/N): ");
+                if (!scanner.hasNextLine()) return;
+                String dig = scanner.nextLine().trim().toUpperCase();
+                if (dig.equals("Y")) {
+                    grid[playerRow][playerCol] = '0';
+                    holesLeft--;
+                }
+            }
+
+            if (!moveSkeletons()) return;
+            turns++;
+
+            if (turns > 60) {
+                System.out.println("\nThe clock's struck midnight! AGHHHHH!");
+                return;
+            }
+        }
+    }
+
+    static void draw() {
+        for (int r = 0; r < ROWS; r++) {
+            StringBuilder sb = new StringBuilder();
+            for (int c = 0; c < COLS; c++)
+                sb.append(grid[r][c]);
+            System.out.println(sb);
+        }
+    }
+
+    static boolean moveSkeletons() {
+        for (int[] s : skeletons) {
+            int r = s[0], c = s[1];
+            grid[r][c] = ' ';
+            int dr = Integer.signum(playerRow - r);
+            int dc = Integer.signum(playerCol - c);
+            int newR = r + dr, newC = c + dc;
+
+            if (grid[newR][newC] == '*') {
+                System.out.println("\nA skeleton caught you!");
+                return false;
+            }
+            if (grid[newR][newC] == '0') {
+                continue;
+            }
+            grid[newR][newC] = 'X';
+            s[0] = newR;
+            s[1] = newC;
+        }
+        return true;
+    }
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>Go</summary>
+
+```go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math/rand"
+	"os"
+	"strings"
+	"time"
+)
+
+const rows, cols = 10, 20
+
+var grid [rows][cols]byte
+var playerRow, playerCol = 2, 2
+var holesLeft = 5
+var turns = 0
+var skeletons = [3][2]int{{4, 4}, {3, 18}, {7, 15}}
+
+func sign(x int) int {
+	if x > 0 {
+		return 1
+	}
+	if x < 0 {
+		return -1
+	}
+	return 0
+}
+
+func initGrid() {
+	for r := 0; r < rows; r++ {
+		for c := 0; c < cols; c++ {
+			grid[r][c] = ' '
+		}
+	}
+	for r := 0; r < rows; r++ {
+		grid[r][0] = ':'
+		grid[r][cols-1] = ':'
+	}
+	for c := 0; c < cols; c++ {
+		grid[0][c] = ':'
+		grid[rows-1][c] = ':'
+	}
+	for i := 0; i < 25; i++ {
+		grid[1+rand.Intn(rows-2)][1+rand.Intn(cols-2)] = '+'
+	}
+	grid[rows-2][cols-1] = ' '
+}
+
+func placeSkeletons() {
+	for _, s := range skeletons {
+		grid[s[0]][s[1]] = 'X'
+	}
+	grid[playerRow][playerCol] = '*'
+}
+
+func draw() {
+	for r := 0; r < rows; r++ {
+		fmt.Println(string(grid[r][:]))
+	}
+}
+
+func moveSkeletons() bool {
+	for i := range skeletons {
+		r, c := skeletons[i][0], skeletons[i][1]
+		grid[r][c] = ' '
+		dr := sign(playerRow - r)
+		dc := sign(playerCol - c)
+		newR, newC := r+dr, c+dc
+
+		if grid[newR][newC] == '*' {
+			fmt.Println("\nA skeleton caught you!")
+			return false
+		}
+		if grid[newR][newC] == '0' {
+			continue
+		}
+		grid[newR][newC] = 'X'
+		skeletons[i][0] = newR
+		skeletons[i][1] = newC
+	}
+	return true
+}
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	initGrid()
+	placeSkeletons()
+	reader := bufio.NewReader(os.Stdin)
+
+	for {
+		draw()
+		fmt.Printf("\nHoles left: %d\n", holesLeft)
+		fmt.Print("Move (N,S,E,W): ")
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			return
+		}
+		moveLine := strings.ToUpper(strings.TrimSpace(line))
+		if moveLine == "" {
+			continue
+		}
+		move := moveLine[0]
+
+		newR, newC := playerRow, playerCol
+		switch move {
+		case 'N':
+			newR--
+		case 'S':
+			newR++
+		case 'W':
+			newC--
+		case 'E':
+			newC++
+		default:
+			continue
+		}
+
+		if grid[newR][newC] == ':' || grid[newR][newC] == '+' {
+			fmt.Println("\nThat way's blocked!")
+			continue
+		}
+		if grid[newR][newC] == '0' {
+			fmt.Println("\nYou've fallen into your own hole!")
+			return
+		}
+		if grid[newR][newC] == 'X' {
+			fmt.Println("\nURK! You've been scared to death by a skeleton!")
+			return
+		}
+
+		grid[playerRow][playerCol] = ' '
+		playerRow, playerCol = newR, newC
+		grid[playerRow][playerCol] = '*'
+
+		if playerCol == cols-1 {
+			fmt.Println("\nYou're free! Congratulations!")
+			return
+		}
+
+		if holesLeft > 0 {
+			fmt.Print("\nDo you want to dig a hole? (Y/N): ")
+			line, err = reader.ReadString('\n')
+			if err != nil {
+				return
+			}
+			dig := strings.ToUpper(strings.TrimSpace(line))
+			if dig == "Y" {
+				grid[playerRow][playerCol] = '0'
+				holesLeft--
+			}
+		}
+
+		if !moveSkeletons() {
+			return
+		}
+		turns++
+
+		if turns > 60 {
+			fmt.Println("\nThe clock's struck midnight! AGHHHHH!")
+			return
+		}
+	}
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
+const int ROWS = 10, COLS = 20;
+char grid[ROWS][COLS];
+int playerRow = 2, playerCol = 2;
+int holesLeft = 5;
+int turns = 0;
+int skeletons[3][2] = {{4, 4}, {3, 18}, {7, 15}};
+
+int sign(int x) {
+    if (x > 0) return 1;
+    if (x < 0) return -1;
+    return 0;
+}
+
+void initGrid() {
+    for (int r = 0; r < ROWS; r++)
+        for (int c = 0; c < COLS; c++)
+            grid[r][c] = ' ';
+
+    for (int r = 0; r < ROWS; r++) {
+        grid[r][0] = ':';
+        grid[r][COLS - 1] = ':';
+    }
+    for (int c = 0; c < COLS; c++) {
+        grid[0][c] = ':';
+        grid[ROWS - 1][c] = ':';
+    }
+
+    for (int i = 0; i < 25; i++)
+        grid[1 + rand() % (ROWS - 2)][1 + rand() % (COLS - 2)] = '+';
+    grid[ROWS - 2][COLS - 1] = ' ';
+}
+
+void placeSkeletons() {
+    for (auto &s : skeletons)
+        grid[s[0]][s[1]] = 'X';
+    grid[playerRow][playerCol] = '*';
+}
+
+void draw() {
+    for (int r = 0; r < ROWS; r++) {
+        for (int c = 0; c < COLS; c++)
+            std::cout << grid[r][c];
+        std::cout << std::endl;
+    }
+}
+
+bool moveSkeletons() {
+    for (auto &s : skeletons) {
+        int r = s[0], c = s[1];
+        grid[r][c] = ' ';
+        int dr = sign(playerRow - r);
+        int dc = sign(playerCol - c);
+        int newR = r + dr, newC = c + dc;
+
+        if (grid[newR][newC] == '*') {
+            std::cout << "\nA skeleton caught you!" << std::endl;
+            return false;
+        }
+        if (grid[newR][newC] == '0') {
+            continue;
+        }
+        grid[newR][newC] = 'X';
+        s[0] = newR;
+        s[1] = newC;
+    }
+    return true;
+}
+
+int main() {
+    srand(time(0));
+    initGrid();
+    placeSkeletons();
+
+    while (true) {
+        draw();
+        std::cout << "\nHoles left: " << holesLeft << std::endl;
+        std::cout << "Move (N,S,E,W): ";
+        std::string line;
+        if (!std::getline(std::cin, line)) return 0;
+        std::transform(line.begin(), line.end(), line.begin(), ::toupper);
+        if (line.empty()) continue;
+        char move = line[0];
+
+        int newR = playerRow, newC = playerCol;
+        if (move == 'N') newR--;
+        else if (move == 'S') newR++;
+        else if (move == 'W') newC--;
+        else if (move == 'E') newC++;
+        else continue;
+
+        if (grid[newR][newC] == ':' || grid[newR][newC] == '+') {
+            std::cout << "\nThat way's blocked!" << std::endl;
+            continue;
+        }
+        if (grid[newR][newC] == '0') {
+            std::cout << "\nYou've fallen into your own hole!" << std::endl;
+            return 0;
+        }
+        if (grid[newR][newC] == 'X') {
+            std::cout << "\nURK! You've been scared to death by a skeleton!" << std::endl;
+            return 0;
+        }
+
+        grid[playerRow][playerCol] = ' ';
+        playerRow = newR;
+        playerCol = newC;
+        grid[playerRow][playerCol] = '*';
+
+        if (playerCol == COLS - 1) {
+            std::cout << "\nYou're free! Congratulations!" << std::endl;
+            return 0;
+        }
+
+        if (holesLeft > 0) {
+            std::cout << "\nDo you want to dig a hole? (Y/N): ";
+            std::string dig;
+            if (!std::getline(std::cin, dig)) return 0;
+            std::transform(dig.begin(), dig.end(), dig.begin(), ::toupper);
+            if (dig == "Y") {
+                grid[playerRow][playerCol] = '0';
+                holesLeft--;
+            }
+        }
+
+        if (!moveSkeletons()) return 0;
+        turns++;
+
+        if (turns > 60) {
+            std::cout << "\nThe clock's struck midnight! AGHHHHH!" << std::endl;
+            return 0;
+        }
+    }
+
+    return 0;
+}
 ```
 
 </details>

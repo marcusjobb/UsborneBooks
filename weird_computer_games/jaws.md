@@ -56,6 +56,14 @@ flowchart TD
 ## Code
 
 <details>
+<summary>Pages</summary>
+
+![Page 1](./img/weird-computer-games_page-0009.jpg)  
+![Page 2](./img/weird-computer-games_page-0010.jpg)
+
+</details>
+
+<details>
 <summary>ZX-81 BASIC</summary>
 
 ```basic
@@ -757,124 +765,6 @@ int main() {
         }
     }
     return 0;
-}
-```
-
-</details>
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::seq::SliceRandom;
-use rand::Rng;
-use std::collections::HashMap;
-use std::io::{self, Write};
-
-const WIDTH: i32 = 13;
-const HEIGHT: i32 = 9;
-const KEYS: [char; 4] = ['A', 'M', 'Z', 'N'];
-const DIRECTIONS: [(i32, i32); 4] = [(0, -1), (1, 0), (0, 1), (-1, 0)];
-
-type Point = (i32, i32);
-
-default fn inside(p: Point) -> bool {
-    p.0 >= 0 && p.0 < WIDTH && p.1 >= 0 && p.1 < HEIGHT
-}
-
-fn spawn(rng: &mut impl Rng, jaws: Point, hunter: Point) -> Point {
-    loop {
-        let candidate = (rng.gen_range(0..WIDTH), rng.gen_range(0..HEIGHT));
-        if candidate != jaws && candidate != hunter {
-            return candidate;
-        }
-    }
-}
-
-fn step_toward(from: Point, to: Point) -> Point {
-    let dx = (to.0 > from.0) as i32 - (to.0 < from.0) as i32;
-    let dy = (to.1 > from.1) as i32 - (to.1 < from.1) as i32;
-    let candidate = (from.0 + dx, from.1 + dy);
-    if inside(candidate) { candidate } else { from }
-}
-
-fn draw(jaws: Point, hunter: Point, person: Point, score: i32,
-        mapping: &HashMap<char, (i32, i32)>) {
-    print!("\x1B[H\x1B[2J");
-    println!("Jaws Hunt! Score: {score}");
-    println!("Controls (shuffle after each meal):");
-    for key in KEYS {
-        let dir = mapping[&key];
-        let name = match dir {
-            (0, -1) => "up",
-            (1, 0)  => "right",
-            (0, 1)  => "down",
-            _       => "left",
-        };
-        println!(" {key} -> {name}");
-    }
-    println!();
-    for y in 0..HEIGHT {
-        let mut row = String::with_capacity(WIDTH as usize);
-        for x in 0..WIDTH {
-            if jaws == (x, y) { row.push('J'); }
-            else if hunter == (x, y) { row.push('H'); }
-            else if person == (x, y) { row.push('P'); }
-            else { row.push(' '); }
-        }
-        println!("{row}");
-    }
-}
-
-fn main() {
-    let mut rng = rand::thread_rng();
-    let mut dirs = DIRECTIONS.to_vec();
-    dirs.shuffle(&mut rng);
-    let mut mapping: HashMap<char, (i32, i32)> = KEYS
-        .iter()
-        .zip(dirs.iter())
-        .map(|(&k, &d)| (k, d))
-        .collect();
-
-    let mut jaws = (WIDTH / 2, HEIGHT / 2);
-    let mut hunter = (1, 1);
-    let mut person = spawn(&mut rng, jaws, hunter);
-    let mut score = 0;
-
-    loop {
-        draw(jaws, hunter, person, score, &mapping);
-        print!("Move (A/Z/N/M): ");
-        io::stdout().flush().unwrap();
-
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        if let Some(ch) = input.chars().next() {
-            let key = ch.to_ascii_uppercase();
-            if let Some(&(dx, dy)) = mapping.get(&key) {
-                let candidate = (jaws.0 + dx, jaws.1 + dy);
-                if inside(candidate) {
-                    jaws = candidate;
-                }
-            } else {
-                continue;
-            }
-        }
-
-        if jaws == person {
-            score += 1;
-            dirs.shuffle(&mut rng);
-            mapping = KEYS.iter()
-                .zip(dirs.iter())
-                .map(|(&k, &d)| (k, d))
-                .collect();
-            person = spawn(&mut rng, jaws, hunter);
-        }
-
-        hunter = step_toward(hunter, jaws);
-        if hunter == jaws {
-            println!("\nYOU HAVE BEEN CAUGHT!\nScore: {score}");
-            break;
-        }
-    }
 }
 ```
 

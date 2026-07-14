@@ -94,9 +94,9 @@ graph TD
 </details>
 
 <details>
-<summary>ZX-81 Basic</summary>
+<summary>ZX-81 BASIC</summary>
 
-## ZX81 BASIC Code
+## ZX-81 BASIC Code
 
 ```basic
 10 CLS
@@ -218,141 +218,6 @@ graph TD
 1180 PRINT "HIS MAGIC POWERS, AND"
 1190 PRINT "FREED HIS VICTIMS."
 1200 STOP
-```
-
-</details>
-
-<details>
-<summary>Python</summary>
-
-```python
-import math
-import random
-import os
-
-class WizardsWall:
-    def __init__(self):
-        self.wall = [[20 for _ in range(8)] for _ in range(8)]
-        self.edge = [0] * 8
-        self.game_over = False
-
-    def clear_screen(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
-
-    def show_help(self):
-        help_text = [
-            "You are attacking the last stronghold of the notorious wizard, who is",
-            "hidden behind an endless stone wall. Each stone is one of his former",
-            "victims. Only you can attack and free them from his magic.",
-            "",
-            "You must destroy the wall using catapults. But beware, the wizard has",
-            "the power to move the wall back and forth, and occasionally to deflect",
-            "your shots back at you.",
-            "",
-            "After each shot, you'll see a cross-section of the wall showing damage.",
-            "Note there are certain key stones that produce lots of damage. Also,",
-            "the faster the boulder moves horizontally, the more damage it causes.",
-            "",
-            "Can you defeat the wizard in time to save the thousands of trapped souls?"
-        ]
-        for line in help_text:
-            print(line)
-        input("\nPress Enter to continue...")
-
-    def display_wall(self):
-        print()
-        for y in range(7, -1, -1):
-            for x in range(8):
-                char = '□' if self.wall[x][y] == 20 else ' '
-                print(char, end='')
-            print()
-
-    def update_edge_positions(self):
-        self.game_over = False
-        for y in range(8):
-            x = 0
-            while x < 8 and self.wall[x][y] != 0:
-                x += 1
-            self.edge[y] = x
-            if x == 1:
-                self.game_over = True
-
-    def damage_wall(self, height, speed, angle):
-        if not (0 <= height - 1 < 8):
-            return
-
-        horiz_velocity = speed * math.cos(math.radians(angle))
-        edge_pos = self.edge[height - 1]
-
-        if edge_pos > 0:
-            self.wall[edge_pos - 1][height - 1] = 0
-
-        if horiz_velocity > 50 and edge_pos > 1:
-            self.wall[edge_pos - 2][height - 1] = 0
-
-        if random.random() > 0.5 and height < 7:
-            if self.edge[height] > 0:
-                self.wall[self.edge[height] - 1][height] = 0
-
-        self.update_edge_positions()
-
-    def play(self):
-        self.clear_screen()
-        print("Wizard's Wall")
-
-        if input("Would you like help? (y/n): ").upper().startswith('Y'):
-            self.show_help()
-
-        difficulty = int(input("Select difficulty (1-5): "))
-        scale_factor = 6 - difficulty
-
-        for round in range(3):
-            if self.game_over:
-                print("Victory! You've broken through the wall and freed the victims.")
-                return
-
-            distance = random.randint(21, 40)
-            wind = random.randint(-20, 20)
-
-            self.display_wall()
-            print(f"You are {distance} yards away")
-
-            if wind == 0:
-                print("No wind")
-            elif wind < 0:
-                print("Wind to right")
-            else:
-                print("Wind to left")
-
-            angle = float(input("Enter elevation (1-90): "))
-            speed = float(input("Enter speed: "))
-
-            height = math.tan(math.radians(angle)) * distance
-            height -= (5 * (distance - wind)**2) / (speed * math.cos(math.radians(angle)))**2
-            height = int(height / scale_factor)
-
-            if 1 <= height <= 8:
-                if random.random() > 0.2:
-                    self.damage_wall(height, speed, angle)
-                else:
-                    print("The wizard deflected your shot!")
-            elif height < 1:
-                print("Shot was too near")
-            else:
-                print("Shot was too far")
-
-            if random.random() > 0.2:
-                print("The wall shifts position...")
-                for y in range(8):
-                    if random.random() > 0.5 and self.edge[y] > 1:
-                        self.wall[self.edge[y] - 1][y] = 0
-                self.update_edge_positions()
-
-        print("Game over - you've been turned to stone!")
-
-if __name__ == "__main__":
-    game = WizardsWall()
-    game.play()
 ```
 
 </details>
@@ -511,6 +376,141 @@ class WizardsWall
         new WizardsWall().Play();
     }
 }
+```
+
+</details>
+
+<details>
+<summary>Python</summary>
+
+```python
+import math
+import random
+import os
+
+class WizardsWall:
+    def __init__(self):
+        self.wall = [[20 for _ in range(8)] for _ in range(8)]
+        self.edge = [0] * 8
+        self.game_over = False
+
+    def clear_screen(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+    def show_help(self):
+        help_text = [
+            "You are attacking the last stronghold of the notorious wizard, who is",
+            "hidden behind an endless stone wall. Each stone is one of his former",
+            "victims. Only you can attack and free them from his magic.",
+            "",
+            "You must destroy the wall using catapults. But beware, the wizard has",
+            "the power to move the wall back and forth, and occasionally to deflect",
+            "your shots back at you.",
+            "",
+            "After each shot, you'll see a cross-section of the wall showing damage.",
+            "Note there are certain key stones that produce lots of damage. Also,",
+            "the faster the boulder moves horizontally, the more damage it causes.",
+            "",
+            "Can you defeat the wizard in time to save the thousands of trapped souls?"
+        ]
+        for line in help_text:
+            print(line)
+        input("\nPress Enter to continue...")
+
+    def display_wall(self):
+        print()
+        for y in range(7, -1, -1):
+            for x in range(8):
+                char = '□' if self.wall[x][y] == 20 else ' '
+                print(char, end='')
+            print()
+
+    def update_edge_positions(self):
+        self.game_over = False
+        for y in range(8):
+            x = 0
+            while x < 8 and self.wall[x][y] != 0:
+                x += 1
+            self.edge[y] = x
+            if x == 1:
+                self.game_over = True
+
+    def damage_wall(self, height, speed, angle):
+        if not (0 <= height - 1 < 8):
+            return
+
+        horiz_velocity = speed * math.cos(math.radians(angle))
+        edge_pos = self.edge[height - 1]
+
+        if edge_pos > 0:
+            self.wall[edge_pos - 1][height - 1] = 0
+
+        if horiz_velocity > 50 and edge_pos > 1:
+            self.wall[edge_pos - 2][height - 1] = 0
+
+        if random.random() > 0.5 and height < 7:
+            if self.edge[height] > 0:
+                self.wall[self.edge[height] - 1][height] = 0
+
+        self.update_edge_positions()
+
+    def play(self):
+        self.clear_screen()
+        print("Wizard's Wall")
+
+        if input("Would you like help? (y/n): ").upper().startswith('Y'):
+            self.show_help()
+
+        difficulty = int(input("Select difficulty (1-5): "))
+        scale_factor = 6 - difficulty
+
+        for round in range(3):
+            if self.game_over:
+                print("Victory! You've broken through the wall and freed the victims.")
+                return
+
+            distance = random.randint(21, 40)
+            wind = random.randint(-20, 20)
+
+            self.display_wall()
+            print(f"You are {distance} yards away")
+
+            if wind == 0:
+                print("No wind")
+            elif wind < 0:
+                print("Wind to right")
+            else:
+                print("Wind to left")
+
+            angle = float(input("Enter elevation (1-90): "))
+            speed = float(input("Enter speed: "))
+
+            height = math.tan(math.radians(angle)) * distance
+            height -= (5 * (distance - wind)**2) / (speed * math.cos(math.radians(angle)))**2
+            height = int(height / scale_factor)
+
+            if 1 <= height <= 8:
+                if random.random() > 0.2:
+                    self.damage_wall(height, speed, angle)
+                else:
+                    print("The wizard deflected your shot!")
+            elif height < 1:
+                print("Shot was too near")
+            else:
+                print("Shot was too far")
+
+            if random.random() > 0.2:
+                print("The wall shifts position...")
+                for y in range(8):
+                    if random.random() > 0.5 and self.edge[y] > 1:
+                        self.wall[self.edge[y] - 1][y] = 0
+                self.update_edge_positions()
+
+        print("Game over - you've been turned to stone!")
+
+if __name__ == "__main__":
+    game = WizardsWall()
+    game.play()
 ```
 
 </details>
@@ -1000,190 +1000,6 @@ int main() {
     WizardsWall game;
     game.play();
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use std::io::{self, Write};
-use rand::Rng;
-
-struct WizardsWall {
-    wall: [[i32; 8]; 8],
-    edge: [i32; 8],
-    game_over: bool,
-}
-
-impl WizardsWall {
-    fn new() -> Self {
-        Self {
-            wall: [[20; 8]; 8],
-            edge: [0; 8],
-            game_over: false,
-        }
-    }
-
-    fn show_help() {
-        let help = [
-            "You are attacking the last stronghold of the notorious wizard, who is",
-            "hidden behind an endless stone wall. Each stone is one of his former",
-            "victims. Only you can attack and free them from his magic.",
-            "",
-            "You must destroy the wall using catapults. But beware, the wizard has",
-            "the power to move the wall back and forth, and occasionally to deflect",
-            "your shots back at you.",
-            "",
-            "After each shot, you'll see a cross-section of the wall showing damage.",
-            "Note there are certain key stones that produce lots of damage. Also,",
-            "the faster the boulder moves horizontally, the more damage it causes.",
-            "",
-            "Can you defeat the wizard in time to save the thousands of trapped souls?",
-        ];
-        for line in help.iter() {
-            println!("{}", line);
-        }
-        println!("\nPress Enter to continue...");
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-    }
-
-    fn display_wall(&self) {
-        println!();
-        for y in (0..8).rev() {
-            for x in 0..8 {
-                print!("{}", if self.wall[x][y] == 20 { "□" } else { " " });
-            }
-            println!();
-        }
-    }
-
-    fn update_edge_positions(&mut self) {
-        self.game_over = false;
-        for y in 0..8 {
-            let mut x = 0;
-            while x < 8 && self.wall[x][y] == 20 {
-                x += 1;
-            }
-            self.edge[y] = x as i32;
-            if x == 1 {
-                self.game_over = true;
-            }
-        }
-    }
-
-    fn damage_wall(&mut self, height: i32, speed: f64, angle: f64) {
-        if !(0 <= height - 1 && height - 1 < 8) {
-            return;
-        }
-
-        let horiz_velocity = speed * (angle.to_radians().cos());
-        let edge_pos = self.edge[(height - 1) as usize];
-        let h = (height - 1) as usize;
-
-        if edge_pos > 0 {
-            self.wall[(edge_pos - 1) as usize][h] = 0;
-        }
-
-        if horiz_velocity > 50.0 && edge_pos > 1 {
-            self.wall[(edge_pos - 2) as usize][h] = 0;
-        }
-
-        if rand::random::<f64>() > 0.5 && height < 7 {
-            if self.edge[height as usize] > 0 {
-                self.wall[(self.edge[height as usize] - 1) as usize][height as usize] = 0;
-            }
-        }
-
-        self.update_edge_positions();
-    }
-
-    fn play(&mut self) {
-        println!("Wizard's Wall");
-        print!("Would you like help? (y/n): ");
-        io::stdout().flush().unwrap();
-
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        if input.trim().to_lowercase().starts_with('y') {
-            Self::show_help();
-        }
-
-        print!("Select difficulty (1-5): ");
-        io::stdout().flush().unwrap();
-        input.clear();
-        io::stdin().read_line(&mut input).unwrap();
-        let difficulty: i32 = input.trim().parse().unwrap();
-        let scale_factor = 6 - difficulty;
-
-        let mut rng = rand::thread_rng();
-
-        for _ in 0..3 {
-            if self.game_over {
-                println!("Victory! You've broken through the wall and freed the victims.");
-                return;
-            }
-
-            let distance = rng.gen_range(21..41);
-            let wind = rng.gen_range(-20..21);
-
-            self.display_wall();
-            println!("You are {} yards away", distance);
-
-            if wind == 0 {
-                println!("No wind");
-            } else {
-                println!("{}", if wind < 0 { "Wind to right" } else { "Wind to left" });
-            }
-
-            print!("Enter elevation (1-90): ");
-            io::stdout().flush().unwrap();
-            input.clear();
-            io::stdin().read_line(&mut input).unwrap();
-            let angle: f64 = input.trim().parse().unwrap();
-
-            print!("Enter speed: ");
-            io::stdout().flush().unwrap();
-            input.clear();
-            io::stdin().read_line(&mut input).unwrap();
-            let speed: f64 = input.trim().parse().unwrap();
-
-            let height = angle.to_radians().tan() * distance as f64
-                - (5.0 * (distance as f64 - wind as f64).powi(2))
-                / (speed * angle.to_radians().cos()).powi(2);
-            let height = (height / scale_factor as f64).floor();
-
-            if height >= 1.0 && height <= 8.0 {
-                if rng.gen::<f64>() > 0.2 {
-                    self.damage_wall(height as i32, speed, angle);
-                } else {
-                    println!("The wizard deflected your shot!");
-                }
-            } else {
-                println!("{}", if height < 1.0 { "Shot was too near" } else { "Shot was too far" });
-            }
-
-            if rng.gen::<f64>() > 0.2 {
-                println!("The wall shifts position...");
-                for y in 0..8 {
-                    if rng.gen::<f64>() > 0.5 && self.edge[y] > 1 {
-                        self.wall[(self.edge[y] - 1) as usize][y] = 0;
-                    }
-                }
-                self.update_edge_positions();
-            }
-        }
-
-        println!("Game over - you've been turned to stone!");
-    }
-}
-
-fn main() {
-    let mut game = WizardsWall::new();
-    game.play();
 }
 ```
 

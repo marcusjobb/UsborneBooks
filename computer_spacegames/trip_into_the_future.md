@@ -59,7 +59,15 @@ graph TD
 ## Code
 
 <details>
-<summary>ZX-81</summary>
+<summary>Pages</summary>
+
+![Page 1](./img/computer-spacegames_pages-to-jpg-0021.jpg)  
+![Page 2](./img/computer-spacegames_pages-to-jpg-0022.jpg)
+
+</details>
+
+<details>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 CLS
@@ -222,7 +230,7 @@ public class TripIntoTheFuture {
 </details>
 
 <details>
-<summary>GoLang</summary>
+<summary>Go</summary>
 
 ```go
 package main
@@ -314,55 +322,6 @@ int main() {
     }
 
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::f64;
-use std::io;
-
-fn main() {
-    println!("TRIP INTO THE FUTURE");
-
-    let mut rng = rand::thread_rng();
-    let t: i32 = rng.gen_range(25..125);
-    println!("YOU WISH TO RETURN {} YEARS IN THE FUTURE.", t);
-
-    let v: f64 = loop {
-        println!("SPEED OF SHIP (0-1): ");
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        if let Ok(value) = input.trim().parse() {
-            if value > 0.0 && value < 1.0 {
-                break value;
-            }
-        }
-    };
-
-    println!("DISTANCE OF TRIP: ");
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-    let d: f64 = input.trim().parse().unwrap();
-
-    let t1 = d / v;
-    let t2 = t1 / (1.0 - v * v).sqrt();
-
-    println!("YOU TOOK {:.2} YEARS", t1);
-    println!("AND ARRIVED {:.2} YEARS IN THE FUTURE.", t2);
-
-    if t1 > 50.0 {
-        println!("YOU DIED ON THE WAY");
-    } else if (t as f64 - t2).abs() < 5.0 {
-        println!("YOU ARRIVED ON TIME");
-    } else {
-        println!("NOT EVEN CLOSE");
-    }
 }
 ```
 

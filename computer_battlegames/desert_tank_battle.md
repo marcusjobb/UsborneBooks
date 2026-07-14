@@ -72,7 +72,7 @@ graph TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "DESERT TANK BATTLE"
@@ -350,62 +350,6 @@ int main() {
     cout << "DISASTER - YOU FAILED" << endl;
     cout << "RETREAT IN DISGRACE" << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io;
-
-fn main() {
-    println!("DESERT TANK BATTLE");
-
-    let mut rng = rand::thread_rng();
-    let target_direction: i32 = rng.gen_range(-90..=90);
-    let target_distance: f64 = rng.gen_range(0.0..1.0);
-
-    for _ in 0..5 {
-        println!("DIRECTION (-90 TO 90) ?");
-        let mut direction_input = String::new();
-        io::stdin().read_line(&mut direction_input).unwrap();
-        let player_direction: i32 = direction_input.trim().parse().unwrap();
-
-        println!("ELEVATION (0 TO 90) ?");
-        let mut elevation_input = String::new();
-        io::stdin().read_line(&mut elevation_input).unwrap();
-        let player_elevation: f64 = elevation_input.trim().parse().unwrap();
-
-        let missile_distance = (2.0 * player_elevation * std::f64::consts::PI / 180.0).sin();
-
-        if (target_direction - player_direction).abs() < 2 &&
-           (target_distance - missile_distance).abs() < 0.05 {
-            println!("*KABOOOMMM*");
-            println!("YOU'VE DONE IT");
-            return;
-        }
-
-        print!("MISSILE LANDED ");
-        if target_direction > player_direction {
-            print!("TO THE LEFT ");
-        }
-        if target_direction < player_direction {
-            print!("TO THE RIGHT ");
-        }
-        if missile_distance > target_distance {
-            println!("NOT FAR ENOUGH");
-        }
-        if missile_distance < target_distance {
-            println!("TOO FAR");
-        }
-    }
-
-    println!("DISASTER - YOU FAILED");
-    println!("RETREAT IN DISGRACE");
 }
 ```
 

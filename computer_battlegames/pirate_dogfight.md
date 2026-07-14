@@ -67,7 +67,7 @@ graph TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 CLS
@@ -357,61 +357,6 @@ int main() {
 
     cout << "YOU LOST SIGHT OF HIM" << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io;
-
-fn main() {
-    println!("PIRATE DOGFIGHT");
-
-    let mut rng = rand::thread_rng();
-    let mut speed = rng.gen_range(-5..=5);
-    let mut distance = rng.gen_range(-2..=1);
-
-    while distance.abs() <= 20 {
-        println!("YOU ARE {}", if distance < 0 {
-            "BEHIND"
-        } else if distance > 0 {
-            "AHEAD"
-        } else {
-            "LEVEL"
-        });
-
-        println!("YOU ARE GOING {}", if speed > 0 {
-            "FASTER"
-        } else if speed < 0 {
-            "SLOWER"
-        } else {
-            "SAME"
-        });
-
-        println!("Press A to accelerate, D to decelerate, F to fire: ");
-
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        let input = input.trim().to_uppercase();
-
-        if input == "A" {
-            speed += 1;
-        } else if input == "D" {
-            speed -= 1;
-        } else if input == "F" && distance == 0 {
-            println!("YOU HIT HIM!");
-            return;
-        }
-
-        distance -= speed;
-    }
-
-    println!("YOU LOST SIGHT OF HIM");
 }
 ```
 

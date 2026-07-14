@@ -80,7 +80,15 @@ graph TD
 ## Code
 
 <details>
-<summary>ZX-81</summary>
+<summary>Pages</summary>
+
+![Page 1](./img/computer-spacegames_pages-to-jpg-0023.jpg)  
+![Page 2](./img/computer-spacegames_pages-to-jpg-0024.jpg)
+
+</details>
+
+<details>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "DEATH VALLEY"
@@ -447,68 +455,6 @@ int main() {
 
     cout << "Well done! You made it through Death Valley." << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io;
-
-fn main() {
-    println!("Death Valley");
-    let mut steps = 0;
-    let max_steps = 200;
-
-    println!("Width? ");
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-    let width: usize = input.trim().parse().unwrap();
-
-    let mut left = width / 2;
-    let mut middle = width;
-    let mut right = width;
-
-    while steps < max_steps {
-        let change = rand::thread_rng().gen_range(-1..=1);
-        if (left as isize + change) < 0 || (right as isize + change) > 20 {
-            continue;
-        }
-
-        left = (left as isize + change) as usize;
-        middle = (middle as isize - change) as usize;
-        right = (right as isize + change) as usize;
-
-        println!("{}I", " ".repeat(left));
-        println!("{}*", " ".repeat(middle));
-        println!("{}I", " ".repeat(right));
-
-        println!("Move (Q/P): ");
-        input.clear();
-        io::stdin().read_line(&mut input).unwrap();
-        let move_char = input.trim().to_uppercase();
-
-        if move_char == "Q" {
-            middle -= 1;
-            right += 1;
-        } else if move_char == "P" {
-            middle += 1;
-            right -= 1;
-        }
-
-        if middle < 1 || right < 1 {
-            println!("You crashed into the wall and disintegrated.");
-            return;
-        }
-
-        steps += 1;
-    }
-
-    println!("Well done! You made it through Death Valley.");
 }
 ```
 

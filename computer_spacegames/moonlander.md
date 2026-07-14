@@ -55,7 +55,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 CLS
@@ -227,7 +227,7 @@ public class Moonlander {
 </details>
 
 <details>
-<summary>GoLang</summary>
+<summary>Go</summary>
 
 ```go
 package main
@@ -319,56 +319,6 @@ int main() {
 
     cout << "OUT OF FUEL. CRASH!" << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use std::io;
-
-fn main() {
-    let mut time = 0;
-    let mut height = 500;
-    let mut velocity = 120;
-    let mut fuel = 120;
-
-    println!("MOONLANDER");
-
-    while fuel > 0 && height > 0 {
-        println!("TIME: {} HEIGHT: {} VEL.: {} FUEL: {}", time, height, velocity, fuel);
-        println!("BURN? (0-30): ");
-
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        let burn: i32 = input.trim().parse().unwrap_or(0);
-
-        let burn = burn.clamp(0, 30);
-        let burn = burn.min(fuel);
-
-        let new_velocity = velocity + (5 - burn);
-        fuel -= burn;
-
-        if (velocity + new_velocity) / 2 >= height {
-            if new_velocity > 5 {
-                println!("YOU CRASHED-ALL DEAD");
-            } else if new_velocity > 1 {
-                println!("OK-BUT SOME INJURIES");
-            } else {
-                println!("GOOD LANDING.");
-            }
-            return;
-        }
-
-        height -= (velocity + new_velocity) / 2;
-        velocity = new_velocity;
-        time += 1;
-    }
-
-    println!("OUT OF FUEL. CRASH!");
 }
 ```
 

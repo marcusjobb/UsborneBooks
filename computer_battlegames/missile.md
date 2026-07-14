@@ -68,7 +68,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```plaintext
 10 CLS
@@ -333,52 +333,6 @@ int main() {
 
     cout << "Game Over. Final score: " << score << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io;
-
-fn main() {
-    let mut missile_bases = [0; 3];
-    let mut score = 0;
-    let mut game_running = true;
-
-    println!("Welcome to Missile! Use keys to launch missiles and shoot enemy planes.");
-
-    while game_running {
-        println!("Press 1, 2, or 3 to fire a missile from the corresponding base.");
-
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).expect("Failed to read input");
-        let input = input.trim();
-
-        if let Ok(base_index) = input.parse::<usize>() {
-            if base_index >= 1 && base_index <= 3 {
-                println!("Missile launched from base {}!", base_index);
-
-                let plane_position = rand::thread_rng().gen_range(1..=3);
-                println!("Enemy plane approaching base {}!", plane_position);
-
-                if plane_position == base_index {
-                    score += 1;
-                    println!("Direct hit! Plane destroyed.");
-                } else {
-                    println!("Missed!");
-                }
-            }
-        } else if input.eq_ignore_ascii_case("q") {
-            game_running = false;
-        }
-    }
-
-    println!("Game Over. Final score: {}", score);
 }
 ```
 

@@ -72,7 +72,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 CLS
@@ -233,7 +233,7 @@ public class StarshipTakeoff {
 </details>
 
 <details>
-<summary>GoLang</summary>
+<summary>Go</summary>
 
 ```go
 package main
@@ -322,50 +322,6 @@ int main() {
     cout << "YOU FAILED - THE ALIENS GOT YOU" << endl;
 
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io;
-
-fn main() {
-    let mut rng = rand::thread_rng();
-    let gravity: i32 = rng.gen_range(1..=20);
-    let weight: i32 = rng.gen_range(1..=40);
-    let required_force = gravity * weight;
-
-    println!("STARSHIP TAKE-OFF");
-    println!("GRAVITY = {}", gravity);
-
-    for attempt in 1..=10 {
-        println!("TYPE IN FORCE: ");
-
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        let user_force: i32 = input.trim().parse().unwrap();
-
-        if user_force > required_force {
-            print!("TOO HIGH");
-        } else if user_force < required_force {
-            print!("TOO LOW");
-        } else {
-            println!("GOOD TAKE OFF");
-            return;
-        }
-
-        if attempt < 10 {
-            println!(", TRY AGAIN");
-        }
-    }
-
-    println!();
-    println!("YOU FAILED - THE ALIENS GOT YOU");
 }
 ```
 

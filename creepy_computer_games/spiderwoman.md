@@ -80,7 +80,17 @@ flowchart TD
 ## Code
 
 <details>
-<summary>ZX-81</summary>
+<summary>Pages</summary>
+
+![Page 1](./img/Usborne-Creepy_Computer_Games08.png)  
+![Page 2](./img/Usborne-Creepy_Computer_Games09.png)
+
+</details>
+
+---
+
+<details>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 LET G=0
@@ -227,6 +237,192 @@ def spiderwoman():
 
 if __name__ == "__main__":
     spiderwoman()
+```
+
+</details>
+
+---
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Random;
+import java.util.Scanner;
+
+public class Spiderwoman {
+    public static void main(String[] args) {
+        Random rnd = new Random();
+        char target = (char) ('A' + rnd.nextInt(26));
+        int tries = 0;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("SPIDERWOMAN HAS CHOSEN...");
+        System.out.println("Try to find her letter!");
+
+        while (tries < 15) {
+            System.out.print("\nEnter a word (4-8 letters): ");
+            if (!scanner.hasNextLine()) return;
+            String word = scanner.nextLine().toUpperCase();
+            tries++;
+
+            if (word.length() < 4 || word.length() > 8) continue;
+
+            if (word.indexOf(target) >= 0) {
+                System.out.println("Yes - it's one of those!");
+                System.out.print("Do you want to guess the letter? (Y/N): ");
+                if (!scanner.hasNextLine()) return;
+                String choice = scanner.nextLine().trim().toUpperCase();
+                if (choice.equals("Y")) {
+                    System.out.print("What's your guess? ");
+                    if (!scanner.hasNextLine()) return;
+                    String guess = scanner.nextLine().trim().toUpperCase();
+                    if (guess.length() == 1 && guess.charAt(0) == target) {
+                        System.out.println("OK - you can go (this time)!");
+                    } else {
+                        System.out.println("You are too late... You are now a fly!");
+                    }
+                    return;
+                }
+            } else {
+                System.out.println("It's not in that word.");
+            }
+        }
+
+        System.out.println("\nYou've taken too long... You are now a fly!");
+    }
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>Go</summary>
+
+```go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math/rand"
+	"os"
+	"strings"
+	"time"
+)
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	target := byte('A' + rand.Intn(26))
+	tries := 0
+	reader := bufio.NewReader(os.Stdin)
+
+	fmt.Println("SPIDERWOMAN HAS CHOSEN...")
+	fmt.Println("Try to find her letter!")
+
+	for tries < 15 {
+		fmt.Print("\nEnter a word (4-8 letters): ")
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			return
+		}
+		word := strings.ToUpper(strings.TrimSpace(line))
+		tries++
+
+		if len(word) < 4 || len(word) > 8 {
+			continue
+		}
+
+		if strings.IndexByte(word, target) >= 0 {
+			fmt.Println("Yes - it's one of those!")
+			fmt.Print("Do you want to guess the letter? (Y/N): ")
+			line, err = reader.ReadString('\n')
+			if err != nil {
+				return
+			}
+			choice := strings.ToUpper(strings.TrimSpace(line))
+			if choice == "Y" {
+				fmt.Print("What's your guess? ")
+				line, err = reader.ReadString('\n')
+				if err != nil {
+					return
+				}
+				guess := strings.ToUpper(strings.TrimSpace(line))
+				if len(guess) == 1 && guess[0] == target {
+					fmt.Println("OK - you can go (this time)!")
+				} else {
+					fmt.Println("You are too late... You are now a fly!")
+				}
+				return
+			}
+		} else {
+			fmt.Println("It's not in that word.")
+		}
+	}
+
+	fmt.Println("\nYou've taken too long... You are now a fly!")
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
+int main() {
+    srand(time(0));
+    char target = 'A' + rand() % 26;
+    int tries = 0;
+
+    std::cout << "SPIDERWOMAN HAS CHOSEN..." << std::endl;
+    std::cout << "Try to find her letter!" << std::endl;
+
+    while (tries < 15) {
+        std::cout << "\nEnter a word (4-8 letters): ";
+        std::string word;
+        if (!std::getline(std::cin, word)) return 0;
+        std::transform(word.begin(), word.end(), word.begin(), ::toupper);
+        tries++;
+
+        if (word.length() < 4 || word.length() > 8) continue;
+
+        if (word.find(target) != std::string::npos) {
+            std::cout << "Yes - it's one of those!" << std::endl;
+            std::cout << "Do you want to guess the letter? (Y/N): ";
+            std::string choice;
+            if (!std::getline(std::cin, choice)) return 0;
+            std::transform(choice.begin(), choice.end(), choice.begin(), ::toupper);
+            if (choice == "Y") {
+                std::cout << "What's your guess? ";
+                std::string guess;
+                if (!std::getline(std::cin, guess)) return 0;
+                std::transform(guess.begin(), guess.end(), guess.begin(), ::toupper);
+                if (guess.length() == 1 && guess[0] == target) {
+                    std::cout << "OK - you can go (this time)!" << std::endl;
+                } else {
+                    std::cout << "You are too late... You are now a fly!" << std::endl;
+                }
+                return 0;
+            }
+        } else {
+            std::cout << "It's not in that word." << std::endl;
+        }
+    }
+
+    std::cout << "\nYou've taken too long... You are now a fly!" << std::endl;
+    return 0;
+}
 ```
 
 </details>

@@ -21,7 +21,7 @@ Each game includes a thrilling story, clear listing, and ideas for experiments �
 
 ## Why Adapt This Book?
 
-By adapting _Creepy Computer Games_ into modern languages such as **C#**, **Python**, **Java**, **Go**, **C++**, and **Rust**, we preserve the playful spirit of early computing while teaching timeless programming concepts.
+By adapting _Creepy Computer Games_ into modern languages such as **C#**, **Python**, **Java**, **Go**, and **C++**, we preserve the playful spirit of early computing while teaching timeless programming concepts.
 
 This adaptation aims to:
 
@@ -38,7 +38,7 @@ Every file includes:
 - **Pseudocode** – a clear breakdown of the game logic.
 - **Flowchart** – a Mermaid diagram of the gameplay structure.
 - **Original ZX-81 BASIC code**.
-- **Modern translations** – C#, Python, Java, Go, C++, and Rust versions.
+- **Modern translations** – C#, Python, Java, Go, and C++ versions.
 - **Explanations and challenges** to help players extend or remix the games.
 
 ## Credits

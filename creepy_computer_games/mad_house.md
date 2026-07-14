@@ -80,7 +80,17 @@ flowchart TD
 ## Code
 
 <details>
-<summary>ZX-81</summary>
+<summary>Pages</summary>
+
+![Page 1](./img/Usborne-Creepy_Computer_Games12.png)  
+![Page 2](./img/Usborne-Creepy_Computer_Games13.png)
+
+</details>
+
+---
+
+<details>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 DIM P(3)
@@ -257,6 +267,217 @@ def mad_house():
 
 if __name__ == "__main__":
     mad_house()
+```
+
+</details>
+
+---
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Random;
+import java.util.Scanner;
+
+public class MadHouse {
+    public static void main(String[] args) {
+        final int width = 31;
+        int[] p = new int[3];
+        int[] s = {1, 0, -1};
+        Random rnd = new Random();
+        Scanner scanner = new Scanner(System.in);
+        int counter = 240;
+
+        for (int i = 0; i < 3; i++)
+            p[i] = 1 + rnd.nextInt(width - 4);
+
+        while (counter > 0) {
+            System.out.println("Footsteps: " + counter + "\n");
+            for (int pos : p) {
+                StringBuilder line = new StringBuilder("*".repeat(width));
+                line.replace(pos, pos + 3, "> <");
+                System.out.println(line);
+                System.out.println();
+            }
+
+            if (p[0] == p[1] && p[1] == p[2]) {
+                System.out.println("\nYOU ARE FREE!!");
+                return;
+            }
+
+            System.out.print("Press X/C (top) or N/M (bottom), or Enter to skip: ");
+            if (!scanner.hasNextLine()) return;
+            String key = scanner.nextLine().trim().toUpperCase();
+            if (key.equals("X")) s[0] = -1;
+            else if (key.equals("C")) s[0] = 1;
+            else if (key.equals("N")) s[2] = -1;
+            else if (key.equals("M")) s[2] = 1;
+
+            if (counter % 25 == 0)
+                p[1] += rnd.nextInt(21) - 10;
+
+            for (int i = 0; i < 3; i++) {
+                p[i] += s[i];
+                if (p[i] < 1) p[i] = 1;
+                if (p[i] > width - 4) p[i] = width - 4;
+            }
+
+            counter--;
+        }
+
+        System.out.println("\nTOO LATE! The footsteps have stopped.");
+        System.out.println("ARGHHHHHH!!!!");
+    }
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>Go</summary>
+
+```go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math/rand"
+	"os"
+	"strings"
+	"time"
+)
+
+func main() {
+	const width = 31
+	rand.Seed(time.Now().UnixNano())
+	reader := bufio.NewReader(os.Stdin)
+
+	p := make([]int, 3)
+	s := []int{1, 0, -1}
+	for i := range p {
+		p[i] = 1 + rand.Intn(width-4)
+	}
+	counter := 240
+
+	for counter > 0 {
+		fmt.Printf("Footsteps: %d\n\n", counter)
+		for _, pos := range p {
+			line := []byte(strings.Repeat("*", width))
+			copy(line[pos:pos+3], "> <")
+			fmt.Println(string(line))
+			fmt.Println()
+		}
+
+		if p[0] == p[1] && p[1] == p[2] {
+			fmt.Println("\nYOU ARE FREE!!")
+			return
+		}
+
+		fmt.Print("Press X/C (top) or N/M (bottom), or Enter to skip: ")
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			return
+		}
+		key := strings.ToUpper(strings.TrimSpace(line))
+		switch key {
+		case "X":
+			s[0] = -1
+		case "C":
+			s[0] = 1
+		case "N":
+			s[2] = -1
+		case "M":
+			s[2] = 1
+		}
+
+		if counter%25 == 0 {
+			p[1] += rand.Intn(21) - 10
+		}
+
+		for i := range p {
+			p[i] += s[i]
+			if p[i] < 1 {
+				p[i] = 1
+			}
+			if p[i] > width-4 {
+				p[i] = width - 4
+			}
+		}
+
+		counter--
+	}
+
+	fmt.Println("\nTOO LATE! The footsteps have stopped.")
+	fmt.Println("ARGHHHHHH!!!!")
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
+int main() {
+    const int width = 31;
+    srand(time(0));
+
+    int p[3];
+    int s[3] = {1, 0, -1};
+    for (int i = 0; i < 3; i++)
+        p[i] = 1 + rand() % (width - 4);
+    int counter = 240;
+
+    while (counter > 0) {
+        std::cout << "Footsteps: " << counter << "\n" << std::endl;
+        for (int i = 0; i < 3; i++) {
+            std::string line(width, '*');
+            line.replace(p[i], 3, "> <");
+            std::cout << line << std::endl << std::endl;
+        }
+
+        if (p[0] == p[1] && p[1] == p[2]) {
+            std::cout << "\nYOU ARE FREE!!" << std::endl;
+            return 0;
+        }
+
+        std::cout << "Press X/C (top) or N/M (bottom), or Enter to skip: ";
+        std::string key;
+        if (!std::getline(std::cin, key)) return 0;
+        std::transform(key.begin(), key.end(), key.begin(), ::toupper);
+        if (key == "X") s[0] = -1;
+        else if (key == "C") s[0] = 1;
+        else if (key == "N") s[2] = -1;
+        else if (key == "M") s[2] = 1;
+
+        if (counter % 25 == 0)
+            p[1] += (rand() % 21) - 10;
+
+        for (int i = 0; i < 3; i++) {
+            p[i] += s[i];
+            if (p[i] < 1) p[i] = 1;
+            if (p[i] > width - 4) p[i] = width - 4;
+        }
+
+        counter--;
+    }
+
+    std::cout << "\nTOO LATE! The footsteps have stopped." << std::endl;
+    std::cout << "ARGHHHHHH!!!!" << std::endl;
+    return 0;
+}
 ```
 
 </details>

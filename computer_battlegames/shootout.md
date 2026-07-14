@@ -64,6 +64,35 @@ flowchart TD
 </details>
 
 <details>
+<summary>ZX-81 BASIC</summary>
+
+```basic
+10 CLS
+20 PRINT "COWBOY SHOOTOUT -"
+30 PRINT "YOU ARE BACK TO BACK"
+40 PRINT "TAKE 10 PACES..."
+50 FOR I=1 TO 10
+60 PRINT I;"..";
+70 NEXT I
+80 PRINT
+90 FOR I=1 TO RND*200
+100 NEXT I
+110 IF INKEY$<>"" THEN GOTO 160
+120 PRINT "HE DRAWS..... ";
+130 FOR I=1 TO 5
+140 IF INKEY$<>"" THEN GOTO 190
+150 NEXT I
+160 PRINT "AND SHOOTS."
+170 PRINT "YOU ARE DEAD."
+180 GOTO 210
+190 PRINT "BUT YOU SHOOT FIRST."
+200 PRINT "YOU KILLED HIM."
+210 STOP
+```
+
+</details>
+
+<details>
 <summary>C#</summary>
 
 ```csharp
@@ -289,44 +318,6 @@ int main() {
     }
 
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use std::io;
-use std::time::{Duration, Instant};
-use std::thread;
-use rand::Rng;
-
-fn main() {
-    println!("COWBOY SHOOTOUT");
-    println!("YOU ARE BACK TO BACK");
-    println!("TAKE 10 PACES...");
-
-    for i in 1..=10 {
-        print!("{}  ", i);
-        thread::sleep(Duration::from_millis(500));
-    }
-
-    let mut rng = rand::thread_rng();
-    thread::sleep(Duration::from_millis(rng.gen_range(1000..3000)));
-
-    println!("\nHE DRAWS....");
-
-    let start = Instant::now();
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-
-    if start.elapsed().as_secs_f64() > 2.0 {
-        println!("You are too slow. You lose.");
-    } else {
-        println!("You shoot first. You win!");
-    }
 }
 ```
 

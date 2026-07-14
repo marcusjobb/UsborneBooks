@@ -62,6 +62,14 @@ flowchart TD
 ## Code
 
 <details>
+<summary>Pages</summary>
+
+![Page 1](./img/weird-computer-games_page-0005.jpg)  
+![Page 2](./img/weird-computer-games_page-0006.jpg)
+
+</details>
+
+<details>
 <summary>ZX-81 BASIC</summary>
 
 ```basic
@@ -417,63 +425,6 @@ int main() {
     }
 
     return 0;
-}
-```
-
-</details>
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io::{self, Write};
-
-const CHAMBERS: i32 = 6;
-const MINIMUM_SKULLS: i32 = 3;
-
-fn main() {
-    let mut rng = rand::thread_rng();
-    let mut health = 100;
-    let mut skulls = 0;
-
-    for chamber in 1..=CHAMBERS {
-        if health <= 0 {
-            break;
-        }
-
-        println!("\nChamber {chamber}");
-        println!("Health: {health} | Skulls: {skulls}");
-        print!("Choose a door (1-3): ");
-        io::stdout().flush().unwrap();
-
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        let choice: i32 = match input.trim().parse() {
-            Ok(num) if (1..=3).contains(&num) => num,
-            _ => {
-                println!("Only three doors exist.");
-                continue;
-            }
-        };
-
-        let treasure_door = rng.gen_range(1..=3);
-        if choice == treasure_door {
-            skulls += 1;
-            println!("You snatch a golden skull from its pedestal!");
-        } else {
-            let damage = rng.gen_range(10..=30);
-            health -= damage;
-            println!("A trap springs! You lose {damage} health.");
-        }
-    }
-
-    if health > 0 && skulls >= MINIMUM_SKULLS {
-        println!("You escape with {skulls} skulls and your life.");
-    } else if health > 0 {
-        println!("The pyramid doors slam shut—you lacked enough skulls.");
-    } else {
-        println!("The sands cover your fate inside the pyramid.");
-    }
 }
 ```
 

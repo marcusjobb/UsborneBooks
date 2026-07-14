@@ -74,7 +74,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 CLS
@@ -263,7 +263,7 @@ public class AlienSnipers {
 </details>
 
 <details>
-<summary>GoLang</summary>
+<summary>Go</summary>
 
 ```go
 package main
@@ -375,56 +375,6 @@ int main() {
     cout << "You hit " << score << "/10" << endl;
 
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io::{self, Write};
-use std::time::{Duration, Instant};
-
-fn main() {
-    println!("Alien snipers");
-
-    let mut difficulty = String::new();
-    loop {
-        print!("Difficulty (1-10): ");
-        io::stdout().flush().unwrap();
-        io::stdin().read_line(&mut difficulty).unwrap();
-        if let Ok(d) = difficulty.trim().parse::<u32>() {
-            if (1..=10).contains(&d) {
-                difficulty.clear();
-                break d;
-            }
-        }
-        difficulty.clear();
-    };
-
-    let mut score = 0;
-
-    for _ in 0..10 {
-        let letter = ('A' as u8 + rand::thread_rng().gen_range(0..=25 - difficulty as u8)) as char;
-        let offset = rand::thread_rng().gen_range(1..=difficulty);
-
-        println!("{} {}", letter, offset);
-        let start = Instant::now();
-
-        while start.elapsed() < Duration::from_millis(200 + difficulty * 50) {
-            let mut guess = String::new();
-            io::stdin().read_line(&mut guess).unwrap();
-            if guess.trim().to_uppercase() == ((letter as u8 + offset) as char).to_string() {
-                score += 1;
-                break;
-            }
-        }
-    }
-
-    println!("You hit {}/10", score);
 }
 ```
 

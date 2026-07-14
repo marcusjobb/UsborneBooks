@@ -57,7 +57,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "BUG EYES"
@@ -221,7 +221,7 @@ public class BugEyes {
 </details>
 
 <details>
-<summary>GoLang</summary>
+<summary>Go</summary>
 
 ```go
 package main
@@ -303,60 +303,6 @@ int main() {
     cout << "YOU BLASTED " << score << "/10 BUGS" << endl;
 
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use std::io;
-use std::thread;
-use std::time::Duration;
-use rand::Rng;
-
-fn main() {
-    let mut score = 0;
-
-    println!("BUG EYES");
-
-    for _ in 0..10 {
-        clear_screen();
-        let delay = rand::thread_rng().gen_range(500..1500);
-        thread::sleep(Duration::from_millis(delay));
-
-        let bug_position = rand::thread_rng().gen_range(1..=4);
-        println!("BUG AT POSITION {}", bug_position);
-
-        println!("PRESS 1-4: ");
-        let player_input = read_input();
-
-        if let Ok(num) = player_input.parse::<u32>() {
-            if num == bug_position {
-                score += 1;
-                println!("HIT!");
-            } else {
-                println!("MISS!");
-            }
-        } else {
-            println!("INVALID INPUT!");
-        }
-    }
-
-    println!("YOU BLASTED {}/10 BUGS", score);
-}
-
-fn clear_screen() {
-    print!("{}[2J", 27 as char);
-    println!("{}[H", 27 as char);
-}
-
-fn read_input() -> String {
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-    input.trim().to_string()
 }
 ```
 

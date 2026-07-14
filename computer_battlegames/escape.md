@@ -88,7 +88,7 @@ graph TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 CLS
@@ -419,64 +419,6 @@ int main() {
     cout << "DISASTER - YOU FAILED" << endl;
     cout << "THE FREQ. WAS " << frequency << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io;
-
-fn main() {
-    println!("ESCAPE!");
-
-    let mut rng = rand::thread_rng();
-    let frequency = rng.gen_range(1..=100);
-    let mut low_warning = 1;
-    let mut high_warning = 1;
-
-    for _ in 0..5 {
-        println!("GUESS?");
-        let mut guess = String::new();
-        io::stdin().read_line(&mut guess).unwrap();
-        let guess: i32 = guess.trim().parse().unwrap();
-
-        if (frequency - guess).abs() < 5 {
-            println!("YOU'VE DONE IT");
-            return;
-        }
-
-        if guess < frequency {
-            if frequency - guess > 40 {
-                if low_warning == 2 {
-                    println!("THE BUILDING COLLAPSED");
-                    return;
-                }
-                println!("TOO LOW...CAREFUL");
-                low_warning = 2;
-            } else {
-                println!("NO VISIBLE EFFECT");
-            }
-        } else {
-            if guess - frequency > 40 {
-                if high_warning == 2 {
-                    println!("YOUR HEAD ACHES - GIVE UP");
-                    return;
-                }
-                println!("TOO HIGH...OUCH");
-                high_warning = 2;
-            } else {
-                println!("NO VISIBLE EFFECT");
-            }
-        }
-    }
-
-    println!("DISASTER - YOU FAILED");
-    println!("THE FREQ. WAS {}", frequency);
 }
 ```
 

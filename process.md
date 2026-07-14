@@ -1,5 +1,5 @@
 ▌ 1 - read all the images on ./img/ and transcribe only game description and zx81 code to ./{gamename}.md
-▌ 2 - convert zx-81 code to c#, python, java, golang, c++ and rust
+▌ 2 - convert zx-81 code to c#, python, java, go, c++
 ▌ 3 - check the code to make sure it's functional
 
 Example:

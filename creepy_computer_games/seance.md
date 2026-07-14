@@ -77,7 +77,16 @@ flowchart TD
 ## Code
 
 <details>
-<summary>ZX-81</summary>
+<summary>Pages</summary>
+
+![Page 1](./img/Usborne-Creepy_Computer_Games16.png)
+
+</details>
+
+---
+
+<details>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 LET S=0
@@ -242,6 +251,179 @@ def seance():
 
 if __name__ == "__main__":
     seance()
+```
+
+</details>
+
+---
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Random;
+import java.util.Scanner;
+
+public class Seance {
+    public static void main(String[] args) {
+        Random rnd = new Random();
+        Scanner scanner = new Scanner(System.in);
+        int anger = 0;
+
+        System.out.println("SEANCE\n");
+
+        while (anger < 3) {
+            int length = 3 + rnd.nextInt(4);
+            StringBuilder message = new StringBuilder();
+            for (int i = 0; i < length; i++) {
+                message.append((char) ('A' + rnd.nextInt(26)));
+            }
+            System.out.println("Messages from the beyond appear...");
+            System.out.println("*".repeat(length));
+
+            System.out.print("Type the message: ");
+            if (!scanner.hasNextLine()) return;
+            String guess = scanner.nextLine().trim().toUpperCase();
+
+            if (guess.equals(message.toString())) {
+                System.out.println("The spirits are pleased...");
+            } else {
+                anger++;
+                if (anger == 1) System.out.println("The table begins to shake...");
+                else if (anger == 2) System.out.println("The light bulb shatters!");
+                else {
+                    System.out.println("A pair of clammy hands grasps your neck!");
+                    System.out.println("You have angered the spirits!");
+                    return;
+                }
+            }
+            System.out.println("\nA new message flickers into view...\n");
+        }
+
+        System.out.println("The spirits have gone. The air feels heavy...");
+    }
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>Go</summary>
+
+```go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math/rand"
+	"os"
+	"strings"
+	"time"
+)
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	reader := bufio.NewReader(os.Stdin)
+	anger := 0
+
+	fmt.Println("SEANCE\n")
+
+	for anger < 3 {
+		length := 3 + rand.Intn(4)
+		var sb strings.Builder
+		for i := 0; i < length; i++ {
+			sb.WriteByte(byte('A' + rand.Intn(26)))
+		}
+		message := sb.String()
+
+		fmt.Println("Messages from the beyond appear...")
+		fmt.Println(strings.Repeat("*", length))
+
+		fmt.Print("Type the message: ")
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			return
+		}
+		guess := strings.ToUpper(strings.TrimSpace(line))
+
+		if guess == message {
+			fmt.Println("The spirits are pleased...")
+		} else {
+			anger++
+			switch anger {
+			case 1:
+				fmt.Println("The table begins to shake...")
+			case 2:
+				fmt.Println("The light bulb shatters!")
+			default:
+				fmt.Println("A pair of clammy hands grasps your neck!")
+				fmt.Println("You have angered the spirits!")
+				return
+			}
+		}
+		fmt.Println("\nA new message flickers into view...\n")
+	}
+
+	fmt.Println("The spirits have gone. The air feels heavy...")
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
+int main() {
+    srand(time(0));
+    int anger = 0;
+
+    std::cout << "SEANCE\n" << std::endl;
+
+    while (anger < 3) {
+        int length = 3 + rand() % 4;
+        std::string message;
+        for (int i = 0; i < length; i++) {
+            message += static_cast<char>('A' + rand() % 26);
+        }
+
+        std::cout << "Messages from the beyond appear..." << std::endl;
+        std::cout << std::string(length, '*') << std::endl;
+
+        std::cout << "Type the message: ";
+        std::string guess;
+        if (!std::getline(std::cin, guess)) return 0;
+        std::transform(guess.begin(), guess.end(), guess.begin(), ::toupper);
+
+        if (guess == message) {
+            std::cout << "The spirits are pleased..." << std::endl;
+        } else {
+            anger++;
+            if (anger == 1) std::cout << "The table begins to shake..." << std::endl;
+            else if (anger == 2) std::cout << "The light bulb shatters!" << std::endl;
+            else {
+                std::cout << "A pair of clammy hands grasps your neck!" << std::endl;
+                std::cout << "You have angered the spirits!" << std::endl;
+                return 0;
+            }
+        }
+        std::cout << "\nA new message flickers into view...\n" << std::endl;
+    }
+
+    std::cout << "The spirits have gone. The air feels heavy..." << std::endl;
+    return 0;
+}
 ```
 
 </details>

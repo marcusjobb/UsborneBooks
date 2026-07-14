@@ -73,7 +73,17 @@ flowchart TD
 ## Code
 
 <details>
-<summary>ZX-81</summary>
+<summary>Pages</summary>
+
+![Page 1](./img/Usborne-Creepy_Computer_Games06.png)  
+![Page 2](./img/Usborne-Creepy_Computer_Games07.png)
+
+</details>
+
+---
+
+<details>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "GHOST GUZZLER"
@@ -226,6 +236,209 @@ def ghost_guzzler():
 
 if __name__ == "__main__":
     ghost_guzzler()
+```
+
+</details>
+
+---
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Random;
+import java.util.Scanner;
+
+public class GhostGuzzler {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        play(scanner);
+    }
+
+    static void play(Scanner scanner) {
+        Random rnd = new Random();
+        int score = 0;
+        int player = 0;
+        int lives = 3;
+
+        while (lives > 0) {
+            int ghost = rnd.nextInt(10);
+            boolean caught = false;
+
+            for (int pos = 1; pos < 18 && !caught; pos++) {
+                System.out.println("/".repeat(lives));
+                System.out.println("\nGhost: " + ghost + "   You: " + player);
+                System.out.print("Press M to change your number, X to guzzle, or Enter to wait: ");
+
+                if (!scanner.hasNextLine()) {
+                    System.out.println("\nYour Ghost Guzzling Score: " + score);
+                    return;
+                }
+                String key = scanner.nextLine().trim().toUpperCase();
+
+                if (key.equals("M")) {
+                    player = (player + 1) % 10;
+                } else if (key.equals("X") && player == ghost) {
+                    System.out.println("GOT IT!");
+                    score += 18 - pos;
+                    caught = true;
+                }
+
+                if (!caught && pos == 17) {
+                    lives--;
+                    System.out.println("A ghost got you!");
+                }
+            }
+        }
+
+        System.out.println("\nYour Ghost Guzzling Score: " + score);
+        System.out.print("Another go? (Y/N): ");
+        if (scanner.hasNextLine()) {
+            String again = scanner.nextLine().trim().toUpperCase();
+            if (again.equals("Y")) {
+                play(scanner);
+            }
+        }
+    }
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>Go</summary>
+
+```go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math/rand"
+	"os"
+	"strings"
+	"time"
+)
+
+func play(reader *bufio.Reader) {
+	score := 0
+	player := 0
+	lives := 3
+
+	for lives > 0 {
+		ghost := rand.Intn(10)
+		caught := false
+
+		for pos := 1; pos < 18 && !caught; pos++ {
+			fmt.Println(strings.Repeat("/", lives))
+			fmt.Printf("\nGhost: %d   You: %d\n", ghost, player)
+			fmt.Print("Press M to change your number, X to guzzle, or Enter to wait: ")
+
+			line, err := reader.ReadString('\n')
+			if err != nil {
+				fmt.Printf("\nYour Ghost Guzzling Score: %d\n", score)
+				return
+			}
+			key := strings.ToUpper(strings.TrimSpace(line))
+
+			if key == "M" {
+				player = (player + 1) % 10
+			} else if key == "X" && player == ghost {
+				fmt.Println("GOT IT!")
+				score += 18 - pos
+				caught = true
+			}
+
+			if !caught && pos == 17 {
+				lives--
+				fmt.Println("A ghost got you!")
+			}
+		}
+	}
+
+	fmt.Printf("\nYour Ghost Guzzling Score: %d\n", score)
+	fmt.Print("Another go? (Y/N): ")
+	line, err := reader.ReadString('\n')
+	if err == nil && strings.ToUpper(strings.TrimSpace(line)) == "Y" {
+		play(reader)
+	}
+}
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	reader := bufio.NewReader(os.Stdin)
+	play(reader)
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
+void play() {
+    int score = 0;
+    int player = 0;
+    int lives = 3;
+
+    while (lives > 0) {
+        int ghost = rand() % 10;
+        bool caught = false;
+
+        for (int pos = 1; pos < 18 && !caught; pos++) {
+            std::cout << std::string(lives, '/') << std::endl;
+            std::cout << "\nGhost: " << ghost << "   You: " << player << std::endl;
+            std::cout << "Press M to change your number, X to guzzle, or Enter to wait: ";
+
+            std::string key;
+            if (!std::getline(std::cin, key)) {
+                std::cout << "\nYour Ghost Guzzling Score: " << score << std::endl;
+                return;
+            }
+            std::transform(key.begin(), key.end(), key.begin(), ::toupper);
+
+            if (key == "M") {
+                player = (player + 1) % 10;
+            } else if (key == "X" && player == ghost) {
+                std::cout << "GOT IT!" << std::endl;
+                score += 18 - pos;
+                caught = true;
+            }
+
+            if (!caught && pos == 17) {
+                lives--;
+                std::cout << "A ghost got you!" << std::endl;
+            }
+        }
+    }
+
+    std::cout << "\nYour Ghost Guzzling Score: " << score << std::endl;
+    std::cout << "Another go? (Y/N): ";
+    std::string again;
+    if (std::getline(std::cin, again)) {
+        std::transform(again.begin(), again.end(), again.begin(), ::toupper);
+        if (again == "Y") {
+            play();
+        }
+    }
+}
+
+int main() {
+    srand(time(0));
+    play();
+    return 0;
+}
 ```
 
 </details>

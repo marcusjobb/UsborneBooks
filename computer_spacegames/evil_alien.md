@@ -54,7 +54,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 CLS
@@ -256,7 +256,7 @@ public class EvilAlien {
 </details>
 
 <details>
-<summary>GoLang</summary>
+<summary>Go</summary>
 
 ```go
 package main
@@ -377,67 +377,6 @@ int main() {
 
     cout << "YOUR TIME HAS RUN OUT!!!" << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use std::io;
-use rand::Rng;
-
-fn main() {
-    let grid_size = 10;
-    let attempts = 4;
-    let alien_x = rand::thread_rng().gen_range(0..grid_size);
-    let alien_y = rand::thread_rng().gen_range(0..grid_size);
-    let alien_d = rand::thread_rng().gen_range(0..grid_size);
-
-    println!("EVIL ALIEN");
-
-    for _ in 0..attempts {
-        let player_x = read_input("X POSITION (0 TO 9)? ");
-        let player_y = read_input("Y POSITION (0 TO 9)? ");
-        let player_d = read_input("DISTANCE (0 TO 9)? ");
-
-        if player_x == alien_x && player_y == alien_y && player_d == alien_d {
-            println!("*BOOM* YOU GOT HIM!");
-            return;
-        }
-
-        print!("SHOT WAS ");
-        if player_y > alien_y {
-            print!("NORTH ");
-        }
-        if player_y < alien_y {
-            print!("SOUTH ");
-        }
-        if player_x > alien_x {
-            print!("EAST ");
-        }
-        if player_x < alien_x {
-            print!("WEST ");
-        }
-        println!();
-
-        if player_d > alien_d {
-            println!("TOO FAR");
-        } else if player_d < alien_d {
-            println!("NOT FAR ENOUGH");
-        }
-    }
-
-    println!("YOUR TIME HAS RUN OUT!!!");
-}
-
-fn read_input(prompt: &str) -> i32 {
-    println!("{}", prompt);
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-    input.trim().parse().unwrap()
 }
 ```
 

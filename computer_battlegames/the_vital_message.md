@@ -67,6 +67,40 @@ flowchart TD
 </details>
 
 <details>
+<summary>ZX-81 BASIC</summary>
+
+```basic
+10 CLS
+20 PRINT "VITAL MESSAGE"
+30 PRINT
+40 PRINT "HOW DIFFICULT? (4-10)"
+50 INPUT D
+60 IF D<4 OR D>10 THEN GOTO 40
+70 LET M$=""
+80 FOR I=1 TO D
+90 LET M$=M$+CHR$(INT(RND*26+38))
+100 NEXT I
+110 CLS
+120 PRINT "SEND THIS MESSAGE:"
+130 PRINT
+140 PRINT M$
+150 FOR I=1 TO D*8
+160 NEXT I
+170 CLS
+180 INPUT N$
+190 IF N$=M$ THEN GOTO 240
+200 PRINT "YOU GOT IT WRONG"
+210 PRINT "YOU SHOULD HAVE SENT:"
+220 PRINT M$
+230 GOTO 260
+240 PRINT "MESSAGE CORRECT"
+250 PRINT "THE WAR IS OVER"
+260 STOP
+```
+
+</details>
+
+<details>
 <summary>C#</summary>
 
 ```csharp
@@ -96,7 +130,7 @@ class Program
         Console.WriteLine();
         Console.WriteLine(message);
 
-        System.Threading.Thread.Sleep(difficulty * 1000); // Pause to simulate ZX81 delay
+        System.Threading.Thread.Sleep(difficulty * 1000); // Pause to simulate ZX-81 delay
         Console.Clear();
 
         Console.WriteLine("Enter the message:");
@@ -337,61 +371,13 @@ int main() {
 
 </details>
 
-<details>
-<summary>Rust</summary>
-
-```rust
-use rand::Rng;
-use std::io;
-use std::thread;
-use std::time::Duration;
-
-fn main() {
-    println!("VITAL MESSAGE");
-
-    let mut difficulty = 0;
-    while difficulty < 4 || difficulty > 10 {
-        println!("HOW DIFFICULT? (4-10): ");
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        difficulty = input.trim().parse().unwrap_or(0);
-    }
-
-    let message = generate_message(difficulty);
-    println!("\nSEND THIS MESSAGE:\n");
-    println!("{}", message);
-
-    thread::sleep(Duration::from_secs(difficulty as u64));
-    print!("{}[2J", 27 as char); // Clear screen
-
-    println!("Enter the message: ");
-    let mut user_input = String::new();
-    io::stdin().read_line(&mut user_input).unwrap();
-
-    if user_input.trim() == message {
-        println!("MESSAGE CORRECT\nTHE WAR IS OVER");
-    } else {
-        println!("YOU GOT IT WRONG\nYOU SHOULD HAVE SENT: {}", message);
-    }
-}
-
-fn generate_message(length: usize) -> String {
-    let mut rng = rand::thread_rng();
-    (0..length)
-        .map(|_| (rng.gen_range(0..26) + 65) as u8 as char)
-        .collect()
-}
-```
-
-</details>
-
 ## Explanation
 
 - The game revolves around matching a randomly generated string (message) with user input.
 - The string length depends on the chosen difficulty (4-10).
 - The random letters are generated using ASCII values (A-Z).
 - If the user matches the string correctly, they win.
-- A pause simulates the time delay from the original ZX81 BASIC implementation.
+- A pause simulates the time delay from the original ZX-81 BASIC implementation.
 - This game enhances memory and attention skills by challenging players to quickly memorize and recall sequences under pressure.
 
 ## Challenges

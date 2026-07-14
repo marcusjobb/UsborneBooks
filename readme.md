@@ -42,7 +42,7 @@ These programs are adaptations of the original Usborne Computer Guides published
 Each Usborne book has its own folder, and each game from the book is stored as a separate Markdown file within that folder. The Markdown files include:
 
 - **The original story**
-- **Code translations**: Starting with C#, Python, Java, Go and Rust.
+- **Code translations**: Starting with C#, Python, Java and Go.
 - **Beginner-friendly explanations**
 - **Challenge suggestions**
 
@@ -52,17 +52,15 @@ Additionally, code is wrapped in expandable `<details>` tags for easy readabilit
 
 To start with I downloaded the original books from the Usborne website. I then read through the books and selected the games that I wanted to adapt.
 
-But since I am lazy I used Google NotebookLM to extract the code and texts, ChatGPT is not vey good at reading code from images I noticed. Then I started to adapt the code to C#, python and Java. The rest was converted by either ChatGPT or Claude. I did cheat a little with CoPilot too, to comment the code.
+But since I am lazy I used Google NotebookLM to extract the code and texts. Then I started to adapt the code to C#, python and Java. The rest was converted with Claude. I did cheat a little with CoPilot too, to comment the code.
 
-Amazingly enough, what took most time was using ChatGPT to convert the code properly, it has a tendency to remove parts it doesn't feel is necessary. I had to go through the code several times to make sure it was correct.
+Going forward, all conversions and fixes are done with Claude Code — no credit or support to OpenAI.
 
 ### LLMs
 
 - [NotebookLM](https://notebook.lm.goo.gle/) works well for extracting code and text from images.
 - [Claude](https://claude.gg/) is good for converting code to other languages.
-- [ChatGPT](https://ChatGPT.com) is good for commenting code and writing text.
 - [CoPilot](https://copilot.github.com/) is good for commenting code and writing text.
-- [Codex](https://openai.com/blog/openai-codex/) is good for transcribing and converting code to other languages.
 
 ### Why I chose these languages
 
@@ -70,7 +68,6 @@ Amazingly enough, what took most time was using ChatGPT to convert the code prop
 - **Python**: Python is a great language for beginners and is very popular. I'm learning it.
 - **Java**: Java is a good language for beginners and is very popular. I like java, but I love C#.
 - **Go**: Go is a good language for beginners and is very popular. A student used it for a project.
-- **Rust**: Rust is a good language for beginners and is very popular. A student used it for a project.
 - **C++**: I used that a long time ago... but at the moment my nephew is learning it, so I added it.
 
 I did consider...

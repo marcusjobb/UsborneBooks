@@ -52,6 +52,17 @@ flowchart TD
 ## Code
 
 <details>
+<summary>Pages</summary>
+
+![Page 1](./img/weird-computer-games_page-0013.jpg)  
+![Page 2](./img/weird-computer-games_page-0014.jpg)  
+![Page 3](./img/weird-computer-games_page-0015.jpg)  
+![Page 4](./img/weird-computer-games_page-0016.jpg)  
+![Page 5](./img/weird-computer-games_page-0017.jpg)
+
+</details>
+
+<details>
 <summary>ZX-81 BASIC</summary>
 
 ```basic
@@ -872,168 +883,6 @@ int main() {
     }
 
     return 0;
-}
-```
-
-</details>
-<details>
-<summary>Rust</summary>
-
-```rust
-use std::collections::{HashMap, HashSet};
-use std::io::{self, Write};
-
-#[derive(Clone)]
-struct Room {
-    name: &'static str,
-    description: &'static str,
-    exits: HashMap<String, String>,
-    items: Vec<String>,
-}
-
-fn main() {
-    let mut rooms = build_world();
-    let mut inventory: HashSet<String> = HashSet::new();
-    let mut current = String::from("cell");
-    let mut airlock_unlocked = false;
-
-    loop {
-        let room = rooms.get_mut(&current).unwrap();
-        println!("\n{}\n{}", room.name, room.description);
-        if !room.items.is_empty() {
-            println!("You see: {}", room.items.join(", "));
-        }
-        if !room.exits.is_empty() {
-            let exits: Vec<_> = room.exits.keys().cloned().collect();
-            println!("Exits: {}", exits.join(", "));
-        }
-
-        print!("Command (two words): ");
-        io::stdout().flush().unwrap();
-        let mut line = String::new();
-        io::stdin().read_line(&mut line).unwrap();
-        let parts: Vec<_> = line.trim().to_uppercase().split_whitespace().collect();
-        if parts.is_empty() {
-            continue;
-        }
-        let verb = parts[0];
-        let noun = parts.get(1).map(|s| s.to_lowercase()).unwrap_or_default();
-
-        match verb {
-            "LOOK" => continue,
-            "GO" => {
-                if let Some(target) = room.exits.get(&noun.to_uppercase()) {
-                    if target == "docks" && !airlock_unlocked {
-                        println!("The door remains locked.");
-                    } else {
-                        current = target.clone();
-                    }
-                } else {
-                    println!("You can't go that way.");
-                }
-            }
-            "TAKE" => {
-                if let Some(pos) = room.items.iter().position(|i| i == &noun) {
-                    inventory.insert(noun.clone());
-                    room.items.remove(pos);
-                    println!("Taken.");
-                } else {
-                    println!("There isn't one here.");
-                }
-            }
-            "DROP" => {
-                if inventory.remove(&noun) {
-                    room.items.push(noun.clone());
-                    println!("Dropped.");
-                } else {
-                    println!("You're not carrying that.");
-                }
-            }
-            "USE" => {
-                if noun == "key" && current == "corridor" && inventory.contains("key") {
-                    println!("You crack the locker. A deck card slides out.");
-                    room.items.push("card".into());
-                } else if noun == "card" && current == "airlock" && inventory.contains("card") {
-                    airlock_unlocked = true;
-                    println!("The reader beeps. The airlock unlocks.");
-                } else if noun == "card" && current == "docks" && airlock_unlocked {
-                    println!("The pod accepts the card. FREEDOM!\n");
-                    break;
-                } else {
-                    println!("Nothing happens.");
-                }
-            }
-            "INVENTORY" => {
-                if inventory.is_empty() {
-                    println!("Carrying nothing.");
-                } else {
-                    let mut items: Vec<_> = inventory.iter().cloned().collect();
-                    items.sort();
-                    println!("Carrying: {}", items.join(", "));
-                }
-            }
-            _ => println!("That doesn't work."),
-        }
-    }
-}
-
-fn build_world() -> HashMap<String, Room> {
-    let mut rooms = HashMap::new();
-    rooms.insert(
-        "cell".into(),
-        Room {
-            name: "Holding Cell",
-            description: "Bare walls, flickering light, a locked door to the north.",
-            exits: HashMap::from([(String::from("N"), String::from("corridor"))]),
-            items: vec![],
-        },
-    );
-    rooms.insert(
-        "corridor".into(),
-        Room {
-            name: "Guarded Corridor",
-            description: "A nervous robot snores beside a steel locker.",
-            exits: HashMap::from([
-                (String::from("S"), String::from("cell")),
-                (String::from("E"), String::from("lab")),
-            ]),
-            items: vec!["card".into()],
-        },
-    );
-    rooms.insert(
-        "lab".into(),
-        Room {
-            name: "Research Lab",
-            description: "Smashed glass and broken jars. A warning light flashes east.",
-            exits: HashMap::from([
-                (String::from("W"), String::from("corridor")),
-                (String::from("E"), String::from("airlock")),
-            ]),
-            items: vec!["key".into()],
-        },
-    );
-    rooms.insert(
-        "airlock".into(),
-        Room {
-            name: "Airlock",
-            description: "A heavy door blocks the escape pods. A reader awaits a card.",
-            exits: HashMap::from([
-                (String::from("W"), String::from("lab")),
-                (String::from("E"), String::from("docks")),
-            ]),
-            items: vec![],
-        },
-    );
-    rooms.insert(
-        "docks".into(),
-        Room {
-            name: "Docks",
-            description: "Beyond the transparent hull lies space and freedom.",
-            exits: HashMap::new(),
-            items: vec![],
-        },
-    );
-    rooms
 }
 ```
 

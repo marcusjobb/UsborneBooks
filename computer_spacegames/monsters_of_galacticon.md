@@ -68,7 +68,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>ZX-81</summary>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 10 PRINT "MONSTERS OF GALACTICON"
@@ -281,7 +281,7 @@ public class MonstersOfGalacticon {
 </details>
 
 <details>
-<summary>GoLang</summary>
+<summary>Go</summary>
 
 ```go
 package main
@@ -384,60 +384,6 @@ int main() {
 
     cout << "YOU HAVE SURVIVED TO CONQUER GALACTICON" << endl;
     return 0;
-}
-```
-
-</details>
-
-<details>
-<summary>Rust</summary>
-
-```rust
-use std::io;
-use rand::seq::SliceRandom;
-use rand::Rng;
-
-fn main() {
-    let mut monsters = vec!["Sulfamicor", "Flamgondar", "Balnolotin", "Golander"];
-    let mut group_size = 5;
-    let mut rng = rand::thread_rng();
-
-    println!("MONSTERS OF GALACTICON");
-
-    for _ in 0..8 {
-        println!("\nMONSTER COMING...");
-        let monster = monsters.choose(&mut rng).unwrap();
-        println!("IT'S A {}", monster);
-
-        println!("WHICH WEAPON? (R,S OR T): ");
-        let mut weapon = String::new();
-        io::stdin().read_line(&mut weapon).unwrap();
-        let weapon = weapon.trim().chars().next().unwrap_or('R');
-
-        let weapon_effectiveness = (weapon as u8 - b'R') + rng.gen_range(1..=4);
-        let adjusted_effectiveness = if weapon_effectiveness > 3 {
-            weapon_effectiveness - 3
-        } else {
-            weapon_effectiveness
-        };
-
-        if adjusted_effectiveness == 2 {
-            println!("YOU'VE KILLED IT");
-        } else {
-            println!("NO EFFECT");
-            if rng.gen_bool(0.6) {
-                println!("YOU ANGERED THE {} AND IT KILLED ONE OF YOUR GROUP", monster);
-                group_size -= 1;
-            }
-
-            if group_size <= 0 {
-                println!("YOU'RE ALL DEAD");
-                return;
-            }
-        }
-    }
-
-    println!("YOU HAVE SURVIVED TO CONQUER GALACTICON");
 }
 ```
 

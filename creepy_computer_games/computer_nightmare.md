@@ -78,7 +78,16 @@ flowchart TD
 ## Code
 
 <details>
-<summary>ZX-81</summary>
+<summary>Pages</summary>
+
+![Page 1](./img/Usborne-Creepy_Computer_Games03.png)
+
+</details>
+
+---
+
+<details>
+<summary>ZX-81 BASIC</summary>
 
 ```basic
 5 LET F$="0"
@@ -211,6 +220,183 @@ def computer_nightmare():
 
 if __name__ == "__main__":
     computer_nightmare()
+```
+
+</details>
+
+---
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Random;
+import java.util.Scanner;
+
+public class ComputerNightmare {
+    public static void main(String[] args) {
+        String[] insults = {
+            "**MICROS RULE!**",
+            "**PEOPLE ARE STUPID!**",
+            "A ROBOT FOR PRESIDENT!",
+            "COMPUTERS ARE GREAT!",
+            "I'M BETTER THAN YOU!"
+        };
+
+        int score = 300;
+        Random rnd = new Random();
+        Scanner scanner = new Scanner(System.in);
+
+        while (score > 0 && score < 500) {
+            int n = rnd.nextInt(9) + 1;
+            System.out.println("\nNumber: " + n + "   Score: " + score);
+
+            if (rnd.nextDouble() > 0.5) {
+                System.out.println(insults[Math.min(score / 100, insults.length - 1)]);
+            }
+
+            System.out.print("Press number: ");
+            int guess;
+            try {
+                guess = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                guess = -1;
+            }
+
+            score -= 10;
+            if (guess == n) {
+                score += 10 + n * 2;
+            }
+        }
+
+        if (score <= 0) {
+            System.out.println("\nYOU'RE NOW MY SLAVE!");
+        } else {
+            System.out.println("\nOK. YOU WIN (THIS TIME)");
+        }
+    }
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>Go</summary>
+
+```go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math/rand"
+	"os"
+	"strconv"
+	"strings"
+	"time"
+)
+
+func main() {
+	insults := []string{
+		"**MICROS RULE!**",
+		"**PEOPLE ARE STUPID!**",
+		"A ROBOT FOR PRESIDENT!",
+		"COMPUTERS ARE GREAT!",
+		"I'M BETTER THAN YOU!",
+	}
+
+	score := 300
+	rand.Seed(time.Now().UnixNano())
+	reader := bufio.NewReader(os.Stdin)
+
+	for score > 0 && score < 500 {
+		n := rand.Intn(9) + 1
+		fmt.Printf("\nNumber: %d   Score: %d\n", n, score)
+
+		if rand.Float64() > 0.5 {
+			idx := score / 100
+			if idx >= len(insults) {
+				idx = len(insults) - 1
+			}
+			fmt.Println(insults[idx])
+		}
+
+		fmt.Print("Press number: ")
+		input, _ := reader.ReadString('\n')
+		guess, err := strconv.Atoi(strings.TrimSpace(input))
+		if err != nil {
+			guess = -1
+		}
+
+		score -= 10
+		if guess == n {
+			score += 10 + n*2
+		}
+	}
+
+	if score <= 0 {
+		fmt.Println("\nYOU'RE NOW MY SLAVE!")
+	} else {
+		fmt.Println("\nOK. YOU WIN (THIS TIME)")
+	}
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include <algorithm>
+
+int main() {
+    std::string insults[] = {
+        "**MICROS RULE!**",
+        "**PEOPLE ARE STUPID!**",
+        "A ROBOT FOR PRESIDENT!",
+        "COMPUTERS ARE GREAT!",
+        "I'M BETTER THAN YOU!"
+    };
+
+    int score = 300;
+    srand(time(0));
+
+    while (score > 0 && score < 500) {
+        int n = rand() % 9 + 1;
+        std::cout << "\nNumber: " << n << "   Score: " << score << std::endl;
+
+        if ((double)rand() / RAND_MAX > 0.5) {
+            int idx = std::min(score / 100, 4);
+            std::cout << insults[idx] << std::endl;
+        }
+
+        std::cout << "Press number: ";
+        int guess;
+        std::cin >> guess;
+
+        score -= 10;
+        if (guess == n) {
+            score += 10 + n * 2;
+        }
+    }
+
+    if (score <= 0) {
+        std::cout << "\nYOU'RE NOW MY SLAVE!" << std::endl;
+    } else {
+        std::cout << "\nOK. YOU WIN (THIS TIME)" << std::endl;
+    }
+
+    return 0;
+}
 ```
 
 </details>
