@@ -1,6 +1,7 @@
 # Alien Snipers
 
 **Book**: _Computer Spacegames_  
+
 **Author**: Usborne Publishing  
 **Translator**: [Marcus Medina](https://github.com/marcusjobb/UsborneBooks)
 

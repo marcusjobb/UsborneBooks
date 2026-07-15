@@ -1,6 +1,7 @@
 # Monsters of Galacticon
 
 **Book**: _Computer Spacegames_  
+
 **Author**: Usborne Publishing
 
 ## Story

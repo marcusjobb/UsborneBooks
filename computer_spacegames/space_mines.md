@@ -1,6 +1,7 @@
 # Space Mines
 
 **Book**: _Computer Spacegames_  
+
 **Author**: Usborne Publishing
 
 ## Story
