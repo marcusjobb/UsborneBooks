@@ -72,7 +72,7 @@ flowchart TD
     K --> L[Correct?]
     L -->|Yes| M[Player escapes and game ends]
     L -->|No| N[Player is too late and game ends]
-    H --> O[If >15 tries -> "You are now a fly"]
+    H --> O["If more than 15 tries: You are now a fly"]
 ```
 
 ---

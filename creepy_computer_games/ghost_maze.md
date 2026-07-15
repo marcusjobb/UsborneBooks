@@ -72,7 +72,7 @@ flowchart TD
     H --> I[Check for Ghost Encounter]
     I -->|Caught| J[Teleport Player]
     I -->|Safe| K[Check for Exit]
-    K -->|Found Exit| L[Print "You Have Escaped!"]
+    K -->|Found Exit| L["Print: You Have Escaped!"]
     K -->|Still Inside| E
     J --> E
     L --> M[End Game]

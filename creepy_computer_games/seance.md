@@ -63,10 +63,10 @@ flowchart TD
     E -->|No| G[Increase anger level]
     G --> H[Display spooky reaction]
     F --> I[All messages done?]
-    I -->|Yes| J[Print "The Spirits Have Gone"]
+    I -->|Yes| J["Print: The Spirits Have Gone"]
     I -->|No| B
     H --> K[Too angry?]
-    K -->|Yes| L[Print "A pair of clammy hands grasps your neck!"]
+    K -->|Yes| L["Print: A pair of clammy hands grasps your neck!"]
     K -->|No| D
     J --> M[End Game]
     L --> M

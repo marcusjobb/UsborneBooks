@@ -69,7 +69,7 @@ flowchart TD
     L --> M[Check collisions again]
     M -->|Skeleton caught| N[Increase score]
     M -->|Player caught| I
-    M -->|Escaped| O[Print "You’re Free!"]
+    M -->|Escaped| O["Print: You're Free!"]
     I --> P[Game Over]
     O --> P
 ```
