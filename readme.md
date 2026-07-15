@@ -19,6 +19,8 @@ The project includes adaptations from the following books:
 1. [**Computer Battlegames**](./computer_battlegames/readme.md)
 2. [**Computer Spacegames**](./computer_spacegames/readme.md)
 3. [**Weird Computer Games**](./weird_computer_games/readme.md)
+4. [**Creepy Computer Games**](./creepy_computer_games/readme.md)
+5. [**Computer Spy Games**](./computer_spygames/readme.md)
 
 (more to follow)
 
