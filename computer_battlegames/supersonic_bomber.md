@@ -40,7 +40,7 @@ END
 
 ## Flowchart
 
-<div class="mermaid">
+```mermaid
 flowchart TD
     Start --> Initialize['Initialize score and targets array']
     Initialize --> RoundLoop['FOR each of 10 rounds']
@@ -54,7 +54,7 @@ flowchart TD
     PrintIncorrect --> NextRound
     NextRound -->|End of 10 rounds| FinalScore['Display final score']
     FinalScore --> End['END']
-</div>
+```
 
 ---
 

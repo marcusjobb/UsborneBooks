@@ -59,13 +59,13 @@ IF counter = 0 → TOO LATE, footsteps caught you!
 
 ```mermaid
 flowchart TD
-    A[Start Game] --> B[Initialize arrays P() and S()]
+    A[Start Game] --> B["Initialize arrays P() and S()"]
     B --> C[Set doorway positions randomly]
     C --> D[Display room and counter]
     D --> E[Check if all three doorways align]
     E -->|Yes| F[Print "YOU ARE FREE!!"]
     E -->|No| G[Check for keypress]
-    G --> H[Change doorway direction (X,C,N,M)]
+    G --> H["Change doorway direction (X,C,N,M)"]
     H --> I[Move doorways based on direction]
     I --> J[Decrease counter]
     J --> K[Check if counter = 0]
@@ -82,8 +82,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Creepy_Computer_Games12.png)  
-![Page 2](./img/Usborne-Creepy_Computer_Games13.png)
+![Page 1](./creepy-computer-games/creepy-computer-games_0012.png)  
+![Page 2](./creepy-computer-games/creepy-computer-games_0013.png)
 
 </details>
 

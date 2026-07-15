@@ -37,7 +37,7 @@ END
 
 ## Flowchart
 
-<div class="mermaid">
+```mermaid
 flowchart TD
     A[Start] --> B[Clear Screen]
     B --> C[Display 'STARSHIP TAKE-OFF']
@@ -59,7 +59,7 @@ flowchart TD
     Q --> I
     P -->|No| R[Display 'YOU FAILED - THE ALIENS GOT YOU']
     R --> L
-</div>
+```
 
 ## Code
 

@@ -62,7 +62,7 @@ flowchart TD
     F -->|No| G[Move player]
     G --> H[Check if stepped into skeleton or hole]
     H -->|Yes| I[Print Death Message]
-    H -->|No| J[Ask to dig hole (Y/N)]
+    H -->|No| J["Ask to dig hole (Y/N)"]
     J -->|Y| K[Add hole at current position]
     J -->|N| L[Move Skeletons]
     K --> L
@@ -81,8 +81,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Creepy_Computer_Games10.png)  
-![Page 2](./img/Usborne-Creepy_Computer_Games11.png)
+![Page 1](./creepy-computer-games/creepy-computer-games_0010.png)  
+![Page 2](./creepy-computer-games/creepy-computer-games_0011.png)
 
 </details>
 

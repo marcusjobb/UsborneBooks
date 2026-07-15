@@ -41,7 +41,7 @@ END
 
 ## Flowchart
 
-<div class="mermaid">
+```mermaid
 flowchart TD
     Start --> ClearScreen["Clear screen"]
     ClearScreen --> Title["Display game title and instructions"]
@@ -59,7 +59,7 @@ flowchart TD
     Far --> GuessLoop
     GuessLoop --> Failure["Display failure message"]
     Failure --> End
-</div>
+```
 
 ## Code
 

@@ -85,8 +85,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Creepy_Computer_Games14.png)  
-![Page 2](./img/Usborne-Creepy_Computer_Games15.png)
+![Page 1](./creepy-computer-games/creepy-computer-games_0014.png)  
+![Page 2](./creepy-computer-games/creepy-computer-games_0015.png)
 
 </details>
 

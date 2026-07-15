@@ -65,8 +65,8 @@ flowchart TD
     I --> J[Was key correct?]
     J -->|Yes| K[Increase score by 10 + N*2]
     J -->|No| L[Decrease score again]
-    K --> M[Check win (score >= 500)]
-    L --> N[Check lose (score <= 0)]
+    K --> M[Check win: score reached 500]
+    L --> N[Check lose: score dropped to 0]
     M -->|Win| O[Show OK. YOU WIN]
     N -->|Lose| P[Show YOU ARE NOW MY SLAVE]
     O --> Q[End]
@@ -80,7 +80,7 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Creepy_Computer_Games03.png)
+![Page 1](./creepy-computer-games/creepy-computer-games_0003.png)
 
 </details>
 

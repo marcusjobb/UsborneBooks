@@ -36,7 +36,7 @@ END
 
 ## Flowchart
 
-<div class="mermaid">
+```mermaid
 flowchart TD
     Start --> ClearScreen["Clear screen"]
     ClearScreen --> Title["Display game title and instructions"]
@@ -51,7 +51,7 @@ flowchart TD
     Reaction -->|Slow| Lose["Display 'You are too slow. You lose.'"]
     Win --> End
     Lose --> End
-</div>
+```
 
 ## Code
 

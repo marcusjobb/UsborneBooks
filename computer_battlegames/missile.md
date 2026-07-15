@@ -32,7 +32,7 @@ END
 
 ## Flowchart
 
-<div class="mermaid">
+```mermaid
 flowchart TD
     Start[Start]
     Init[Initialize missile bases and variables]
@@ -51,7 +51,7 @@ flowchart TD
     Collision -->|If no collision| Repeat
     Repeat -->|If out of bases or quit| GameOver
 
-</div>
+```
 
 ## Code
 

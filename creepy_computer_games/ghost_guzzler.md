@@ -56,7 +56,7 @@ flowchart TD
     B --> C[Generate Ghost Number 0-9]
     C --> D[Display Ghost Number and Player Number]
     D --> E[Check for Key Input]
-    E -->|M Pressed| F[Increase player number (0-9)]
+    E -->|M Pressed| F["Increase player number (0-9)"]
     E -->|X Pressed| G[Compare Numbers]
     G -->|Match| H[Increase Score]
     G -->|No Match| I[Decrease Lives]
@@ -75,8 +75,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Creepy_Computer_Games06.png)  
-![Page 2](./img/Usborne-Creepy_Computer_Games07.png)
+![Page 1](./creepy-computer-games/creepy-computer-games_0006.png)  
+![Page 2](./creepy-computer-games/creepy-computer-games_0007.png)
 
 </details>
 
