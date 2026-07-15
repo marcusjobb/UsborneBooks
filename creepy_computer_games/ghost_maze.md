@@ -1,6 +1,6 @@
 # Ghost Maze
 
-**Book**: _Creepy Computer Games_   
+**Book**: _[Creepy Computer Games](https://drive.google.com/file/d/0Bxv0SsvibDMTRUl3SFRONGN0MFk/view?resourcekey=0-kcOvkkPmrMYcDp7xGzxcdg)_   
 **Author**: [Brendon Kavanagh, Colin Reynolds, Val Robinson, Alan Ramsey, Keith Campbell, Chris Oxlade](https://github.com/marcusjobb/UsborneBooks)  
 **Translator**: [Marcus Medina](http://marcusmedina.pro)  
 

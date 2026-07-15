@@ -1,6 +1,6 @@
 # Starship Takeoff
 
-**Book**: _Computer Spacegames_  
+**Book**: _[Computer Spacegames](https://drive.google.com/file/d/0Bxv0SsvibDMTNlMwTi1PTlVxc2M/view?resourcekey=0-kaU6eyAmIVhT3_H8RkHfHA)_  
 
 **Author**: [Usborne Publishing](https://usborne.com/)  
 **Translator**: [Marcus Medina](http://marcusmedina.pro)

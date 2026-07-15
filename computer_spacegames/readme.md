@@ -50,4 +50,5 @@ These programs are adaptations of the original Usborne Computer Guides published
 
 ## Links
 
-Return to the [main README](./readme.md) for this repository.
+- [Download the original book from Usborne](https://drive.google.com/file/d/0Bxv0SsvibDMTNlMwTi1PTlVxc2M/view?resourcekey=0-kaU6eyAmIVhT3_H8RkHfHA)
+- Return to the [main README](../readme.md) for this repository.

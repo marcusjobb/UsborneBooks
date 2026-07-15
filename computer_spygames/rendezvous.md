@@ -1,6 +1,6 @@
 # Rendezvous
 
-**Book**: _Computer Spy Games_  
+**Book**: _[Computer Spy Games](https://drive.google.com/file/d/0Bxv0SsvibDMTdGY0VEQzSGZnelU/view?resourcekey=0-twRy7ZBMfpwWVPpIrYm3rA)_  
 
 **Author**: [Jenny Tyler and Chris Oxlade](https://github.com/marcusjobb/UsborneBooks)  
 **Translator**: [Marcus Medina](http://marcusmedina.pro)  

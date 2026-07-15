@@ -46,3 +46,8 @@ You can explore each game by navigating through the files in this folder.
 ## Copyright Notice
 
 These programs are adaptations of the original Usborne Computer Guides published in the 1980s. The books are free to download for personal or educational use from [Usborne's Computer and Coding Books](https://usborne.com/row/books/computer-and-coding-books). Programs and adaptations may not be used for commercial purposes.
+
+## Links
+
+- [Download the original book from Usborne](https://drive.google.com/file/d/0Bxv0SsvibDMTVUExUjFhTURCSU0/view?usp=sharing&resourcekey=0-v2liG0G60g8b7DXjJtDBXg)
+- Return to [main README](../readme.md).
