@@ -1,7 +1,6 @@
 # Spy Q Test
 
-**Book**: _Computer Spy Games_  
-
+**Book**: _Computer Spy Games_   
 **Author**: [Jenny Tyler and Chris Oxlade](https://github.com/marcusjobb/UsborneBooks)  
 **Translator**: [Marcus Medina](http://marcusmedina.pro)  
 

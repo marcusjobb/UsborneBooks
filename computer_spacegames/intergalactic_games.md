@@ -1,7 +1,6 @@
 # Intergalactic Games
 
-**Book**: _Computer Spacegames_  
-
+**Book**: _Computer Spacegames_   
 **Author**: Usborne Publishing
 
 ## Story

@@ -1,7 +1,6 @@
 # Computer Nightmare
 
-**Book**: _Creepy Computer Games_  
-
+**Book**: _Creepy Computer Games_   
 **Author**: [Brendon Kavanagh, Colin Reynolds, Val Robinson, Alan Ramsey, Keith Campbell, Chris Oxlade](https://github.com/marcusjobb/UsborneBooks)  
 **Translator**: [Marcus Medina](http://marcusmedina.pro)  
 

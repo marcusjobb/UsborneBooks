@@ -1,7 +1,6 @@
 # Trip into the Future
 
-**Book**: _Computer Spacegames_  
-
+**Book**: _Computer Spacegames_   
 **Author**: Unknown (Usborne Publishing)
 
 ## Story

@@ -1,7 +1,6 @@
 # Skulls of the Pyramid
 
-**Book**: _Weird Computer Games (Usborne, 1984)_  
-
+**Book**: _Weird Computer Games (Usborne, 1984)_   
 **Author**: [Usborne Publishing](https://usborne.com/row/books/computer-and-coding-books)  
 **Translator**: [Marcus Medina](http://marcusmedina.pro)
 
