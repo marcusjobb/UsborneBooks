@@ -1,7 +1,9 @@
 # Evil Alien
 
-**Book**: _Computer Spacegames_   
-**Author**: Usborne Publishing
+**Book**: _Computer Spacegames_  
+
+**Author**: [Usborne Publishing](https://usborne.com/)  
+**Translator**: [Marcus Medina](http://marcusmedina.pro)
 
 ## Story
 

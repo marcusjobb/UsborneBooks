@@ -1,6 +1,7 @@
 # Asteroid Belt
 
-**Book**: _Computer Spacegames_   
+**Book**: _Computer Spacegames_  
+
 **Author**: Usborne Publishing  
 **Translator**: [Marcus Medina](http://marcusmedina.pro)
 

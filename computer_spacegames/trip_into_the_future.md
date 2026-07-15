@@ -1,7 +1,9 @@
 # Trip into the Future
 
-**Book**: _Computer Spacegames_   
-**Author**: Unknown (Usborne Publishing)
+**Book**: _Computer Spacegames_  
+
+**Author**: [Usborne Publishing](https://usborne.com/)  
+**Translator**: [Marcus Medina](http://marcusmedina.pro)
 
 ## Story
 
