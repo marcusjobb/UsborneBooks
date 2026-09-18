@@ -2,8 +2,9 @@
 title: "Gravedigger"
 parent: Creepy Computer Games
 nav_order: 4
-render_with_liquid: false
 ---
+
+{% raw %}
 
 # Gravedigger
 
@@ -971,3 +972,4 @@ The books are free to download for personal or educational use from
 Programs and adaptations may **not** be used for commercial purposes.
 
 Return to [Creepy Computer Games](./readme.md).
+{% endraw %}

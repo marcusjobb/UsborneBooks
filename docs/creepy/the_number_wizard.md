@@ -2,8 +2,9 @@
 title: "The Number Wizard"
 parent: Creepy Computer Games
 nav_order: 8
-render_with_liquid: false
 ---
+
+{% raw %}
 
 # The Number Wizard
 
@@ -571,3 +572,4 @@ The books are free to download for personal or educational use from
 Programs and adaptations may **not** be used for commercial purposes.
 
 Return to [Creepy Computer Games](./readme.md).
+{% endraw %}

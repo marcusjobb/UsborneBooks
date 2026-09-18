@@ -2,8 +2,9 @@
 title: "Space Rescue"
 parent: Computer Spacegames
 nav_order: 10
-render_with_liquid: false
 ---
+
+{% raw %}
 
 # Space Rescue
 
@@ -959,3 +960,4 @@ The game simulates a space rescue mission where players allocate energy to compl
 ## Copyright
 
 These programs are adaptations of the original Usborne Computer Guides published in the 1980s. They are free to download for personal or educational use from [Usborne's Computer and Coding Books](https://usborne.com/row/books/computer-and-coding-books).
+{% endraw %}

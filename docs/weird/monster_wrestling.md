@@ -2,8 +2,9 @@
 title: "Monster Wrestling"
 parent: Weird Computer Games
 nav_order: 4
-render_with_liquid: false
 ---
+
+{% raw %}
 
 # Monster Wrestling
 
@@ -529,3 +530,4 @@ The program is a tense arithmetic drill. Each round generates a **monster size**
 These programs are adaptations of the original _Usborne Computer Guides_ published in the 1980s. The books are free to download for personal or educational use from [Usborne’s Computer and Coding Books](https://usborne.com/row/books/computer-and-coding-books). Programs and adaptations may not be used for commercial purposes.
 
 Return to [Weird Computer Games](./readme.md).
+{% endraw %}

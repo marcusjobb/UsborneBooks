@@ -2,8 +2,9 @@
 title: "Spiderwoman"
 parent: Creepy Computer Games
 nav_order: 7
-render_with_liquid: false
 ---
+
+{% raw %}
 
 # Spiderwoman
 
@@ -464,3 +465,4 @@ The books are free to download for personal or educational use from
 Programs and adaptations may **not** be used for commercial purposes.
 
 Return to [Creepy Computer Games](./readme.md).
+{% endraw %}

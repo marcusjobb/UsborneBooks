@@ -2,8 +2,9 @@
 title: "Spy Eyes"
 parent: Computer Spy Games
 nav_order: 6
-render_with_liquid: false
 ---
+
+{% raw %}
 
 # Spy Eyes
 
@@ -583,3 +584,4 @@ Nine numbers are scattered across the screen. After you look them over and press
 These programs are adaptations of the original Usborne Computer Guides published in the 1980s. The books are free to download for personal or educational use from [Usborne's Computer and Coding Books](https://usborne.com/row/books/computer-and-coding-books). Programs and adaptations may not be used for commercial purposes.
 
 Return to [Computer Spy Games](./readme.md).
+{% endraw %}

@@ -2,8 +2,9 @@
 title: "Seance"
 parent: Creepy Computer Games
 nav_order: 6
-render_with_liquid: false
 ---
+
+{% raw %}
 
 # Seance
 
@@ -470,3 +471,4 @@ The books are free to download for personal or educational use from
 Programs and adaptations may **not** be used for commercial purposes.
 
 Return to [Creepy Computer Games](./readme.md).
+{% endraw %}

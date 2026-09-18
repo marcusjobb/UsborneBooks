@@ -2,8 +2,9 @@
 title: "Trip into the Future"
 parent: Computer Spacegames
 nav_order: 12
-render_with_liquid: false
 ---
+
+{% raw %}
 
 # Trip into the Future
 
@@ -351,4 +352,4 @@ This game simulates a futuristic journey where the player must balance speed and
 These programs are adaptations of the original Usborne Computer Guides published in the 1980s. The books are free to download for personal or educational use from [Usborne's Computer and Coding Books](https://usborne.com/row/books/computer-and-coding-books). Programs and adaptations may not be used for commercial purposes.
 
 Return to [Computer Spacegames](./readme.md).
-
+{% endraw %}

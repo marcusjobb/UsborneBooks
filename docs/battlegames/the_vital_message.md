@@ -2,8 +2,9 @@
 title: "The Vital Message"
 parent: Computer Battlegames
 nav_order: 12
-render_with_liquid: false
 ---
+
+{% raw %}
 
 # The Vital Message
 
@@ -404,3 +405,4 @@ int main() {
 These programs are adaptations of the original Usborne Computer Guides published in the 1980s. The books are free to download for personal or educational use from [Usborne's Computer and Coding Books](https://usborne.com/row/books/computer-and-coding-books). Programs and adaptations may not be used for commercial purposes.
 
 Return to [Computer Battlegames](./readme.md).
+{% endraw %}
