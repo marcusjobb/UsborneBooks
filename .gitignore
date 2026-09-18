@@ -1,3 +1,7 @@
-/chatgpt material
-.vscode
-process.md
+# Genereras automatiskt av _scripts/generate_docs.py i CI
+# Redigera källfilerna i rotmapparna (computer_*/) istället
+docs/battlegames/
+docs/spacegames/
+docs/spygames/
+docs/creepy/
+docs/weird/

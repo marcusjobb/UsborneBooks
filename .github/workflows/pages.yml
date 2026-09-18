@@ -19,6 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Generera docs/ från källfilerna
+        run: python3 _scripts/generate_docs.py
+
       - uses: actions/configure-pages@v5
       - uses: actions/jekyll-build-pages@v1
         with:
