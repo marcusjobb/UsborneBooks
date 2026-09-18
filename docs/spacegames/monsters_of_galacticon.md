@@ -2,6 +2,7 @@
 title: "Monsters of Galacticon"
 parent: Computer Spacegames
 nav_order: 7
+render_with_liquid: false
 ---
 
 # Monsters of Galacticon

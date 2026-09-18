@@ -2,6 +2,7 @@
 title: "The Wizard's Wall"
 parent: Computer Battlegames
 nav_order: 13
+render_with_liquid: false
 ---
 
 # The Wizard's Wall

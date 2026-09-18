@@ -2,6 +2,7 @@
 title: "Evil Alien"
 parent: Computer Spacegames
 nav_order: 5
+render_with_liquid: false
 ---
 
 # Evil Alien

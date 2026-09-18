@@ -2,6 +2,7 @@
 title: "Iceberg"
 parent: Computer Battlegames
 nav_order: 4
+render_with_liquid: false
 ---
 
 # Iceberg

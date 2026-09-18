@@ -2,6 +2,7 @@
 title: "Asteroid Belt"
 parent: Computer Spacegames
 nav_order: 2
+render_with_liquid: false
 ---
 
 # Asteroid Belt

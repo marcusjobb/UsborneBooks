@@ -2,6 +2,7 @@
 title: "Ghost Guzzler"
 parent: Creepy Computer Games
 nav_order: 2
+render_with_liquid: false
 ---
 
 # Ghost Guzzler

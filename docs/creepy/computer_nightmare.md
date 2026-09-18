@@ -2,6 +2,7 @@
 title: "Computer Nightmare"
 parent: Creepy Computer Games
 nav_order: 1
+render_with_liquid: false
 ---
 
 # Computer Nightmare

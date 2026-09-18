@@ -2,6 +2,7 @@
 title: "Beat the Bug Eyes"
 parent: Computer Spacegames
 nav_order: 3
+render_with_liquid: false
 ---
 
 # Beat the Bug Eyes

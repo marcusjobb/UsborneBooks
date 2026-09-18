@@ -2,6 +2,7 @@
 title: "Missile!"
 parent: Computer Battlegames
 nav_order: 5
+render_with_liquid: false
 ---
 
 # Missile!

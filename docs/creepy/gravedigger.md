@@ -2,6 +2,7 @@
 title: "Gravedigger"
 parent: Creepy Computer Games
 nav_order: 4
+render_with_liquid: false
 ---
 
 # Gravedigger

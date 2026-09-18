@@ -2,6 +2,7 @@
 title: "Ghost Maze"
 parent: Creepy Computer Games
 nav_order: 3
+render_with_liquid: false
 ---
 
 # Ghost Maze

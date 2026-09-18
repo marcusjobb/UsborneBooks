@@ -2,6 +2,7 @@
 title: "Robospy"
 parent: Computer Spy Games
 nav_order: 3
+render_with_liquid: false
 ---
 
 # Robospy

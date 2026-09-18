@@ -2,6 +2,7 @@
 title: "Intergalactic Games"
 parent: Computer Spacegames
 nav_order: 6
+render_with_liquid: false
 ---
 
 # Intergalactic Games

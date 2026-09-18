@@ -2,6 +2,7 @@
 title: "Searchlight"
 parent: Computer Spy Games
 nav_order: 4
+render_with_liquid: false
 ---
 
 # Searchlight

@@ -2,6 +2,7 @@
 title: "Supersonic Bomber"
 parent: Computer Battlegames
 nav_order: 11
+render_with_liquid: false
 ---
 
 # Supersonic Bomber

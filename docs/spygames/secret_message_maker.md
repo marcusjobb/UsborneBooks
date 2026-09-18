@@ -2,6 +2,7 @@
 title: "Secret Message Maker"
 parent: Computer Spy Games
 nav_order: 5
+render_with_liquid: false
 ---
 
 # Secret Message Maker

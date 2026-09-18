@@ -2,6 +2,7 @@
 title: "Escape!"
 parent: Computer Battlegames
 nav_order: 3
+render_with_liquid: false
 ---
 
 # Escape!

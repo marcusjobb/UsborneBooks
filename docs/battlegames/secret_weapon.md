@@ -2,6 +2,7 @@
 title: "Secret Weapon"
 parent: Computer Battlegames
 nav_order: 9
+render_with_liquid: false
 ---
 
 # Secret Weapon

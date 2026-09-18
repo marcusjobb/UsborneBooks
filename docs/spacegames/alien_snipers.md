@@ -2,6 +2,7 @@
 title: "Alien Snipers"
 parent: Computer Spacegames
 nav_order: 1
+render_with_liquid: false
 ---
 
 # Alien Snipers

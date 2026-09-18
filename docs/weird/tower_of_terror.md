@@ -2,6 +2,7 @@
 title: "Tower of Terror"
 parent: Weird Computer Games
 nav_order: 6
+render_with_liquid: false
 ---
 
 # Tower of Terror

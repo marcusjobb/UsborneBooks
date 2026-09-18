@@ -2,6 +2,7 @@
 title: "Space Mines"
 parent: Computer Spacegames
 nav_order: 9
+render_with_liquid: false
 ---
 
 # Space Mines

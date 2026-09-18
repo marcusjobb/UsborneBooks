@@ -2,6 +2,7 @@
 title: "Space Rescue"
 parent: Computer Spacegames
 nav_order: 10
+render_with_liquid: false
 ---
 
 # Space Rescue

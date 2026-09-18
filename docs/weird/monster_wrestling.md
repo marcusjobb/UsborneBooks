@@ -2,6 +2,7 @@
 title: "Monster Wrestling"
 parent: Weird Computer Games
 nav_order: 4
+render_with_liquid: false
 ---
 
 # Monster Wrestling

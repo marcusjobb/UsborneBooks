@@ -2,6 +2,7 @@
 title: "The Vital Message"
 parent: Computer Battlegames
 nav_order: 12
+render_with_liquid: false
 ---
 
 # The Vital Message

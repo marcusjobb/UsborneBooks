@@ -2,6 +2,7 @@
 title: "Morse Coder"
 parent: Computer Spy Games
 nav_order: 1
+render_with_liquid: false
 ---
 
 # Morse Coder

@@ -2,6 +2,7 @@
 title: "Desert Tank Battle"
 parent: Computer Battlegames
 nav_order: 2
+render_with_liquid: false
 ---
 
 # Desert Tank Battle

@@ -2,6 +2,7 @@
 title: "Spiderwoman"
 parent: Creepy Computer Games
 nav_order: 7
+render_with_liquid: false
 ---
 
 # Spiderwoman

@@ -2,6 +2,7 @@
 title: "Flying Witches"
 parent: Weird Computer Games
 nav_order: 1
+render_with_liquid: false
 ---
 
 # Flying Witches

@@ -2,6 +2,7 @@
 title: "Skulls of the Pyramid"
 parent: Weird Computer Games
 nav_order: 5
+render_with_liquid: false
 ---
 
 # Skulls of the Pyramid

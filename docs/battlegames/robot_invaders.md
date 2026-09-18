@@ -2,6 +2,7 @@
 title: "Robot Invaders"
 parent: Computer Battlegames
 nav_order: 7
+render_with_liquid: false
 ---
 
 # Robot Invaders

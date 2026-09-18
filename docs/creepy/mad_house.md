@@ -2,6 +2,7 @@
 title: "Mad House"
 parent: Creepy Computer Games
 nav_order: 5
+render_with_liquid: false
 ---
 
 # Mad House

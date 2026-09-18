@@ -2,6 +2,7 @@
 title: "Battle at Traitor's Castle"
 parent: Computer Battlegames
 nav_order: 1
+render_with_liquid: false
 ---
 
 # Battle at Traitor's Castle

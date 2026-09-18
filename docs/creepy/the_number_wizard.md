@@ -2,6 +2,7 @@
 title: "The Number Wizard"
 parent: Creepy Computer Games
 nav_order: 8
+render_with_liquid: false
 ---
 
 # The Number Wizard

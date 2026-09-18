@@ -2,6 +2,7 @@
 title: "Shootout"
 parent: Computer Battlegames
 nav_order: 10
+render_with_liquid: false
 ---
 
 # Shootout

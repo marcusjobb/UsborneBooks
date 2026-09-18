@@ -2,6 +2,7 @@
 title: "Robot Missile"
 parent: Computer Battlegames
 nav_order: 8
+render_with_liquid: false
 ---
 
 # Robot Missile

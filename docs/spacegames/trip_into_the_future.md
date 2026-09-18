@@ -2,6 +2,7 @@
 title: "Trip into the Future"
 parent: Computer Spacegames
 nav_order: 12
+render_with_liquid: false
 ---
 
 # Trip into the Future

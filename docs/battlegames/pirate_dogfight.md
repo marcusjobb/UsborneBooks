@@ -2,6 +2,7 @@
 title: "Pirate Dogfight"
 parent: Computer Battlegames
 nav_order: 6
+render_with_liquid: false
 ---
 
 # Pirate Dogfight

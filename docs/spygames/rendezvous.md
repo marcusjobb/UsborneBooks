@@ -2,6 +2,7 @@
 title: "Rendezvous"
 parent: Computer Spy Games
 nav_order: 2
+render_with_liquid: false
 ---
 
 # Rendezvous

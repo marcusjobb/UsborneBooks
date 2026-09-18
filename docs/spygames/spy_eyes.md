@@ -2,6 +2,7 @@
 title: "Spy Eyes"
 parent: Computer Spy Games
 nav_order: 6
+render_with_liquid: false
 ---
 
 # Spy Eyes

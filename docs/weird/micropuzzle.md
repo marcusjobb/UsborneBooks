@@ -2,6 +2,7 @@
 title: "Micropuzzle"
 parent: Weird Computer Games
 nav_order: 3
+render_with_liquid: false
 ---
 
 # Micropuzzle

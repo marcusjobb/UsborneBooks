@@ -2,6 +2,7 @@
 title: "Seance"
 parent: Creepy Computer Games
 nav_order: 6
+render_with_liquid: false
 ---
 
 # Seance

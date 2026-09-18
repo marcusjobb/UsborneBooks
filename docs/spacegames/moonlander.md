@@ -2,6 +2,7 @@
 title: "Moonlander"
 parent: Computer Spacegames
 nav_order: 8
+render_with_liquid: false
 ---
 
 # Moonlander

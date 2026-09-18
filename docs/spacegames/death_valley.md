@@ -2,6 +2,7 @@
 title: "Death Valley"
 parent: Computer Spacegames
 nav_order: 4
+render_with_liquid: false
 ---
 
 # Death Valley
