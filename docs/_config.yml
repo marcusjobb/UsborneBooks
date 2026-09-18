@@ -47,12 +47,9 @@ callouts:
     title: Varning
     color: red
 
-# Edit on GitHub
-gh_edit_link: true
-gh_edit_link_text: "Redigera"
-gh_edit_repository: "https://github.com/marcusjobb/UsborneBooks"
-gh_edit_branch: "main"
-gh_edit_view_mode: "edit"
+# Edit on GitHub — länken pekas på docs/ men källfilerna bor i rotmapparna (computer_*/),
+# så edit-länken är avstängd. Redigera rotfilerna och kör _scripts/generate_docs.py.
+gh_edit_link: false
 
 # Mermaid diagram support
 mermaid:
