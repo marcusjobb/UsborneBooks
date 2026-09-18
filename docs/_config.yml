@@ -58,6 +58,11 @@ gh_edit_view_mode: "edit"
 mermaid:
   version: "10"
 
+liquid:
+  error_mode: warn
+  strict_filters: false
+  strict_variables: false
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
