@@ -1,37 +1,13 @@
 <style>
-/* Mermaid — fixa genomskinliga noder på mörkt tema */
+/* Mermaid — ljus bakgrund så diagrammen syns på mörkt tema */
+.mermaid {
+  background: #f6f8fa !important;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
 .mermaid svg {
   background: transparent !important;
-}
-
-/* Nodboxar */
-.mermaid .node rect,
-.mermaid .node circle,
-.mermaid .node ellipse,
-.mermaid .node polygon,
-.mermaid .node path {
-  fill: #2d333b !important;
-  stroke: #768390 !important;
-}
-
-/* Nodtext */
-.mermaid .node .label,
-.mermaid .nodeLabel,
-.mermaid text {
-  fill: #cdd9e5 !important;
-  color: #cdd9e5 !important;
-}
-
-/* Pilar */
-.mermaid .edgePath .path,
-.mermaid .arrowheadPath {
-  stroke: #768390 !important;
-  fill: #768390 !important;
-}
-
-/* Kanttexter */
-.mermaid .edgeLabel {
-  background-color: #22272e !important;
-  color: #cdd9e5 !important;
 }
 </style>

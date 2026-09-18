@@ -10,6 +10,7 @@ Lägg till nya böcker i BOOK_MAP nedan — det är den enda raden du behöver �
 
 import os
 import re
+import shutil
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS_DIR  = os.path.join(REPO_ROOT, "docs")
@@ -132,6 +133,16 @@ def main() -> None:
                 parent_title = title,
                 nav_order    = i,
             )
+
+        # Kopiera img/-mappar om de finns i källmappen
+        src_img = os.path.join(src_dir, "img")
+        if os.path.isdir(src_img):
+            dest_img = os.path.join(dest_dir, "img")
+            if os.path.exists(dest_img):
+                shutil.rmtree(dest_img)
+            shutil.copytree(src_img, dest_img)
+            img_count = len(os.listdir(dest_img))
+            print(f"  ✓ img/ ({img_count} filer)")
 
     print("\nKlart.")
 
