@@ -56,6 +56,11 @@ def needs_raw_wrap(content: str) -> bool:
     return "{{" in content
 
 
+def fix_details_blocks(content: str) -> str:
+    """Lägg till markdown="1" på <details>-taggar så kramdown renderar markdown inuti."""
+    return re.sub(r"<details(?!\s[^>]*markdown)", r'<details markdown="1"', content)
+
+
 def write_index(dest_dir: str, title: str, nav_order: int, description: str,
                 original_url: str, game_count: int) -> None:
     os.makedirs(dest_dir, exist_ok=True)
@@ -81,6 +86,7 @@ def write_game_page(src_path: str, dest_dir: str, parent_title: str,
     with open(src_path, encoding="utf-8") as f:
         body = f.read()
 
+    body  = fix_details_blocks(body)
     fname = os.path.basename(src_path)
     title = extract_title(body, fname.replace("_", " ").replace(".md", "").title())
 
