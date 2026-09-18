@@ -1,0 +1,141 @@
+<style>
+  .book-tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 0 0.5rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid currentColor;
+    font-size: 0.875rem;
+    opacity: 0.85;
+  }
+
+  .book-tools-label {
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  .btn-book-tool {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.85rem;
+    border: 1.5px solid currentColor;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    font-size: 0.875rem;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-book-tool:hover {
+    background: rgba(127, 127, 127, 0.15);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .btn-book-tool[aria-pressed="true"] {
+    background: var(--link-color, #7253ed);
+    border-color: var(--link-color, #7253ed);
+    color: #fff;
+  }
+</style>
+
+<div class="book-tools" aria-label="Läsverktyg">
+  <span class="book-tools-label">Läsverktyg:</span>
+
+  <button id="bionic-toggle" class="btn-book-tool" aria-pressed="false"
+          title="Bionic reading betonar första halvan av varje ord för snabbare läsning">
+    <strong>Bio</strong>nic läsning
+  </button>
+
+  <a id="translate-link" href="#" target="_blank" rel="noopener" class="btn-book-tool"
+     title="Öppnar sidan i Google Translate">
+    🌐 Översätt sidan
+  </a>
+</div>
+
+<script>
+/* Sätt översättningslänken dynamiskt till aktuell sidas URL */
+document.addEventListener('DOMContentLoaded', function () {
+  var link = document.getElementById('translate-link');
+  link.href = 'https://translate.google.com/translate?sl=sv&u=' + encodeURIComponent(window.location.href);
+});
+</script>
+
+<script>
+/* Bionic Reading */
+(function () {
+  var COOKIE = 'bionicReading';
+  var SKIP_TAGS = { SCRIPT: 1, STYLE: 1, CODE: 1, PRE: 1, KBD: 1, SAMP: 1, BUTTON: 1, A: 0 };
+
+  function setCookie(name, val, days) {
+    var d = new Date();
+    d.setTime(d.getTime() + days * 864e5);
+    document.cookie = name + '=' + val + '; expires=' + d.toUTCString() + '; path=/';
+  }
+
+  function getCookie(name) {
+    var pairs = document.cookie.split(';');
+    for (var i = 0; i < pairs.length; i++) {
+      var pair = pairs[i].trim().split('=');
+      if (pair[0] === name) return pair[1];
+    }
+    return null;
+  }
+
+  function bionicWord(word) {
+    if (word.length <= 1) return word;
+    var boldLen = Math.ceil(word.length / 2);
+    return '<strong>' + word.slice(0, boldLen) + '</strong>' + word.slice(boldLen);
+  }
+
+  function applyBionic(node) {
+    if (node.nodeType === 3) {
+      var text = node.textContent;
+      if (!text.trim()) return;
+      var html = text.split(' ').map(function (w) {
+        var match = w.match(/^([A-Za-zÀ-ɏ]+)(.*)$/);
+        if (!match || match[1].length <= 1) return w;
+        return bionicWord(match[1]) + match[2];
+      }).join(' ');
+      var span = document.createElement('span');
+      span.innerHTML = html;
+      if (node.parentNode) node.parentNode.replaceChild(span, node);
+    } else if (node.nodeType === 1 && !SKIP_TAGS[node.tagName]) {
+      Array.from(node.childNodes).forEach(applyBionic);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('bionic-toggle');
+    var content = document.getElementById('main-content');
+    var active = getCookie(COOKIE) === 'true';
+
+    function updateBtn() {
+      btn.setAttribute('aria-pressed', String(active));
+      btn.innerHTML = active
+        ? '<strong>Bio</strong>nic läsning ✓'
+        : '<strong>Bio</strong>nic läsning';
+    }
+
+    if (active && content) applyBionic(content);
+    updateBtn();
+
+    btn.addEventListener('click', function () {
+      active = !active;
+      setCookie(COOKIE, active, 30);
+      updateBtn();
+      if (active) {
+        applyBionic(content);
+      } else {
+        window.location.reload();
+      }
+    });
+  });
+})();
+</script>

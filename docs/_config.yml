@@ -1,0 +1,71 @@
+title: "Usborne Revival"
+description: "Klassiska Usborne-spelprogrammeringsböcker från 1980-talet moderniserade i C#, Python och Java"
+baseurl: "/UsborneBooks"
+url: "https://marcusjobb.github.io"
+
+remote_theme: just-the-docs/just-the-docs@v0.10.0
+
+color_scheme: dark
+
+permalink: pretty
+encoding: utf-8
+
+# Search
+search_enabled: true
+search_tokenizer_separator: /[\s\-/]+/
+
+# Navigation
+nav_sort: order
+nav_depth: 5
+
+# Footer
+back_to_top: true
+back_to_top_text: "Till toppen"
+
+navbar_footer_text: "© Usborne Publishing — Moderniserad av Marcus Ackre Medina"
+
+# Translator/site maintainer
+author:
+  name: Marcus Ackre Medina
+  url: https://www.linkedin.com/in/marcusmedina/
+
+# Callouts
+callouts_level: quiet
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Viktigt
+    color: blue
+  new:
+    title: Nytt
+    color: green
+  note:
+    title: Not
+    color: purple
+  warning:
+    title: Varning
+    color: red
+
+# Edit on GitHub
+gh_edit_link: true
+gh_edit_link_text: "Redigera"
+gh_edit_repository: "https://github.com/marcusjobb/UsborneBooks"
+gh_edit_branch: "main"
+gh_edit_view_mode: "edit"
+
+# Mermaid diagram support
+mermaid:
+  version: "10"
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - "*.sh"
+  - README.md

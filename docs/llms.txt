@@ -1,0 +1,27 @@
+# Usborne Revival — öppen spelsamling av Marcus Ackre Medina
+
+> Klassiska Usborne-spelprogrammeringsböcker från 1980-talet moderniserade i C#, Python och Java.
+> Originalböcker av Usborne Publishing. Kodomvandling av Marcus Ackre Medina.
+
+## Om projektet
+
+Denna samling moderniserar Usbornes klassiska datorspelsböcker från 1980-talet.
+Originalen skrevs för ZX-81, BBC Micro och Commodore 64.
+Målgrupp: nybörjarprogrammerare som vill lära sig via riktiga spel.
+Licens: CC BY-NC 4.0 för kodomvandlingen — se licens.md.
+Källa: https://github.com/marcusjobb/UsborneBooks
+Publicerad: https://marcusjobb.github.io/UsborneBooks/
+
+## Böcker som täcks
+
+- Computer Battlegames (13 spel)
+- Computer Spacegames (12 spel)
+- Computer Spy Games (7 spel)
+- Creepy Computer Games (8 spel)
+- Weird Computer Games (6 spel)
+
+## Translator/modernisering
+
+Marcus Ackre Medina — lärare i mjukvaruutveckling, NionIT / YRGO
+Kontakt: marcus.medina@nionit.com
+LinkedIn: https://www.linkedin.com/in/marcusmedina/
