@@ -52,13 +52,9 @@ def extract_title(content: str, fallback: str) -> str:
     return m.group(1).strip() if m else fallback
 
 
-def needs_raw_wrap(content: str) -> bool:
-    return "{{" in content
-
-
-def fix_details_blocks(content: str) -> str:
-    """Lägg till markdown="1" på <details>-taggar så kramdown renderar markdown inuti."""
-    return re.sub(r"<details(?!\s[^>]*markdown)", r'<details markdown="1"', content)
+def escape_liquid(content: str) -> str:
+    """Escapa {{ så Liquid inte kraschar på spelkodens array-syntax."""
+    return content.replace("{{", '{{ "{{" }}')
 
 
 def write_index(dest_dir: str, title: str, nav_order: int, description: str,
@@ -86,9 +82,12 @@ def write_game_page(src_path: str, dest_dir: str, parent_title: str,
     with open(src_path, encoding="utf-8") as f:
         body = f.read()
 
-    body  = fix_details_blocks(body)
     fname = os.path.basename(src_path)
     title = extract_title(body, fname.replace("_", " ").replace(".md", "").title())
+
+    # Fixa HTML-block och Liquid innan front matter läggs till
+    body = re.sub(r"<details(?!\s[^>]*markdown)", r'<details markdown="1"', body)
+    body = escape_liquid(body)
 
     front = (
         f"---\n"
@@ -98,12 +97,8 @@ def write_game_page(src_path: str, dest_dir: str, parent_title: str,
         f"---\n"
     )
 
-    if needs_raw_wrap(body):
-        page = front + "\n{%- raw -%}\n" + body.rstrip("\n") + "\n{%- endraw -%}\n"
-        tag  = " [raw]"
-    else:
-        page = front + "\n" + body
-        tag  = ""
+    page = front + "\n" + body
+    tag  = " [escaped]" if '{{ "{{" }}' in page else ""
 
     with open(os.path.join(dest_dir, fname), "w", encoding="utf-8") as f:
         f.write(page)
