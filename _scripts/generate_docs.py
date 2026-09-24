@@ -48,18 +48,82 @@ BOOK_MAP = {
 SKIP_FILES = {"readme.md", "README.md"}
 
 
+DESC_MAX_LEN = 155
+DESC_MIN_LEN = 40
+
+
 def extract_title(content: str, fallback: str) -> str:
     m = re.search(r"^#\s+(.+)", content, re.MULTILINE)
     return m.group(1).strip() if m else fallback
 
 
+def yaml_escape(s: str) -> str:
+    return s.replace("\\", "\\\\").replace('"', '\\"')
+
+
+def strip_markdown(text: str) -> str:
+    text = re.sub(r'!\[[^\]]*\]\([^)]*\)', '', text)
+    text = re.sub(r'\[([^\]]+)\]\([^)]*\)', r'\1', text)
+    text = re.sub(r'`([^`]+)`', r'\1', text)
+    text = re.sub(r'\*\*([^*]+)\*\*', r'\1', text)
+    text = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'\1', text)
+    text = re.sub(r'_([^_]+)_', r'\1', text)
+    return re.sub(r'\s+', ' ', text).strip()
+
+
+def is_skippable_block(para: str) -> bool:
+    lines = [l.strip() for l in para.split('\n') if l.strip()]
+    if not lines:
+        return True
+    bold_labels = sum(1 for l in lines if re.match(r'^\*\*[^*]+\*\*\s*:', l))
+    list_lines = sum(1 for l in lines if re.match(r'^([-*+]|\d+[.)])\s+', l))
+    return bold_labels >= max(1, len(lines) - 1) or list_lines >= max(1, len(lines) - 1)
+
+
+def extract_description(body: str) -> str | None:
+    """Hämtar en verklig beskrivning ur spelets story-text istället för mall-text."""
+    clean_body = re.sub(r'<details\b[^>]*>.*?</details>', '', body, flags=re.DOTALL | re.IGNORECASE)
+    clean_body = re.sub(r'```.*?```', '', clean_body, flags=re.DOTALL)
+    m = re.search(r'^#\s+.+$', clean_body, re.MULTILINE)
+    if m:
+        clean_body = clean_body[m.end():]
+
+    collected = ""
+    for para in re.split(r'\n\s*\n', clean_body):
+        para = para.strip()
+        if not para or para.startswith('#') or para.startswith('|'):
+            continue
+        if re.fullmatch(r'[-*_]{3,}', para):  # horisontell linje
+            continue
+        if is_skippable_block(para):
+            continue
+        clean = strip_markdown(para)
+        if not clean:
+            continue
+        collected = f"{collected} {clean}".strip() if collected else clean
+        if len(collected) >= DESC_MIN_LEN:
+            break
+
+    if collected.rstrip().endswith(':'):
+        sentences = re.split(r'(?<=[.!?])\s+', collected.rstrip())
+        collected = ' '.join(sentences[:-1]) if len(sentences) > 1 else ""
+
+    if len(collected) < DESC_MIN_LEN:
+        return None
+    if len(collected) > DESC_MAX_LEN:
+        cut = collected[:DESC_MAX_LEN].rsplit(' ', 1)[0]
+        collected = cut.rstrip('.,;:—-') + "…"
+    return collected
+
+
 def write_index(dest_dir: str, title: str, nav_order: int, description: str,
                 original_url: str, game_count: int) -> None:
     os.makedirs(dest_dir, exist_ok=True)
+    meta_desc = f"{game_count} {description[0].upper()}{description[1:]}".rstrip(".")
     content = (
         f"---\n"
         f"title: {title}\n"
-        f'description: "{title} — Usborne Revival"\n'
+        f'description: "{yaml_escape(meta_desc)}"\n'
         f"nav_order: {nav_order}\n"
         f"has_children: true\n"
         f"---\n\n"
@@ -80,6 +144,7 @@ def write_game_page(src_path: str, dest_dir: str, parent_title: str,
 
     fname = os.path.basename(src_path)
     title = extract_title(body, fname.replace("_", " ").replace(".md", "").title())
+    description = extract_description(body) or f"{title} — {parent_title}, Usborne Revival"
 
     # Fixa HTML-block så markdown (kodblock) inuti <details> renderas
     body = re.sub(r"<details(?!\s[^>]*markdown)", r'<details markdown="1"', body)
@@ -87,6 +152,7 @@ def write_game_page(src_path: str, dest_dir: str, parent_title: str,
     front = (
         f"---\n"
         f'title: "{title}"\n'
+        f'description: "{yaml_escape(description)}"\n'
         f"parent: {parent_title}\n"
         f"nav_order: {nav_order}\n"
         f"---\n"
