@@ -1,7 +1,10 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import { getCollection } from 'astro:content';
 import Sidebar from '../components/Sidebar.astro';
 import '../styles/nion-book.css';
+
+const AUTHOR = { name: 'Marcus Ackre Medina', linkedinUrl: 'https://www.linkedin.com/in/marcusmedina/' };
 
 interface Props {
   title: string;
@@ -30,6 +33,52 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://marcusjo
 const entryIdNorm = entry?.id?.replace(/\.mdx?$/, '').replace(/\/index$/, '').replace(/^index$/, '') ?? null;
 const isHome = entryIdNorm === '';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function docUrl(e: any): string {
+  const id = e.id.replace(/\.mdx?$/, '').replace(/\/index$/, '').replace(/^index$/, '');
+  return id ? `${base}/${id}/` : `${base}/`;
+}
+
+const siteOrigin = (Astro.site ? Astro.site.toString() : 'https://marcusjobb.github.io/').replace(/\/$/, '');
+
+const breadcrumbItems: { name: string; url: string }[] = [
+  { name: siteTitle, url: `${siteOrigin}${base}/` },
+];
+if (!isHome && entry?.data?.parent) {
+  const allDocs = await getCollection('docs');
+  const parentEntry = allDocs.find((e: any) => e.data.title === entry.data.parent);
+  if (parentEntry) {
+    breadcrumbItems.push({ name: parentEntry.data.title, url: `${siteOrigin}${docUrl(parentEntry)}` });
+  }
+}
+if (!isHome && title) {
+  breadcrumbItems.push({ name: title, url: canonicalURL.toString() });
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": isHome ? "WebSite" : "TechArticle",
+      "name": fullTitle,
+      "headline": isHome ? undefined : title,
+      "description": description,
+      "url": canonicalURL.toString(),
+      "inLanguage": "sv",
+      "author": isHome ? undefined : { "@type": "Person", "name": AUTHOR.name, "url": AUTHOR.linkedinUrl },
+      "publisher": { "@type": "Organization", "name": "NionIT" },
+    },
+    ...(breadcrumbItems.length > 1 ? [{
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbItems.map((item, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": item.name,
+        "item": item.url,
+      })),
+    }] : []),
+  ],
+};
 ---
 <!DOCTYPE html>
 <html lang="sv" data-theme="dark">
@@ -54,18 +103,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content="https://marcusjobb.github.io/UsborneBooks/og-image.png">
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": fullTitle,
-    "description": description,
-    "url": canonicalURL.toString(),
-    "inLanguage": "sv",
-    "publisher": {
-      "@type": "Organization",
-      "name": "NionIT"
-    }
-  })} />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <script is:inline>
     try {
