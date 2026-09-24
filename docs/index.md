@@ -1,6 +1,6 @@
 ---
 title: Usborne Revival
-description: "Klassiska Usborne-spelprogrammeringsböcker moderniserade i C#"
+description: "Klassiska spelprogrammeringsböcker från Usborne Publishing (1980-talet) — moderniserade i C#, Python och Java."
 nav_order: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Licens
-description: "Licens — Usborne Revival av Marcus Ackre Medina"
+description: "Originalböckerna tillhör Usborne Publishing. De klassiska programmeringsböckerna från 1980-talet finns tillgängliga för fri nedladdning på Usbornes…"
 nav_order: 999
 ---
 
