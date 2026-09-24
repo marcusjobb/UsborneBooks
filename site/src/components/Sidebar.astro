@@ -1,0 +1,224 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentPath: string;
+  currentEntry?: any;
+}
+
+const { currentPath, currentEntry } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function entryUrl(entry: any) {
+  const id = entry.id.replace(/\.mdx?$/, '').replace(/\/index$/, '').replace(/^index$/, '');
+  return id ? `${base}/${id}/` : `${base}/`;
+}
+
+const allDocs = await getCollection('docs');
+
+// Sections: has_children=true, no parent, not root index
+const sections = allDocs
+  .filter(e => e.data.has_children === true && !e.data.parent &&
+    e.id.replace(/\.mdx?$/, '').replace(/\/index$/, '').replace(/^index$/, '') !== '')
+  .sort((a, b) => (a.data.nav_order ?? 99) - (b.data.nav_order ?? 99));
+
+function getChildren(sectionTitle: string) {
+  return allDocs
+    .filter(e => e.data.parent === sectionTitle)
+    .sort((a, b) => (a.data.nav_order ?? 99) - (b.data.nav_order ?? 99));
+}
+---
+
+<nav class="sidebar" aria-label="Boknavigation" transition:persist>
+  <div class="sidebar-header">
+    <a class="course-name" href={`${base}/`}>Usborne Revival</a>
+    <div class="header-buttons">
+      <button type="button" id="font-decrease" aria-label="Mindre text" title="Minska teckenstorlek">A−</button>
+      <button type="button" id="font-increase" aria-label="Större text" title="Öka teckenstorlek">A+</button>
+      <button type="button" id="bionic-toggle" aria-pressed="false"
+              aria-label="Bionic-läsning" title="Bionic reading">
+        <b>B</b>
+      </button>
+      <a id="translate-link" href="#" target="_blank" rel="noopener"
+         aria-label="Översätt till engelska" title="Öppnar sidan i Google Translate" class="hdr-btn">
+        🌐
+      </a>
+      <button type="button" id="theme-toggle" aria-label="Växla ljust och mörkt läge" title="Ljust / mörkt läge">
+        <span class="theme-icon theme-icon-light" aria-hidden="true">☀️</span>
+        <span class="theme-icon theme-icon-dark" aria-hidden="true">🌙</span>
+      </button>
+      <button type="button" id="search-trigger" aria-label="Sök (Ctrl+K)" title="Sök i boken (Ctrl+K)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <a class="overview-link nav-link" href={`${base}/`}
+     aria-current={currentPath === `${base}/` ? 'page' : undefined}>Startsida</a>
+
+  <ul class="module-list">
+    {sections.map(section => {
+      const sectionUrl = entryUrl(section);
+      const children = getChildren(section.data.title);
+      return (
+        <li>
+          <a class={`nav-link module-link${currentPath === sectionUrl ? ' active' : ''}`}
+             href={sectionUrl}
+             aria-current={currentPath === sectionUrl ? 'page' : undefined}>
+            {section.data.title}
+          </a>
+          {children.length > 0 && (
+            <ul class="sub-list">
+              {children.map(child => {
+                const childUrl = entryUrl(child);
+                return (
+                  <li>
+                    <a class={`nav-link nav-child${currentPath === childUrl ? ' active' : ''}`}
+                       href={childUrl}
+                       aria-current={currentPath === childUrl ? 'page' : undefined}>
+                      {child.data.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </li>
+      );
+    })}
+  </ul>
+</nav>
+
+<script>
+const FONT_DEFAULT = 17, FONT_MIN = 14, FONT_MAX = 26, FONT_STEP = 2;
+const BIONIC_COOKIE = 'bionicReading';
+const SKIP_TAGS: Record<string, boolean> = {
+  SCRIPT: true, STYLE: true, CODE: true, PRE: true, KBD: true, SAMP: true, BUTTON: true
+};
+
+let _ctrl: AbortController | null = null;
+
+function getCurrentFontSize(): number {
+  const s = parseFloat(localStorage.getItem('fontSize') ?? '');
+  return (s >= FONT_MIN && s <= FONT_MAX) ? s : FONT_DEFAULT;
+}
+
+function setFontSize(size: number): void {
+  size = Math.max(FONT_MIN, Math.min(FONT_MAX, size));
+  document.documentElement.style.fontSize = size + 'px';
+  localStorage.setItem('fontSize', String(size));
+  const fd = document.getElementById('font-decrease') as HTMLButtonElement | null;
+  const fi = document.getElementById('font-increase') as HTMLButtonElement | null;
+  if (fd) fd.disabled = size <= FONT_MIN;
+  if (fi) fi.disabled = size >= FONT_MAX;
+}
+
+function setCookie(name: string, val: string, days: number): void {
+  const d = new Date();
+  d.setTime(d.getTime() + days * 864e5);
+  document.cookie = `${name}=${val}; expires=${d.toUTCString()}; path=/`;
+}
+
+function getCookie(name: string): string | null {
+  for (const pair of document.cookie.split(';')) {
+    const [k, v] = pair.trim().split('=');
+    if (k === name) return v;
+  }
+  return null;
+}
+
+function bionicWord(word: string): string {
+  if (word.length <= 1) return word;
+  const b = Math.ceil(word.length / 2);
+  return `<strong>${word.slice(0, b)}</strong>${word.slice(b)}`;
+}
+
+function applyBionic(node: Node): void {
+  if (node.nodeType === 3) {
+    const text = node.textContent ?? '';
+    if (!text.trim()) return;
+    const html = text.split(' ').map(w => {
+      const m = w.match(/^([A-Za-zÀ-ɏåäöÅÄÖ]+)(.*)$/);
+      if (!m || m[1].length <= 1) return w;
+      return bionicWord(m[1]) + m[2];
+    }).join(' ');
+    const span = document.createElement('span');
+    span.innerHTML = html;
+    node.parentNode?.replaceChild(span, node);
+  } else if (node.nodeType === 1 && !SKIP_TAGS[(node as Element).tagName]) {
+    Array.from(node.childNodes).forEach(applyBionic);
+  }
+}
+
+document.addEventListener('astro:before-swap', () => {
+  const sidebar = document.querySelector('.sidebar');
+  if (sidebar) sessionStorage.setItem('_sidebarScroll', String(sidebar.scrollTop));
+});
+
+document.addEventListener('astro:after-swap', () => {
+  const sidebar = document.querySelector('.sidebar');
+  const saved = sessionStorage.getItem('_sidebarScroll');
+  if (sidebar && saved !== null) sidebar.scrollTop = parseInt(saved, 10);
+});
+
+document.addEventListener('astro:page-load', () => {
+  _ctrl?.abort();
+  _ctrl = new AbortController();
+  const { signal } = _ctrl;
+
+  const fd = document.getElementById('font-decrease');
+  const fi = document.getElementById('font-increase');
+  if (fd && fi) {
+    setFontSize(getCurrentFontSize());
+    fd.addEventListener('click', () => setFontSize(getCurrentFontSize() - FONT_STEP), { signal });
+    fi.addEventListener('click', () => setFontSize(getCurrentFontSize() + FONT_STEP), { signal });
+  }
+
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme') ?? 'dark';
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }, { signal });
+  }
+
+  const bionicBtn = document.getElementById('bionic-toggle');
+  if (bionicBtn) {
+    let bionicActive = getCookie(BIONIC_COOKIE) === 'true';
+    bionicBtn.setAttribute('aria-pressed', String(bionicActive));
+    bionicBtn.addEventListener('click', () => {
+      bionicActive = !bionicActive;
+      setCookie(BIONIC_COOKIE, String(bionicActive), 30);
+      bionicBtn.setAttribute('aria-pressed', String(bionicActive));
+      const content = document.getElementById('main-content');
+      if (bionicActive) {
+        if (content) applyBionic(content);
+      } else {
+        window.location.reload();
+      }
+    }, { signal });
+  }
+
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('.sidebar a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (href === currentPath) {
+      a.classList.add('active');
+      a.setAttribute('aria-current', 'page');
+    } else {
+      a.classList.remove('active');
+      a.removeAttribute('aria-current');
+    }
+  });
+
+  const translateLink = document.getElementById('translate-link') as HTMLAnchorElement | null;
+  if (translateLink) {
+    translateLink.href = `https://translate.google.com/translate?sl=sv&u=${encodeURIComponent(window.location.href)}`;
+  }
+});
+</script>

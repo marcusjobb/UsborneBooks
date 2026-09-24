@@ -1,0 +1,68 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('docs');
+  return entries.map(entry => {
+    const id = entry.id.replace(/\.mdx?$/, '');
+    const slug = id.replace(/\/index$/, '').replace(/^index$/, '') || undefined;
+    return { params: { slug }, props: { entry } };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Build reading order for prev/next navigation
+const allDocs = await getCollection('docs');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function docUrl(e: any): string {
+  const id = e.id.replace(/\.mdx?$/, '').replace(/\/index$/, '').replace(/^index$/, '');
+  return id ? `${base}/${id}/` : `${base}/`;
+}
+
+const homeEntry = allDocs.find((e: any) => {
+  const id = e.id.replace(/\.mdx?$/, '').replace(/\/index$/, '').replace(/^index$/, '');
+  return id === '';
+});
+
+const sections = allDocs
+  .filter((e: any) => e.data.has_children === true && !e.data.parent &&
+    e.id.replace(/\.mdx?$/, '').replace(/\/index$/, '').replace(/^index$/, '') !== '')
+  .sort((a: any, b: any) => (a.data.nav_order ?? 99) - (b.data.nav_order ?? 99));
+
+function getChildren(title: string) {
+  return allDocs
+    .filter((e: any) => e.data.parent === title)
+    .sort((a: any, b: any) => (a.data.nav_order ?? 99) - (b.data.nav_order ?? 99));
+}
+
+const readingOrder: any[] = [];
+if (homeEntry) readingOrder.push(homeEntry);
+for (const section of sections) {
+  readingOrder.push(section);
+  readingOrder.push(...getChildren(section.data.title));
+}
+
+const currentIdx = readingOrder.findIndex((e: any) => e.id === entry.id);
+const prevEntry = currentIdx > 0 ? readingOrder[currentIdx - 1] : null;
+const nextEntry = currentIdx !== -1 && currentIdx < readingOrder.length - 1
+  ? readingOrder[currentIdx + 1] : null;
+const prevUrl = prevEntry ? docUrl(prevEntry) : undefined;
+const prevTitle = prevEntry?.data?.title;
+const nextUrl = nextEntry ? docUrl(nextEntry) : undefined;
+const nextTitle = nextEntry?.data?.title;
+---
+<Layout
+  title={entry.data.title}
+  description={entry.data.description}
+  entry={entry}
+  prevUrl={prevUrl}
+  prevTitle={prevTitle}
+  nextUrl={nextUrl}
+  nextTitle={nextTitle}
+>
+  <Content />
+</Layout>

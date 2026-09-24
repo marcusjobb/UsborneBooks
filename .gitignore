@@ -5,3 +5,7 @@ docs/spacegames/
 docs/spygames/
 docs/creepy/
 docs/weird/
+
+node_modules/
+site/dist/
+site/.astro/

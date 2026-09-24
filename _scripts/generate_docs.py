@@ -3,7 +3,7 @@
 generate_docs.py — genererar docs/<sektion>/ från rotmapparnas källfiler.
 
 Kör lokalt:  python3 _scripts/generate_docs.py
-Körs också automatiskt av GitHub Actions innan Jekyll bygger.
+Körs också automatiskt av GitHub Actions innan Astro bygger.
 
 Lägg till nya böcker i BOOK_MAP nedan — det är den enda raden du behöver ändra.
 """
@@ -53,11 +53,6 @@ def extract_title(content: str, fallback: str) -> str:
     return m.group(1).strip() if m else fallback
 
 
-def escape_liquid(content: str) -> str:
-    """Escapa {{ så Liquid inte kraschar på spelkodens array-syntax."""
-    return content.replace("{{", '{{ "{{" }}')
-
-
 def write_index(dest_dir: str, title: str, nav_order: int, description: str,
                 original_url: str, game_count: int) -> None:
     os.makedirs(dest_dir, exist_ok=True)
@@ -86,9 +81,8 @@ def write_game_page(src_path: str, dest_dir: str, parent_title: str,
     fname = os.path.basename(src_path)
     title = extract_title(body, fname.replace("_", " ").replace(".md", "").title())
 
-    # Fixa HTML-block och Liquid innan front matter läggs till
+    # Fixa HTML-block så markdown (kodblock) inuti <details> renderas
     body = re.sub(r"<details(?!\s[^>]*markdown)", r'<details markdown="1"', body)
-    body = escape_liquid(body)
 
     front = (
         f"---\n"
@@ -99,11 +93,10 @@ def write_game_page(src_path: str, dest_dir: str, parent_title: str,
     )
 
     page = front + "\n" + body
-    tag  = " [escaped]" if '{{ "{{" }}' in page else ""
 
     with open(os.path.join(dest_dir, fname), "w", encoding="utf-8") as f:
         f.write(page)
-    print(f"  ✓ {fname}{tag}")
+    print(f"  ✓ {fname}")
 
 
 def main() -> None:
@@ -134,15 +127,16 @@ def main() -> None:
                 nav_order    = i,
             )
 
-        # Kopiera img/-mappar om de finns i källmappen
-        src_img = os.path.join(src_dir, "img")
-        if os.path.isdir(src_img):
-            dest_img = os.path.join(dest_dir, "img")
-            if os.path.exists(dest_img):
-                shutil.rmtree(dest_img)
-            shutil.copytree(src_img, dest_img)
-            img_count = len(os.listdir(dest_img))
-            print(f"  ✓ img/ ({img_count} filer)")
+        # Kopiera alla bildundermappar (t.ex. img/, eller creepys egennamngivna mapp)
+        for entry in sorted(os.listdir(src_dir)):
+            src_sub = os.path.join(src_dir, entry)
+            if not os.path.isdir(src_sub):
+                continue
+            dest_sub = os.path.join(dest_dir, entry)
+            if os.path.exists(dest_sub):
+                shutil.rmtree(dest_sub)
+            shutil.copytree(src_sub, dest_sub)
+            print(f"  ✓ {entry}/ ({len(os.listdir(dest_sub))} filer)")
 
     print("\nKlart.")
 

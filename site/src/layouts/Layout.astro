@@ -1,0 +1,298 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Sidebar from '../components/Sidebar.astro';
+import '../styles/nion-book.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  entry?: any;
+  prevUrl?: string;
+  prevTitle?: string;
+  nextUrl?: string;
+  nextTitle?: string;
+}
+
+const {
+  title,
+  description = 'Klassiska Usborne-spelprogrammeringsböcker moderniserade i C#',
+  entry,
+  prevUrl,
+  prevTitle,
+  nextUrl,
+  nextTitle,
+} = Astro.props;
+
+const siteTitle = 'Usborne Revival';
+const fullTitle = title ? `${title} · ${siteTitle}` : siteTitle;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://marcusjobb.github.io');
+
+const entryIdNorm = entry?.id?.replace(/\.mdx?$/, '').replace(/\/index$/, '').replace(/^index$/, '') ?? null;
+const isHome = entryIdNorm === '';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!DOCTYPE html>
+<html lang="sv" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+
+  <link rel="canonical" href={canonicalURL}>
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content={siteTitle}>
+  <meta property="og:image" content="https://marcusjobb.github.io/UsborneBooks/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={fullTitle}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content="https://marcusjobb.github.io/UsborneBooks/og-image.png">
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": fullTitle,
+    "description": description,
+    "url": canonicalURL.toString(),
+    "inLanguage": "sv",
+    "publisher": {
+      "@type": "Organization",
+      "name": "NionIT"
+    }
+  })} />
+
+  <script is:inline>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      var fs = parseFloat(localStorage.getItem('fontSize'));
+      if (fs >= 14 && fs <= 26) document.documentElement.style.fontSize = fs + 'px';
+    } catch(e) {}
+  </script>
+
+  <ClientRouter />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="search-overlay" role="dialog" aria-modal="true" aria-label="Sök i boken" hidden>
+  <div id="search-modal">
+    <div id="search-header">
+      <span>Sök i boken</span>
+      <kbd>Esc</kbd>
+    </div>
+    <div id="pagefind-ui-container"></div>
+  </div>
+</div>
+
+<div class="layout">
+  <Sidebar currentPath={Astro.url.pathname} currentEntry={entry} />
+
+  <main class="main" id="main-content">
+    {isHome && (
+      <section class="hero">
+        <span class="hero-badge">Retro · 1980-tal · NionIT</span>
+        <h1 class="hero-title">Usborne Revival</h1>
+        <p class="hero-sub">Klassiska spelprogrammeringsböcker från Usborne Publishing, moderniserade i C#, Python och Java av Marcus Ackre Medina.</p>
+        <div class="hero-actions">
+          {nextUrl && <a href={nextUrl} class="btn-primary">Börja läsa →</a>}
+          <a href={`${base}/andra-ebocker/`} class="btn-secondary">Andra e-böcker</a>
+        </div>
+        <div class="hero-stats">
+          <span>Gratis</span>
+          <span>·</span>
+          <span>C# · Python · Java</span>
+          <span>·</span>
+          <span>Uppdaterad 2026</span>
+        </div>
+      </section>
+    )}
+    <div class="prose">
+      <slot />
+    </div>
+    {(prevUrl || nextUrl) && (
+      <nav class="page-nav" aria-label="Sidnavigering">
+        {prevUrl ? (
+          <a href={prevUrl} class="page-nav-card page-nav-prev">
+            <span class="page-nav-dir">← Föregående</span>
+            <span class="page-nav-title">{prevTitle}</span>
+          </a>
+        ) : <span />}
+        {nextUrl ? (
+          <a href={nextUrl} class="page-nav-card page-nav-next">
+            <span class="page-nav-dir">Nästa →</span>
+            <span class="page-nav-title">{nextTitle}</span>
+          </a>
+        ) : <span />}
+      </nav>
+    )}
+  </main>
+
+  <aside class="toc" aria-label="På den här sidan" id="toc-aside">
+    <p class="toc-heading">På den här sidan</p>
+    <nav id="toc-nav"></nav>
+  </aside>
+</div>
+
+<script>
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+  document.addEventListener('astro:page-load', () => mermaid.run());
+</script>
+
+<script>
+const BIONIC_COOKIE = 'bionicReading';
+const BIONIC_SKIP: Record<string, boolean> = {
+  SCRIPT: true, STYLE: true, CODE: true, PRE: true, KBD: true, SAMP: true, BUTTON: true
+};
+
+function getCookie(name: string): string | null {
+  for (const pair of document.cookie.split(';')) {
+    const [k, v] = pair.trim().split('=');
+    if (k === name) return v;
+  }
+  return null;
+}
+
+function bionicWord(word: string): string {
+  if (word.length <= 1) return word;
+  const b = Math.ceil(word.length / 2);
+  return `<strong>${word.slice(0, b)}</strong>${word.slice(b)}`;
+}
+
+function applyBionic(node: Node): void {
+  if (node.nodeType === 3) {
+    const text = node.textContent ?? '';
+    if (!text.trim()) return;
+    const html = text.split(' ').map(w => {
+      const m = w.match(/^([A-Za-zÀ-ɏåäöÅÄÖ]+)(.*)$/);
+      if (!m || m[1].length <= 1) return w;
+      return bionicWord(m[1]) + m[2];
+    }).join(' ');
+    const span = document.createElement('span');
+    span.innerHTML = html;
+    node.parentNode?.replaceChild(span, node);
+  } else if (node.nodeType === 1 && !BIONIC_SKIP[(node as Element).tagName]) {
+    Array.from(node.childNodes).forEach(applyBionic);
+  }
+}
+
+let _pagefindLoaded = false;
+
+async function loadPagefind(): Promise<void> {
+  if (_pagefindLoaded) return;
+  _pagefindLoaded = true;
+  const pfBase = (import.meta.env.BASE_URL as string).replace(/\/$/, '');
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = `${pfBase}/_pagefind/pagefind-ui.css`;
+  document.head.appendChild(link);
+  const script = document.createElement('script');
+  script.src = `${pfBase}/_pagefind/pagefind-ui.js`;
+  document.head.appendChild(script);
+  await new Promise<void>(resolve => {
+    script.onload = () => resolve();
+    script.onerror = () => resolve();
+  });
+  const PF = (window as any).PagefindUI;
+  if (PF) {
+    new PF({ element: '#pagefind-ui-container', showImages: false });
+  }
+}
+
+function openSearch(): void {
+  const overlay = document.getElementById('search-overlay');
+  if (!overlay) return;
+  overlay.hidden = false;
+  loadPagefind();
+  setTimeout(() => {
+    const input = overlay.querySelector<HTMLInputElement>('input');
+    if (input) input.focus();
+  }, 50);
+}
+
+function closeSearch(): void {
+  const overlay = document.getElementById('search-overlay');
+  if (overlay) overlay.hidden = true;
+}
+
+document.addEventListener('keydown', (e: KeyboardEvent) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    const overlay = document.getElementById('search-overlay');
+    if (overlay && !overlay.hidden) closeSearch();
+    else openSearch();
+  }
+  if (e.key === 'Escape') closeSearch();
+});
+
+document.getElementById('search-overlay')?.addEventListener('click', (e: MouseEvent) => {
+  if (e.target === e.currentTarget) closeSearch();
+});
+
+document.addEventListener('astro:page-load', () => {
+  document.getElementById('search-trigger')?.addEventListener('click', openSearch);
+
+  if (getCookie(BIONIC_COOKIE) === 'true') {
+    const content = document.getElementById('main-content');
+    if (content) applyBionic(content);
+  }
+
+  const prose = document.querySelector('.prose');
+  const tocNav = document.getElementById('toc-nav');
+  const tocAside = document.getElementById('toc-aside') as HTMLElement | null;
+  if (tocNav) tocNav.innerHTML = '';
+  if (tocAside) tocAside.hidden = false;
+  if (!prose || !tocNav || !tocAside) return;
+
+  const headings = prose.querySelectorAll('h2, h3');
+  if (headings.length < 2) { tocAside.hidden = true; return; }
+
+  const ul = document.createElement('ul');
+  ul.className = 'toc-list';
+  headings.forEach(h => {
+    const li = document.createElement('li');
+    li.className = `toc-item toc-${h.tagName.toLowerCase()}`;
+    const a = document.createElement('a');
+    a.href = `#${h.id}`;
+    a.textContent = h.textContent;
+    a.className = 'toc-link';
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+  tocNav.appendChild(ul);
+
+  const links = tocNav.querySelectorAll<HTMLAnchorElement>('.toc-link');
+  const headingMap = new Map<string, HTMLAnchorElement>();
+  links.forEach(a => {
+    const href = a.getAttribute('href');
+    if (href) headingMap.set(href.slice(1), a);
+  });
+
+  let activeLink: HTMLAnchorElement | null = null;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const link = headingMap.get(entry.target.id);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        activeLink?.classList.remove('active');
+        activeLink = link;
+        activeLink.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(h => observer.observe(h));
+});
+</script>
+</body>
+</html>
