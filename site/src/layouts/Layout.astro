@@ -27,11 +27,11 @@ const {
 } = Astro.props;
 
 const siteTitle = 'Usborne Revival';
-const fullTitle = title ? `${title} · ${siteTitle}` : siteTitle;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://marcusjobb.github.io');
 
 const entryIdNorm = entry?.id?.replace(/\.mdx?$/, '').replace(/\/index$/, '').replace(/^index$/, '') ?? null;
 const isHome = entryIdNorm === '';
+const fullTitle = (title && !isHome) ? `${title} · ${siteTitle}` : siteTitle;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 function docUrl(e: any): string {
