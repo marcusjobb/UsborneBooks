@@ -86,10 +86,10 @@ graph TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames26.png)  
-![Page 2](./img/Usborne-Computer_Battlegames27.png)
-![Page 3](./img/Usborne-Computer_Battlegames28.png)
-![Page 4](./img/Usborne-Computer_Battlegames29.png)
+![The Wizard's Wall, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames26.png)  
+![The Wizard's Wall, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames27.png)
+![The Wizard's Wall, sida 3 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames28.png)
+![The Wizard's Wall, sida 4 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames29.png)
 
 </details>
 

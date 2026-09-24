@@ -59,8 +59,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_SpyGames06.png)  
-![Page 2](./img/Usborne-Computer_SpyGames07.png)
+![Robospy, sida 1 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames06.png)  
+![Robospy, sida 2 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames07.png)
 
 </details>
 

@@ -68,8 +68,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/computer-spacegames_pages-to-jpg-0005.jpg)
-![Page 2](./img/computer-spacegames_pages-to-jpg-0006.jpg)
+![Starship Takeoff, sida 1 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0005.jpg)
+![Starship Takeoff, sida 2 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0006.jpg)
 
 </details>
 

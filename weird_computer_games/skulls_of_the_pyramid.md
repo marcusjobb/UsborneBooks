@@ -64,8 +64,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/weird-computer-games_page-0005.jpg)  
-![Page 2](./img/weird-computer-games_page-0006.jpg)
+![Skulls of the Pyramid, sida 1 — Usborne Weird Computer Games](./img/weird-computer-games_page-0005.jpg)  
+![Skulls of the Pyramid, sida 2 — Usborne Weird Computer Games](./img/weird-computer-games_page-0006.jpg)
 
 </details>
 

@@ -50,8 +50,8 @@ graph TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames24.png)  
-![Page 2](./img/Usborne-Computer_Battlegames25.png)
+![Iceberg, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames24.png)  
+![Iceberg, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames25.png)
 
 </details>
 

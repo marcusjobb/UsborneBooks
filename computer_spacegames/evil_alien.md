@@ -50,8 +50,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 9](./img/computer-spacegames_pages-to-jpg-0009.jpg)  
-![Page 10](./img/computer-spacegames_pages-to-jpg-0010.jpg)
+![Evil Alien, sida 9 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0009.jpg)  
+![Evil Alien, sida 10 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0010.jpg)
 
 </details>
 

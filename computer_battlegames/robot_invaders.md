@@ -58,8 +58,8 @@ graph TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames14.png)
-![Page 2](./img/Usborne-Computer_Battlegames15.png)
+![Robot Invaders, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames14.png)
+![Robot Invaders, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames15.png)
 
 </details>
 

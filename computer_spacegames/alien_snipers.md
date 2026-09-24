@@ -69,8 +69,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/computer-spacegames_pages-to-jpg-0017.jpg)  
-![Page 2](./img/computer-spacegames_pages-to-jpg-0018.jpg)
+![Alien Snipers, sida 1 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0017.jpg)  
+![Alien Snipers, sida 2 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0018.jpg)
 
 </details>
 

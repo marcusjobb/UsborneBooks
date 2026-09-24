@@ -71,8 +71,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/weird-computer-games_page-0007.jpg)  
-![Page 2](./img/weird-computer-games_page-0008.jpg)
+![Monster Wrestling, sida 1 — Usborne Weird Computer Games](./img/weird-computer-games_page-0007.jpg)  
+![Monster Wrestling, sida 2 — Usborne Weird Computer Games](./img/weird-computer-games_page-0008.jpg)
 
 </details>
 

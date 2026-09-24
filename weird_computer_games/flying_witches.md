@@ -53,8 +53,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/weird-computer-games_page-0011.jpg)  
-![Page 2](./img/weird-computer-games_page-0012.jpg)
+![Flying Witches, sida 1 — Usborne Weird Computer Games](./img/weird-computer-games_page-0011.jpg)  
+![Flying Witches, sida 2 — Usborne Weird Computer Games](./img/weird-computer-games_page-0012.jpg)
 
 </details>
 

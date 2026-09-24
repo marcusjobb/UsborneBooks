@@ -79,7 +79,7 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./creepy-computer-games/creepy-computer-games_0016.png)
+![Seance, sida 1 — Usborne Creepy Computer Games](./creepy-computer-games/creepy-computer-games_0016.png)
 
 </details>
 

@@ -70,8 +70,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_SpyGames08.png)  
-![Page 2](./img/Usborne-Computer_SpyGames09.png)
+![Spy Q Test, sida 1 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames08.png)  
+![Spy Q Test, sida 2 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames09.png)
 
 </details>
 

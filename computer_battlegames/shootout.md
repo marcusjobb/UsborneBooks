@@ -58,8 +58,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames08.png)  
-![Page 2](./img/Usborne-Computer_Battlegames09.png)
+![Shootout, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames08.png)  
+![Shootout, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames09.png)
 
 </details>
 

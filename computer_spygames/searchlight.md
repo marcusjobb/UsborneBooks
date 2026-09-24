@@ -67,8 +67,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_SpyGames04.png)  
-![Page 2](./img/Usborne-Computer_SpyGames05.png)
+![Searchlight, sida 1 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames04.png)  
+![Searchlight, sida 2 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames05.png)
 
 </details>
 

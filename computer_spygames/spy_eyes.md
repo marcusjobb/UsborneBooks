@@ -66,7 +66,7 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_SpyGames03.png)
+![Spy Eyes, sida 1 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames03.png)
 
 </details>
 

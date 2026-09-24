@@ -54,11 +54,11 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/weird-computer-games_page-0013.jpg)  
-![Page 2](./img/weird-computer-games_page-0014.jpg)  
-![Page 3](./img/weird-computer-games_page-0015.jpg)  
-![Page 4](./img/weird-computer-games_page-0016.jpg)  
-![Page 5](./img/weird-computer-games_page-0017.jpg)
+![Micropuzzle, sida 1 — Usborne Weird Computer Games](./img/weird-computer-games_page-0013.jpg)  
+![Micropuzzle, sida 2 — Usborne Weird Computer Games](./img/weird-computer-games_page-0014.jpg)  
+![Micropuzzle, sida 3 — Usborne Weird Computer Games](./img/weird-computer-games_page-0015.jpg)  
+![Micropuzzle, sida 4 — Usborne Weird Computer Games](./img/weird-computer-games_page-0016.jpg)  
+![Micropuzzle, sida 5 — Usborne Weird Computer Games](./img/weird-computer-games_page-0017.jpg)
 
 </details>
 

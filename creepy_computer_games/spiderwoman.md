@@ -82,8 +82,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./creepy-computer-games/creepy-computer-games_0008.png)  
-![Page 2](./creepy-computer-games/creepy-computer-games_0009.png)
+![Spiderwoman, sida 1 — Usborne Creepy Computer Games](./creepy-computer-games/creepy-computer-games_0008.png)  
+![Spiderwoman, sida 2 — Usborne Creepy Computer Games](./creepy-computer-games/creepy-computer-games_0009.png)
 
 </details>
 

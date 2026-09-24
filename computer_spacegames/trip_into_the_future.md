@@ -63,8 +63,8 @@ graph TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/computer-spacegames_pages-to-jpg-0021.jpg)  
-![Page 2](./img/computer-spacegames_pages-to-jpg-0022.jpg)
+![Trip into the Future, sida 1 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0021.jpg)  
+![Trip into the Future, sida 2 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0022.jpg)
 
 </details>
 

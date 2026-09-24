@@ -58,8 +58,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/weird-computer-games_page-0009.jpg)  
-![Page 2](./img/weird-computer-games_page-0010.jpg)
+![Jaws, sida 1 — Usborne Weird Computer Games](./img/weird-computer-games_page-0009.jpg)  
+![Jaws, sida 2 — Usborne Weird Computer Games](./img/weird-computer-games_page-0010.jpg)
 
 </details>
 

@@ -61,8 +61,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames06.png)  
-![Page 2](./img/Usborne-Computer_Battlegames07.png)
+![The Vital Message, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames06.png)  
+![The Vital Message, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames07.png)
 
 </details>
 

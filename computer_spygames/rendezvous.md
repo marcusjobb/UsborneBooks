@@ -85,10 +85,10 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_SpyGames12.png)  
-![Page 2](./img/Usborne-Computer_SpyGames13.png)  
-![Page 3](./img/Usborne-Computer_SpyGames14.png)  
-![Page 4](./img/Usborne-Computer_SpyGames15.png)
+![Rendezvous, sida 1 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames12.png)  
+![Rendezvous, sida 2 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames13.png)  
+![Rendezvous, sida 3 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames14.png)  
+![Rendezvous, sida 4 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames15.png)
 
 </details>
 

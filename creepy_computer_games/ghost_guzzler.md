@@ -75,8 +75,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./creepy-computer-games/creepy-computer-games_0006.png)  
-![Page 2](./creepy-computer-games/creepy-computer-games_0007.png)
+![Ghost Guzzler, sida 1 — Usborne Creepy Computer Games](./creepy-computer-games/creepy-computer-games_0006.png)  
+![Ghost Guzzler, sida 2 — Usborne Creepy Computer Games](./creepy-computer-games/creepy-computer-games_0007.png)
 
 </details>
 

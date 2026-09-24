@@ -73,8 +73,8 @@ graph TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/computer-spacegames_pages-to-jpg-0025.jpg)  
-![Page 2](./img/computer-spacegames_pages-to-jpg-0026.jpg)
+![Space Mines, sida 1 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0025.jpg)  
+![Space Mines, sida 2 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0026.jpg)
 
 </details>
 

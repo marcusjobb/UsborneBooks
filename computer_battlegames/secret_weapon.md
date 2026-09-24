@@ -66,8 +66,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames16.png)  
-![Page 2](./img/Usborne-Computer_Battlegames17.png)
+![Secret Weapon, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames16.png)  
+![Secret Weapon, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames17.png)
 
 </details>
 

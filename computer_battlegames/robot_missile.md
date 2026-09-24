@@ -46,8 +46,8 @@ graph TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames04.png)  
-![Page 2](./img/Usborne-Computer_Battlegames05.png)
+![Robot Missile, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames04.png)  
+![Robot Missile, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames05.png)
 
 </details>
 

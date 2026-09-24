@@ -63,8 +63,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames22.png)  
-![Page 2](./img/Usborne-Computer_Battlegames23.png)
+![Supersonic Bomber, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames22.png)  
+![Supersonic Bomber, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames23.png)
 
 </details>
 

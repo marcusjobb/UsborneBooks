@@ -53,8 +53,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 11](./img/computer-spacegames_pages-to-jpg-0011.jpg)  
-![Page 12](./img/computer-spacegames_pages-to-jpg-0012.jpg)
+![Beat the Bug Eyes, sida 11 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0011.jpg)  
+![Beat the Bug Eyes, sida 12 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0012.jpg)
 
 </details>
 

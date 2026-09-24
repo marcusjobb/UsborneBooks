@@ -66,8 +66,8 @@ graph TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames10.png)  
-![Page 2](./img/Usborne-Computer_Battlegames11.png)
+![Desert Tank Battle, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames10.png)  
+![Desert Tank Battle, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames11.png)
 
 </details>
 

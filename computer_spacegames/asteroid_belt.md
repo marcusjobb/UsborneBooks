@@ -55,8 +55,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 19](./img/computer-spacegames_pages-to-jpg-0019.jpg)  
-![Page 20](./img/computer-spacegames_pages-to-jpg-0020.jpg)
+![Asteroid Belt, sida 19 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0019.jpg)  
+![Asteroid Belt, sida 20 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0020.jpg)
 
 </details>
 

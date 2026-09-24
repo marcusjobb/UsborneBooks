@@ -64,8 +64,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 15](./img/computer-spacegames_pages-to-jpg-0015.jpg)  
-![Page 16](./img/computer-spacegames_pages-to-jpg-0016.jpg)
+![Monsters of Galacticon, sida 15 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0015.jpg)  
+![Monsters of Galacticon, sida 16 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0016.jpg)
 
 </details>
 

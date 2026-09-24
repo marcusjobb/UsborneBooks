@@ -85,8 +85,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./creepy-computer-games/creepy-computer-games_0014.png)  
-![Page 2](./creepy-computer-games/creepy-computer-games_0015.png)
+![Ghost Maze, sida 1 — Usborne Creepy Computer Games](./creepy-computer-games/creepy-computer-games_0014.png)  
+![Ghost Maze, sida 2 — Usborne Creepy Computer Games](./creepy-computer-games/creepy-computer-games_0015.png)
 
 </details>
 

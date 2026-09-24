@@ -61,8 +61,8 @@ graph TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames20.png)  
-![Page 2](./img/Usborne-Computer_Battlegames21.png)
+![Pirate Dogfight, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames20.png)  
+![Pirate Dogfight, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames21.png)
 
 </details>
 

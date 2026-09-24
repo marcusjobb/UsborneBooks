@@ -51,8 +51,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 13](./img/computer-spacegames_pages-to-jpg-0013.jpg)  
-![Page 14](./img/computer-spacegames_pages-to-jpg-0014.jpg)
+![Moonlander, sida 13 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0013.jpg)  
+![Moonlander, sida 14 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0014.jpg)
 
 </details>
 

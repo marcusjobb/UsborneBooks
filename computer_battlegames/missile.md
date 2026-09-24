@@ -58,12 +58,12 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_Battlegames30.png)  
-![Page 2](./img/Usborne-Computer_Battlegames31.png)
-![Page 3](./img/Usborne-Computer_Battlegames32.png)  
-![Page 4](./img/Usborne-Computer_Battlegames33.png)  
-![Page 5](./img/Usborne-Computer_Battlegames34.png)  
-![Page 6](./img/Usborne-Computer_Battlegames35.png)
+![Missile!, sida 1 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames30.png)  
+![Missile!, sida 2 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames31.png)
+![Missile!, sida 3 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames32.png)  
+![Missile!, sida 4 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames33.png)  
+![Missile!, sida 5 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames34.png)  
+![Missile!, sida 6 — Usborne Computer Battlegames](./img/Usborne-Computer_Battlegames35.png)
 
 </details>
 

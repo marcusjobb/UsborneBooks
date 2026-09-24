@@ -89,9 +89,9 @@ graph TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/computer-spacegames_pages-to-jpg-0027.jpg)  
-![Page 2](./img/computer-spacegames_pages-to-jpg-0028.jpg)  
-![Page 3](./img/computer-spacegames_pages-to-jpg-0029.jpg)
+![Space Rescue, sida 1 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0027.jpg)  
+![Space Rescue, sida 2 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0028.jpg)  
+![Space Rescue, sida 3 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0029.jpg)
 
 </details>
 

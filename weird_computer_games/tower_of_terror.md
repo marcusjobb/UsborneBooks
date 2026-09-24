@@ -59,7 +59,7 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/weird-computer-games_page-0004.jpg)
+![Tower of Terror, sida 1 — Usborne Weird Computer Games](./img/weird-computer-games_page-0004.jpg)
 
 </details>
 

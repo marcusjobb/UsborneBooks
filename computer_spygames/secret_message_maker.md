@@ -65,8 +65,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 1](./img/Usborne-Computer_SpyGames10.png)  
-![Page 2](./img/Usborne-Computer_SpyGames11.png)
+![Secret Message Maker, sida 1 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames10.png)  
+![Secret Message Maker, sida 2 — Usborne Computer Spy Games](./img/Usborne-Computer_SpyGames11.png)
 
 </details>
 

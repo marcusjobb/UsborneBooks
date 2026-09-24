@@ -57,8 +57,8 @@ flowchart TD
 <details>
 <summary>Pages</summary>
 
-![Page 7](./img/computer-spacegames_pages-to-jpg-0007.jpg)  
-![Page 8](./img/computer-spacegames_pages-to-jpg-0008.jpg)
+![Intergalactic Games, sida 7 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0007.jpg)  
+![Intergalactic Games, sida 8 — Usborne Computer Spacegames](./img/computer-spacegames_pages-to-jpg-0008.jpg)
 
 </details>
 
