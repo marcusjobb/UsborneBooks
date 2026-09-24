@@ -362,4 +362,4 @@ The objective of "Missile!" is to use your missile bases to intercept enemy plan
 
 These programs are adaptations of the original Usborne Computer Guides published in the 1980s. The books are free to download for personal or educational use from [Usborne's Computer and Coding Books](https://usborne.com/row/books/computer-and-coding-books). Programs and adaptations may not be used for commercial purposes.
 
-Return to [Computer Battlegames](./readme.md).
+Return to [Computer Battlegames](./).

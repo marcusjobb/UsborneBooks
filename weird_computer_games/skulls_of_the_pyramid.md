@@ -443,4 +443,4 @@ Each chamber presents a simple gamble: three doors, one treasure, two traps. Suc
 
 These programs are adaptations of the original _Usborne Computer Guides_ published in the 1980s. The books are free to download for personal or educational use from [Usborne’s Computer and Coding Books](https://usborne.com/row/books/computer-and-coding-books). Programs and adaptations may not be used for commercial purposes.
 
-Return to [Weird Computer Games](./readme.md).
+Return to [Weird Computer Games](./).
