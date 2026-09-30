@@ -65,8 +65,14 @@ const jsonLd = {
       "description": description,
       "url": canonicalURL.toString(),
       "inLanguage": "sv",
-      "author": isHome ? undefined : { "@type": "Person", "name": AUTHOR.name, "url": AUTHOR.linkedinUrl },
-      "publisher": { "@type": "Organization", "name": "NionIT" },
+      "author": { "@type": "Person", "@id": "https://marcusjobb.github.io/#person", "name": AUTHOR.name, "sameAs": [AUTHOR.linkedinUrl, AUTHOR.githubUrl, "https://orcid.org/0009-0005-7717-306X"] },
+      "publisher": { "@type": "Person", "@id": "https://marcusjobb.github.io/#person", "name": AUTHOR.name },
+      ...(!isHome ? {
+        "educationalLevel": "Yrkeshögskola",
+        "teaches": ["Programmering", "Kodning", "Algoritmer", "Basic", "ZX Spectrum"],
+        "audience": { "@type": "EducationalAudience", "educationalRole": "student", "audienceType": "Yrkeshögskolestuderande i mjukvaruutveckling" },
+        "isPartOf": { "@type": "WebSite", "name": "YH-böcker av Marcus Ackre Medina", "url": "https://marcusjobb.github.io/" }
+      } : {}),
     },
     ...(breadcrumbItems.length > 1 ? [{
       "@type": "BreadcrumbList",
@@ -94,6 +100,7 @@ const jsonLd = {
   <meta property="og:url" content={canonicalURL}>
   <meta property="og:type" content="article">
   <meta property="og:site_name" content={siteTitle}>
+  <meta property="og:locale" content="sv_SE">
   <meta property="og:image" content="https://marcusjobb.github.io/UsborneBooks/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
