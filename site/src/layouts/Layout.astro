@@ -71,7 +71,9 @@ const jsonLd = {
         "educationalLevel": "Yrkeshögskola",
         "teaches": ["Programmering", "Kodning", "Algoritmer", "Basic", "ZX Spectrum"],
         "audience": { "@type": "EducationalAudience", "educationalRole": "student", "audienceType": "Yrkeshögskolestuderande i mjukvaruutveckling" },
-        "isPartOf": { "@type": "WebSite", "name": "YH-böcker av Marcus Ackre Medina", "url": "https://marcusjobb.github.io/" }
+        "isPartOf": { "@type": "WebSite", "name": "YH-böcker av Marcus Ackre Medina", "url": "https://marcusjobb.github.io/" },
+        "datePublished": "2024-09-01",
+        "dateModified": new Date().toISOString().split('T')[0],
       } : {}),
     },
     ...(breadcrumbItems.length > 1 ? [{
