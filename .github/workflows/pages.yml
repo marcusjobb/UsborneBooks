@@ -26,6 +26,7 @@ jobs:
       - name: Generera docs/ från källfilerna
         run: python3 _scripts/generate_docs.py
       - run: npm ci
+      - run: npm run check:links
       - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

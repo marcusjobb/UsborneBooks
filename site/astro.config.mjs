@@ -3,6 +3,10 @@ import sitemap from '@astrojs/sitemap';
 import expressiveCode from 'astro-expressive-code';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { fileURLToPath } from 'node:url';
+import remarkDocLinks from './src/plugins/doc-links.mjs';
+
+const base = '/UsborneBooks';
 
 // Converts `mermaid blocks to <pre class="mermaid"> before expressive-code sees them
 function remarkMermaid() {
@@ -14,14 +18,16 @@ function remarkMermaid() {
     }
     walk(tree, null, 0);
     hits.reverse().forEach(({ node, parent, index }) => {
-      parent.children[index] = { type: 'html', value: `<pre class="mermaid"></pre>` };
+      // Escapa: annars tolkas <br/>, <|-- och liknande i diagramkoden som HTML-taggar
+      const code = node.value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      parent.children[index] = { type: 'html', value: `<pre class="mermaid">${code}</pre>` };
     });
   };
 }
 
 export default defineConfig({
   site: 'https://marcusjobb.github.io',
-  base: '/UsborneBooks',
+  base,
   output: 'static',
   integrations: [
     expressiveCode({
@@ -31,7 +37,11 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    remarkPlugins: [remarkMermaid],
+    remarkPlugins: [
+      remarkMermaid,
+      // Relativa länkar räknas från källfilen och blir absoluta URL:er (se pluginet)
+      [remarkDocLinks, { docsDir: fileURLToPath(new URL('../docs', import.meta.url)), base }],
+    ],
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: 'wrap' }],
