@@ -18,7 +18,7 @@ interface Props {
 
 const {
   title,
-  description = 'Klassiska Usborne-spelprogrammeringsböcker moderniserade i C#',
+  description = 'Classic Usborne game-programming books modernised in C#',
   entry,
   prevUrl,
   prevTitle,
@@ -64,13 +64,13 @@ const jsonLd = {
       "headline": isHome ? undefined : title,
       "description": description,
       "url": canonicalURL.toString(),
-      "inLanguage": "sv",
+      "inLanguage": "en",
       "author": { "@type": "Person", "@id": "https://marcusjobb.github.io/#person", "name": AUTHOR.name, "sameAs": [AUTHOR.linkedinUrl, AUTHOR.githubUrl, "https://orcid.org/0009-0005-7717-306X"] },
       "publisher": { "@type": "Person", "@id": "https://marcusjobb.github.io/#person", "name": AUTHOR.name },
       ...(!isHome ? {
-        "educationalLevel": "Yrkeshögskola",
+        "educationalLevel": "Vocational higher education (YH)",
         "teaches": ["Programmering", "Kodning", "Algoritmer", "Basic", "ZX Spectrum"],
-        "audience": { "@type": "EducationalAudience", "educationalRole": "student", "audienceType": "Yrkeshögskolestuderande i mjukvaruutveckling" },
+        "audience": { "@type": "EducationalAudience", "educationalRole": "student", "audienceType": "Vocational higher-education students in software development" },
         "isPartOf": { "@type": "WebSite", "name": "YH-böcker av Marcus Ackre Medina", "url": "https://marcusjobb.github.io/" },
         "datePublished": "2024-09-01",
         "dateModified": new Date().toISOString().split('T')[0],
@@ -89,7 +89,7 @@ const jsonLd = {
 };
 ---
 <!DOCTYPE html>
-<html lang="sv" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -102,7 +102,7 @@ const jsonLd = {
   <meta property="og:url" content={canonicalURL}>
   <meta property="og:type" content="article">
   <meta property="og:site_name" content={siteTitle}>
-  <meta property="og:locale" content="sv_SE">
+  <meta property="og:locale" content="en_US">
   <meta property="og:image" content="https://marcusjobb.github.io/UsborneBooks/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -137,10 +137,10 @@ const jsonLd = {
 </head>
 <body>
 
-<div id="search-overlay" role="dialog" aria-modal="true" aria-label="Sök i boken" hidden>
+<div id="search-overlay" role="dialog" aria-modal="true" aria-label="Search the book" hidden>
   <div id="search-modal">
     <div id="search-header">
-      <span>Sök i boken</span>
+      <span>Search the book</span>
       <kbd>Esc</kbd>
     </div>
     <div id="pagefind-ui-container"></div>
@@ -155,10 +155,10 @@ const jsonLd = {
       <section class="hero">
         <span class="hero-badge">Retro · 1980-tal · NionIT</span>
         <h1 class="hero-title">Usborne Revival</h1>
-        <p class="hero-sub">Klassiska spelprogrammeringsböcker från Usborne Publishing, moderniserade i C#, Python och Java av Marcus Ackre Medina.</p>
+        <p class="hero-sub">Classic game-programming books from Usborne Publishing, modernised in C#, Python and Java by Marcus Ackre Medina.</p>
         <div class="hero-actions">
-          {nextUrl && <a href={nextUrl} class="btn-primary">Börja läsa →</a>}
-          <a href={`${base}/andra-ebocker/`} class="btn-secondary">Andra e-böcker</a>
+          {nextUrl && <a href={nextUrl} class="btn-primary">Start reading →</a>}
+          <a href={`${base}/andra-ebocker/`} class="btn-secondary">Other e-books</a>
         </div>
         <div class="hero-stats">
           <span>Gratis</span>
@@ -173,16 +173,16 @@ const jsonLd = {
       <slot />
     </div>
     {(prevUrl || nextUrl) && (
-      <nav class="page-nav" aria-label="Sidnavigering">
+      <nav class="page-nav" aria-label="Page navigation">
         {prevUrl ? (
           <a href={prevUrl} class="page-nav-card page-nav-prev">
-            <span class="page-nav-dir">← Föregående</span>
+            <span class="page-nav-dir">← Previous</span>
             <span class="page-nav-title">{prevTitle}</span>
           </a>
         ) : <span />}
         {nextUrl ? (
           <a href={nextUrl} class="page-nav-card page-nav-next">
-            <span class="page-nav-dir">Nästa →</span>
+            <span class="page-nav-dir">Next →</span>
             <span class="page-nav-title">{nextTitle}</span>
           </a>
         ) : <span />}
@@ -190,8 +190,8 @@ const jsonLd = {
     )}
   </main>
 
-  <aside class="toc" aria-label="På den här sidan" id="toc-aside">
-    <p class="toc-heading">På den här sidan</p>
+  <aside class="toc" aria-label="On this page" id="toc-aside">
+    <p class="toc-heading">On this page</p>
     <nav id="toc-nav"></nav>
   </aside>
 </div>

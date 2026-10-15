@@ -29,25 +29,25 @@ function getChildren(sectionTitle: string) {
 }
 ---
 
-<nav class="sidebar" aria-label="Boknavigation" transition:persist>
+<nav class="sidebar" aria-label="Book navigation" transition:persist>
   <div class="sidebar-header">
     <a class="course-name" href={`${base}/`}>Usborne Revival</a>
     <div class="header-buttons">
-      <button type="button" id="font-decrease" aria-label="Mindre text" title="Minska teckenstorlek">A−</button>
-      <button type="button" id="font-increase" aria-label="Större text" title="Öka teckenstorlek">A+</button>
+      <button type="button" id="font-decrease" aria-label="Smaller text" title="Decrease font size">A−</button>
+      <button type="button" id="font-increase" aria-label="Larger text" title="Increase font size">A+</button>
       <button type="button" id="bionic-toggle" aria-pressed="false"
-              aria-label="Bionic-läsning" title="Bionic reading">
+              aria-label="Bionic reading" title="Bionic reading">
         <b>B</b>
       </button>
       <a id="translate-link" href="#" target="_blank" rel="noopener"
-         aria-label="Översätt till engelska" title="Öppnar sidan i Google Translate" class="hdr-btn">
+         aria-label="Translate to Swedish" title="Opens the page in Google Translate" class="hdr-btn">
         🌐
       </a>
-      <button type="button" id="theme-toggle" aria-label="Växla ljust och mörkt läge" title="Ljust / mörkt läge">
+      <button type="button" id="theme-toggle" aria-label="Toggle light and dark mode" title="Light / dark mode">
         <span class="theme-icon theme-icon-light" aria-hidden="true">☀️</span>
         <span class="theme-icon theme-icon-dark" aria-hidden="true">🌙</span>
       </button>
-      <button type="button" id="search-trigger" aria-label="Sök (Ctrl+K)" title="Sök i boken (Ctrl+K)">
+      <button type="button" id="search-trigger" aria-label="Search (Ctrl+K)" title="Search the book (Ctrl+K)">
         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -218,7 +218,7 @@ document.addEventListener('astro:page-load', () => {
 
   const translateLink = document.getElementById('translate-link') as HTMLAnchorElement | null;
   if (translateLink) {
-    translateLink.href = `https://translate.google.com/translate?sl=sv&u=${encodeURIComponent(window.location.href)}`;
+    translateLink.href = `https://translate.google.com/translate?sl=en&tl=sv&u=${encodeURIComponent(window.location.href)}`;
   }
 });
 </script>

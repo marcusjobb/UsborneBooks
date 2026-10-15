@@ -1,33 +1,33 @@
 ---
 title: Usborne Revival
-description: "Klassiska spelprogrammeringsböcker från Usborne Publishing (1980-talet) — moderniserade i C#, Python och Java."
+description: "Classic game-programming books from Usborne Publishing (the 1980s) — modernised in C#, Python and Java."
 nav_order: 1
 ---
 
 # Usborne Revival
 
-Klassiska spelprogrammeringsböcker från Usborne Publishing (1980-talet) — moderniserade i C#, Python och Java.
+Classic game-programming books from Usborne Publishing (the 1980s) — modernised in C#, Python and Java.
 
-Originalen skrevs för ZX-81, BBC Micro och Commodore 64. Det här projektet bevarar spelen och historien, men byter ut BASIC mot moderna programmeringsspråk.
+The originals were written for the ZX-81, BBC Micro and Commodore 64. This project preserves the games and their history, but replaces BASIC with modern programming languages.
 
-> Perfekt för nybörjare som vill koda riktiga spel och samtidigt få en känsla för hur programmering såg ut när det begav sig.
+> Perfect for beginners who want to code real games and, at the same time, get a feel for what programming was like back in the day.
 
-## Böckerna
+## The books
 
-| Bok | Spel |
-|-----|------|
-| [Computer Battlegames](battlegames/) | 13 spel |
-| [Computer Spacegames](spacegames/) | 12 spel |
-| [Computer Spy Games](spygames/) | 7 spel |
-| [Creepy Computer Games](creepy/) | 8 spel |
-| [Weird Computer Games](weird/) | 6 spel |
+| Book | Games |
+|------|-------|
+| [Computer Battlegames](battlegames/) | 13 games |
+| [Computer Spacegames](spacegames/) | 12 games |
+| [Computer Spy Games](spygames/) | 7 games |
+| [Creepy Computer Games](creepy/) | 8 games |
+| [Weird Computer Games](weird/) | 6 games |
 
-## Om projektet
+## About the project
 
-Originalboken av [Usborne Publishing](https://usborne.com/).
-Modernisering och kodomvandling av [Marcus Ackre Medina](https://www.linkedin.com/in/marcusmedina/).
+Original books by [Usborne Publishing](https://usborne.com/).
+Modernisation and code conversion by [Marcus Ackre Medina](https://www.linkedin.com/in/marcusmedina/).
 
-Varje spel innehåller:
-- **Storyn** — berättelsen från originalboken
-- **Pseudokod** — logiken beskriven i klartext
-- **C#-kod** — modern implementation (och ofta Python/Java)
+Every game includes:
+- **The story** — the narrative from the original book
+- **Pseudocode** — the logic described in plain language
+- **C# code** — a modern implementation (and often Python/Java)
