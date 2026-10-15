@@ -115,12 +115,18 @@ const jsonLd = {
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <script is:inline>
-    try {
-      var t = localStorage.getItem('theme');
-      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
-      var fs = parseFloat(localStorage.getItem('fontSize'));
-      if (fs >= 14 && fs <= 26) document.documentElement.style.fontSize = fs + 'px';
-    } catch(e) {}
+    // Körs vid första laddning OCH efter varje sidbyte (ClientRouter byter ut <html>-attribut)
+    function applyPrefs() {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+        var fs = parseFloat(localStorage.getItem('fontSize'));
+        if (fs >= 14 && fs <= 26) document.documentElement.style.fontSize = fs + 'px';
+      } catch(e) {}
+    }
+    applyPrefs();
+    document.addEventListener('astro:after-swap', applyPrefs);
   </script>
 
   <ClientRouter />
