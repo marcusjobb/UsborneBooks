@@ -1,32 +1,32 @@
 ---
-title: Licens
-description: "Originalböckerna tillhör Usborne Publishing. De klassiska programmeringsböckerna från 1980-talet finns tillgängliga för fri nedladdning på Usbornes…"
+title: License
+description: "The original books belong to Usborne Publishing. The classic 1980s programming books are available for free download on Usborne's website."
 nav_order: 999
 ---
 
-# Licens
+# License
 
-## Originalböckerna
+## The original books
 
-Originalböckerna tillhör [Usborne Publishing](https://usborne.com/). De klassiska programmeringsböckerna från 1980-talet finns tillgängliga för fri nedladdning på Usbornes webbplats.
+The original books belong to [Usborne Publishing](https://usborne.com/). The classic programming books from the 1980s are available for free download on Usborne's website.
 
-## Kodomvandlingarna
+## The code conversions
 
-Moderniseringen och kodomvandlingen av spelen är gjord av Marcus Ackre Medina och publiceras under:
+The modernisation and code conversion of the games is made by Marcus Ackre Medina and published under:
 
-[Creative Commons Erkännande-Ickekommersiell 4.0 (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/deed.sv)
+[Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/deed.en)
 
-### Vad du får göra
+### What you may do
 
-- **Läsa och använda** kodomvandlingarna för studier och eget lärande
-- **Dela** hela samlingen eller enskilda sidor — som länk eller kopia
-- **Bygga vidare** för icke-kommersiella syften
+- **Read and use** the code conversions for study and personal learning
+- **Share** the whole collection or individual pages — as a link or a copy
+- **Build on it** for non-commercial purposes
 
-### Vad du inte får göra
+### What you may not do
 
-- **Sälja** materialet i något format
-- **Ta bort** upphovsrättsangivelsen
+- **Sell** the material in any format
+- **Remove** the copyright notice
 
 ---
 
-Om du vill använda materialet på ett sätt som inte täcks av licensen — hör av dig till [marcus.medina@nionit.com](mailto:marcus.medina@nionit.com).
+If you want to use the material in a way that is not covered by the license — get in touch at [marcus.medina@nionit.com](mailto:marcus.medina@nionit.com).

@@ -1,16 +1,16 @@
 ---
-title: Andra e-böcker av Marcus
-description: "Andra e-böcker av Marcus — Usborne Revival av Marcus Ackre Medina"
+title: Other e-books by Marcus
+description: "Other e-books by Marcus — Usborne Revival by Marcus Ackre Medina"
 nav_order: 990
 ---
-# Andra e-böcker av Marcus
+# Other e-books by Marcus
 
-Fler kostnadsfria studieböcker i samma format:
+More free study books in the same format. Note that these are written in Swedish:
 
-- **[Azure och moln i C#](https://marcusjobb.github.io/azure-studiebok/)** — administrera molnlösningar, Bicep/IaC, CI/CD och API-dokumentation (Scalar/Swagger).
-- **[C# bok — Programmering i C#](https://marcusjobb.github.io/programmering-csharp/)** — från grunderna till OOP, datastrukturer, filhantering, SQL/EF, API:er och asynkron programmering.
-- **[Git](https://marcusjobb.github.io/git-bok/)** — grunder, konflikter och branching-strategier (Git Flow, GitHub Flow, Trunk-based).
-- **[Java](https://marcusjobb.github.io/java-bok/)** — Java-programmering för YH-studerande.
-- **[Projektmetodik](https://marcusjobb.github.io/projektmetodik-bok/)** — Scrum, Kanban, vattenfallsmodellen och begreppen bakom hur team faktiskt jobbar.
+- **[Azure and the cloud in C#](https://marcusjobb.github.io/azure-studiebok/)** — administering cloud solutions, Bicep/IaC, CI/CD and API documentation (Scalar/Swagger).
+- **[C# book — Programming in C#](https://marcusjobb.github.io/programmering-csharp/)** — from the basics to OOP, data structures, file handling, SQL/EF, APIs and asynchronous programming.
+- **[Git](https://marcusjobb.github.io/git-bok/)** — fundamentals, conflicts and branching strategies (Git Flow, GitHub Flow, trunk-based).
+- **[Java](https://marcusjobb.github.io/java-bok/)** — Java programming for vocational higher-education students.
+- **[Project methodology](https://marcusjobb.github.io/projektmetodik-bok/)** — Scrum, Kanban, the waterfall model and the concepts behind how teams actually work.
 
-Samma licens gäller för kodomvandlingarna — se [Licens](licens.md).
+The same license applies to the code conversions — see [License](licens.md).
